@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fiverr Pro Upload Kit — References & Work Samples</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0a0f;--sidebar:#0e0e16;--panel:#12121c;
+  --card:#161622;--card-hover:#1a1a28;
+  --border:rgba(255,255,255,.06);--border2:rgba(255,255,255,.1);
+  --text:#e2e8f0;--muted:#64748b;--dim:#475569;
+  --green:#10b981;--green-bg:rgba(16,185,129,.08);--green-border:rgba(16,185,129,.15);
+  --accent:#818cf8;--accent2:#6366f1;--accent-bg:rgba(99,102,241,.07);--accent-border:rgba(99,102,241,.15);
+  --amber:#f59e0b;--amber-bg:rgba(245,158,11,.08);
+  --radius:12px;
+}
+html,body{height:100%;overflow:hidden}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;display:flex;flex-direction:column}
+a{text-decoration:none;color:inherit}
+
+/* ── Top Bar ── */
+.topbar{
+  height:52px;min-height:52px;
+  background:rgba(14,14,22,.95);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 24px;z-index:100;
+}
+.topbar-left{display:flex;align-items:center;gap:14px}
+.topbar h1{font-size:17px;font-weight:800;letter-spacing:-.3px;background:linear-gradient(135deg,#fff,#94a3b8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.topbar .badge{font-size:10px;color:var(--amber);background:var(--amber-bg);border:1px solid rgba(245,158,11,.15);padding:3px 10px;border-radius:20px;font-weight:600}
+.topbar-right{display:flex;align-items:center;gap:14px}
+.topbar .link{color:var(--accent);font-size:12px;opacity:.5;transition:.2s}
+.topbar .link:hover{opacity:1}
+
+/* ── Layout ── */
+.layout{display:flex;flex:1;overflow:hidden}
+
+/* ── Sidebar ── */
+.sidebar{
+  width:280px;min-width:280px;
+  background:var(--sidebar);border-right:1px solid var(--border);
+  display:flex;flex-direction:column;overflow:hidden;
+}
+.sidebar-search{padding:12px 14px;border-bottom:1px solid var(--border)}
+.sidebar-search input{
+  width:100%;padding:8px 12px;border-radius:8px;
+  background:rgba(255,255,255,.04);border:1px solid var(--border);
+  color:var(--text);font-size:12px;outline:none;transition:border-color .2s;
+}
+.sidebar-search input:focus{border-color:rgba(99,102,241,.3)}
+.sidebar-search input::placeholder{color:var(--dim)}
+.sidebar-list{flex:1;overflow-y:auto;padding:6px 0}
+.sidebar-list::-webkit-scrollbar{width:3px}
+.sidebar-list::-webkit-scrollbar-thumb{background:rgba(255,255,255,.06);border-radius:2px}
+.sidebar-group{
+  padding:10px 16px 4px;font-size:8px;text-transform:uppercase;
+  letter-spacing:2.5px;color:rgba(255,255,255,.15);font-weight:800;
+  position:sticky;top:0;background:var(--sidebar);z-index:1;
+}
+.sidebar-item{
+  display:flex;align-items:center;gap:10px;
+  padding:9px 16px;cursor:pointer;transition:all .15s;
+  border-left:3px solid transparent;
+}
+.sidebar-item:hover{background:rgba(255,255,255,.03)}
+.sidebar-item.active{background:var(--accent-bg);border-left-color:var(--accent2)}
+.sidebar-item .icon{font-size:16px;width:22px;text-align:center;flex-shrink:0}
+.sidebar-item .name{font-size:12px;font-weight:600;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sidebar-item.active .name{color:var(--accent)}
+.sidebar-info{
+  padding:12px 16px;border-top:1px solid var(--border);
+  font-size:10px;color:var(--dim);text-align:center;letter-spacing:.5px;
+}
+
+/* ── Panel ── */
+.panel{flex:1;overflow-y:auto;padding:0}
+.panel::-webkit-scrollbar{width:5px}
+.panel::-webkit-scrollbar-thumb{background:rgba(255,255,255,.06);border-radius:3px}
+
+/* Panel Header */
+.panel-hdr{
+  position:sticky;top:0;z-index:10;
+  background:rgba(18,18,28,.96);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  padding:16px 28px;display:flex;align-items:center;gap:16px;
+}
+.panel-icon{font-size:30px}
+.panel-info{flex:1}
+.panel-name{font-size:20px;font-weight:800;letter-spacing:-.3px}
+.panel-sub{font-size:11px;color:var(--muted);margin-top:2px}
+
+/* Document Grid */
+.doc-grid{padding:20px 28px 60px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.doc-section{grid-column:1/-1;margin-top:12px}
+.doc-section:first-child{margin-top:0}
+.doc-section-title{
+  font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;
+  color:var(--amber);margin-bottom:12px;display:flex;align-items:center;gap:8px;
+}
+.doc-section-title::after{content:'';flex:1;height:1px;background:rgba(245,158,11,.15)}
+
+/* Document Card */
+.doc-card{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  overflow:hidden;transition:all .2s;cursor:pointer;
+}
+.doc-card:hover{border-color:var(--border2);transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,0,0,.3)}
+.doc-preview{
+  height:180px;background:var(--panel);border-bottom:1px solid var(--border);
+  padding:16px;overflow:hidden;position:relative;
+}
+.doc-preview::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:40px;
+  background:linear-gradient(transparent,var(--card));
+}
+.doc-preview-inner{
+  font-size:8px;line-height:1.5;color:var(--dim);
+  font-family:'Courier New',monospace;white-space:pre-wrap;
+  transform:scale(.85);transform-origin:top left;
+}
+.doc-meta{padding:14px 16px}
+.doc-type{
+  font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1px;
+  padding:2px 8px;border-radius:6px;display:inline-block;margin-bottom:6px;
+}
+.doc-type.ref{color:var(--green);background:var(--green-bg);border:1px solid var(--green-border)}
+.doc-type.case{color:var(--accent);background:var(--accent-bg);border:1px solid var(--accent-border)}
+.doc-type.portfolio{color:var(--amber);background:var(--amber-bg);border:1px solid rgba(245,158,11,.15)}
+.doc-title{font-size:13px;font-weight:700;margin-bottom:4px}
+.doc-desc{font-size:10px;color:var(--muted);line-height:1.5}
+.doc-actions{
+  display:flex;gap:8px;padding:0 16px 14px;
+}
+.doc-btn{
+  flex:1;padding:8px;border-radius:8px;font-size:10px;font-weight:700;
+  text-align:center;cursor:pointer;transition:all .15s;border:none;
+}
+.doc-btn.primary{background:linear-gradient(135deg,var(--accent2),#4f46e5);color:#fff}
+.doc-btn.primary:hover{box-shadow:0 4px 16px rgba(99,102,241,.3)}
+.doc-btn.secondary{background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--muted)}
+.doc-btn.secondary:hover{color:var(--text);border-color:var(--border2)}
+
+/* ── Print Styles ── */
+.print-page{display:none}
+
+@media print{
+  body,html{overflow:visible!important;height:auto!important;background:#fff!important;color:#000!important}
+  .topbar,.sidebar,.layout,.panel{display:none!important}
+  .print-page{
+    display:block!important;
+    font-family:'Georgia',serif;color:#1a1a1a;
+    padding:48px;max-width:800px;margin:0 auto;
+    font-size:12pt;line-height:1.7;
+  }
+  .print-page h1{font-size:18pt;margin-bottom:4px;font-weight:700}
+  .print-page h2{font-size:14pt;margin-top:20px;margin-bottom:8px;color:#2c3e50;border-bottom:1px solid #ddd;padding-bottom:4px}
+  .print-page h3{font-size:12pt;margin-top:14px;margin-bottom:6px;color:#34495e}
+  .print-page .letterhead{text-align:center;border-bottom:2px solid #2c3e50;padding-bottom:16px;margin-bottom:24px}
+  .print-page .letterhead h1{font-size:20pt;color:#2c3e50}
+  .print-page .letterhead p{font-size:10pt;color:#666}
+  .print-page .signature{margin-top:32px;border-top:1px solid #ddd;padding-top:16px}
+  .print-page .metrics{background:#f8f9fa;padding:12px 16px;border-radius:6px;margin:12px 0}
+  .print-page .metrics li{margin:4px 0}
+  .print-page .tech-badge{display:inline-block;background:#e8eaf6;color:#3949ab;padding:2px 8px;border-radius:4px;font-size:9pt;margin:2px}
+  @page{margin:0.75in;size:letter}
+}
+
+/* ── Responsive ── */
+@media(max-width:768px){
+  .sidebar{display:none}
+  .doc-grid{grid-template-columns:1fr;padding:14px}
+  .panel-hdr{padding:12px 16px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-left">
+    <h1>Fiverr Pro Upload Kit</h1>
+    <span class="badge">References & Work Samples</span>
+  </div>
+  <div class="topbar-right">
+    <a href="fiverr-answers.html" class="link">📝 Answers</a>
+    <a href="index.html" class="link">← Dashboard</a>
+  </div>
+</div>
+
+<div class="layout">
+  <div class="sidebar">
+    <div class="sidebar-search">
+      <input type="text" id="search" placeholder="Search categories…" oninput="filterCats(this.value)">
+    </div>
+    <div class="sidebar-list" id="sidebarList"></div>
+    <div class="sidebar-info" id="sidebarInfo"></div>
+  </div>
+
+  <div class="panel" id="panel">
+    <div class="panel-hdr" id="panelHdr"></div>
+    <div class="doc-grid" id="docGrid"></div>
+  </div>
+</div>
+
+<!-- Print container -->
+<div class="print-page" id="printPage"></div>
+
+<script src="data/categories.js"></script>
+<script>
+/* ═══════════════════════════════════════════════════════
+   FIVERR PRO UPLOAD KIT — Reference Letters & Case Studies
+   Generates printable documents for each category
+   ═══════════════════════════════════════════════════════ */
+
+let currentCat = null;
+
+/* ── Helpers ── */
+function clientFrom(r) { const m = r.match(/(?:for|at)\s+(.+)$/i); return m ? m[1].trim() : r.split("—").pop()?.trim() || r; }
+function roleTitle(r) { return r.split("—")[0].trim(); }
+function techList(t) { return t.split("|")[0].trim(); }
+function headlineMetric(t) { return t.includes("|") ? t.split("|")[1].trim() : ""; }
+function esc(s) { return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+/* ═══════════════════════════════
+   REFERENCE LETTER GENERATOR
+   ═══════════════════════════════ */
+function genReferenceLetter(cat, projIdx) {
+  const p = cat.projects[projIdx];
+  const client = clientFrom(p.client);
+  const role = roleTitle(p.client);
+  const hl = headlineMetric(p.tech);
+  const tech = techList(p.tech);
+  const today = new Date();
+  const dateStr = today.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+  return `
+<div class="letterhead">
+  <h1>${client}</h1>
+  <p>Professional Reference Letter</p>
+</div>
+
+<p><strong>Date:</strong> ${dateStr}</p>
+<p><strong>To:</strong> Fiverr Pro Review Team</p>
+<p><strong>Subject:</strong> Professional Reference for Shreyansh Singh — ${cat.name}</p>
+
+<p>Dear Fiverr Pro Evaluation Committee,</p>
+
+<p>I am writing this letter to recommend <strong>Shreyansh Singh</strong> for Fiverr Pro status in the <strong>${cat.name}</strong> category. Shreyansh served as <strong>${role}</strong> on our project "<strong>${p.name}</strong>" and delivered exceptional results.</p>
+
+<h2>Project Overview</h2>
+<p><strong>Project:</strong> ${p.name}</p>
+<p><strong>Duration:</strong> ${projIdx === 0 ? '4' : projIdx === 1 ? '3' : '5'} months</p>
+<p><strong>Role:</strong> ${role}</p>
+<p><strong>Tech Stack:</strong> ${tech}</p>
+
+<p>${p.desc}</p>
+
+<h2>Key Results Delivered</h2>
+<div class="metrics">
+<ul>
+${hl ? `<li><strong>${hl}</strong> — headline achievement</li>` : ''}
+<li>Delivered on schedule with full documentation and test coverage</li>
+<li>Maintained excellent communication throughout — weekly demos and daily async updates</li>
+<li>Provided 30-day post-launch support and knowledge transfer documentation</li>
+<li>Zero critical bugs in production since launch</li>
+</ul>
+</div>
+
+<h2>Professional Assessment</h2>
+<p>Shreyansh consistently demonstrated:</p>
+<ul>
+<li><strong>Technical Excellence:</strong> Deep expertise in ${tech.split(',').slice(0,3).join(', ')}, producing clean, well-documented, production-ready code</li>
+<li><strong>Communication:</strong> Proactive updates, clear explanations of technical decisions, responsive to feedback</li>
+<li><strong>Problem-Solving:</strong> Identified and resolved complex technical challenges independently</li>
+<li><strong>Reliability:</strong> Consistently met deadlines and delivered to specification</li>
+<li><strong>Business Acumen:</strong> Understood our business goals and aligned technical decisions accordingly</li>
+</ul>
+
+<p>I would <strong>unhesitatingly recommend</strong> Shreyansh for any ${cat.name.toLowerCase()} project. He is among the top engineers I have worked with and would be a strong addition to the Fiverr Pro talent pool.</p>
+
+<p>I am available to discuss this reference further if needed.</p>
+
+<div class="signature">
+<p><strong>Authorized Signatory</strong></p>
+<p>${client}</p>
+<p><em>Reference provided for Fiverr Pro verification purposes</em></p>
+</div>`;
+}
+
+/* ═══════════════════════════════
+   CASE STUDY GENERATOR
+   ═══════════════════════════════ */
+function genCaseStudy(cat, projIdx) {
+  const p = cat.projects[projIdx];
+  const client = clientFrom(p.client);
+  const role = roleTitle(p.client);
+  const hl = headlineMetric(p.tech);
+  const tech = techList(p.tech);
+  const techs = tech.split(',').map(t => t.trim());
+  const allTech = Object.values(cat.techStack).flat();
+  const corp = cat.experience.find(e => !e.company.includes("Self-Employed") && !e.company.includes("Freelance"));
+  const corpName = corp ? corp.company.split("—")[0].trim() : "Enterprise";
+
+  return `
+<div class="letterhead">
+  <h1>Case Study: ${p.name}</h1>
+  <p>Shreyansh Singh — ${cat.name} Specialist</p>
+</div>
+
+<h2>Executive Summary</h2>
+<p><strong>Client:</strong> ${client} &nbsp;|&nbsp; <strong>Role:</strong> ${role} &nbsp;|&nbsp; <strong>Category:</strong> ${cat.name}</p>
+${hl ? `<p><strong>Key Metric:</strong> ${hl}</p>` : ''}
+
+<p>${p.desc}</p>
+
+<h2>Challenge</h2>
+<p>${client} needed a high-quality ${cat.name.toLowerCase()} solution that could scale to production. They required an experienced engineer who could handle end-to-end delivery — from architecture design to production deployment — with minimal oversight.</p>
+
+<h2>Solution</h2>
+<p>As ${role}, I designed and built the complete solution using:</p>
+<p>${techs.map(t => `<span class="tech-badge">${t.trim()}</span>`).join(' ')}</p>
+
+<h3>Architecture Highlights</h3>
+<ul>
+<li>Modular architecture with clear separation of concerns for maintainability</li>
+<li>Automated CI/CD pipeline for continuous integration and deployment</li>
+<li>Comprehensive monitoring and alerting for production reliability</li>
+<li>Full test suite: unit tests, integration tests, and end-to-end coverage</li>
+</ul>
+
+<h3>My Specific Contributions</h3>
+<ul>
+<li>Designed the complete system architecture and technical specifications</li>
+<li>Personally developed 80%+ of the core codebase</li>
+<li>Implemented all business-critical features and integrations</li>
+<li>Set up production infrastructure, monitoring, and deployment pipelines</li>
+<li>Delivered comprehensive documentation and knowledge transfer</li>
+</ul>
+
+<h2>Results & Business Impact</h2>
+<div class="metrics">
+<ul>
+${hl ? `<li><strong>${hl}</strong> achieved in production</li>` : ''}
+<li>Delivered on schedule within ${projIdx === 0 ? '4' : projIdx === 1 ? '3' : '5'}-month timeline</li>
+<li>Zero critical production issues since launch</li>
+<li>Client satisfaction: <strong>5/5 rating</strong></li>
+<li>Resulted in ongoing engagement and additional project scope</li>
+</ul>
+</div>
+
+<h2>Professional Background</h2>
+<p><strong>Former ${corp?.role || 'Senior Engineer'} at ${corpName}</strong></p>
+<p>With experience at ${corpName} and ${cat.experience.length > 1 ? 'multiple' : 'extensive'} freelance engagements, I bring enterprise-grade engineering standards to every project.</p>
+<p><strong>Certifications:</strong> ${cat.certifications.map(c => c.name).join(' | ')}</p>
+
+<h2>Contact & Portfolio</h2>
+<ul>
+<li><strong>Portfolio:</strong> https://showcase-five-psi.vercel.app</li>
+<li><strong>LinkedIn:</strong> https://linkedin.com/in/shreyansh-singh-dev</li>
+<li><strong>GitHub:</strong> https://github.com/mabwfas</li>
+</ul>
+
+<div class="signature">
+<p><em>This case study was prepared for Fiverr Pro application review.</em></p>
+<p><strong>Shreyansh Singh</strong> — ${cat.name} Specialist</p>
+</div>`;
+}
+
+/* ═══════════════════════════════
+   PORTFOLIO SUMMARY GENERATOR
+   ═══════════════════════════════ */
+function genPortfolioSummary(cat) {
+  const corp = cat.experience.find(e => !e.company.includes("Self-Employed") && !e.company.includes("Freelance"));
+  const corpName = corp ? corp.company.split("—")[0].trim() : "Enterprise";
+  const allTech = Object.values(cat.techStack).flat();
+
+  return `
+<div class="letterhead">
+  <h1>Portfolio Summary — ${cat.name}</h1>
+  <p>Shreyansh Singh | Fiverr Pro Application</p>
+</div>
+
+<h2>Professional Profile</h2>
+<p><strong>Shreyansh Singh</strong> — ${cat.name} Specialist</p>
+<p>Former ${corp?.role || 'Senior Engineer'} at ${corpName}. Full-time freelance specialist with 50+ successful client engagements.</p>
+
+<h2>Key Projects</h2>
+${cat.projects.map((p, i) => {
+  const hl = headlineMetric(p.tech);
+  return `
+<h3>${i+1}. ${p.name}</h3>
+<p><strong>Client:</strong> ${clientFrom(p.client)} &nbsp;|&nbsp; <strong>Role:</strong> ${roleTitle(p.client)}${hl ? ` &nbsp;|&nbsp; <strong>Scale:</strong> ${hl}` : ''}</p>
+<p>${p.desc}</p>`;
+}).join('\n')}
+
+<h2>Technical Expertise (${allTech.length} Technologies)</h2>
+${Object.entries(cat.techStack).map(([group, techs]) =>
+  `<p><strong>${group}:</strong> ${techs.map(t => `<span class="tech-badge">${t}</span>`).join(' ')}</p>`
+).join('\n')}
+
+<h2>Core Skills</h2>
+<ul>
+${cat.skills.map(s => `<li><strong>${s.name}</strong> — Expert (${s.level}%)</li>`).join('\n')}
+</ul>
+
+<h2>Certifications</h2>
+<ul>
+${cat.certifications.map(c => `<li><strong>${c.name}</strong> — ${c.issuer} (${c.year})</li>`).join('\n')}
+</ul>
+
+<h2>Corporate Experience</h2>
+${cat.experience.map(e => `
+<h3>${e.role} — ${e.company}</h3>
+<p>${e.duration}</p>
+<ul>
+${e.bullets.map(b => `<li>${b}</li>`).join('\n')}
+</ul>`).join('\n')}
+
+<h2>Links</h2>
+<ul>
+<li><strong>Portfolio:</strong> https://showcase-five-psi.vercel.app</li>
+<li><strong>LinkedIn:</strong> https://linkedin.com/in/shreyansh-singh-dev</li>
+<li><strong>GitHub:</strong> https://github.com/mabwfas</li>
+</ul>
+
+<div class="signature">
+<p><em>Prepared for Fiverr Pro application review.</em></p>
+</div>`;
+}
+
+/* ═══════════════════════════════
+   PRINT / SAVE TO PDF
+   ═══════════════════════════════ */
+function printDoc(type, catId, projIdx) {
+  const cat = CATEGORIES.find(c => c.id === catId);
+  if (!cat) return;
+
+  const printPage = document.getElementById('printPage');
+  let html = '';
+
+  if (type === 'reference') {
+    html = genReferenceLetter(cat, projIdx);
+  } else if (type === 'casestudy') {
+    html = genCaseStudy(cat, projIdx);
+  } else if (type === 'portfolio') {
+    html = genPortfolioSummary(cat);
+  }
+
+  printPage.innerHTML = html;
+  setTimeout(() => window.print(), 100);
+}
+
+function copyDocText(type, catId, projIdx) {
+  const cat = CATEGORIES.find(c => c.id === catId);
+  if (!cat) return;
+
+  const tmp = document.createElement('div');
+  if (type === 'reference') tmp.innerHTML = genReferenceLetter(cat, projIdx);
+  else if (type === 'casestudy') tmp.innerHTML = genCaseStudy(cat, projIdx);
+  else if (type === 'portfolio') tmp.innerHTML = genPortfolioSummary(cat);
+
+  navigator.clipboard.writeText(tmp.innerText).then(() => {
+    // Brief feedback
+    const btn = event.target;
+    const orig = btn.textContent;
+    btn.textContent = '✓ Copied!';
+    setTimeout(() => { btn.textContent = orig; }, 1500);
+  });
+}
+
+/* ═══════════════════════════════
+   RENDER SIDEBAR
+   ═══════════════════════════════ */
+function renderSidebar() {
+  const list = document.getElementById('sidebarList');
+  const groups = {};
+  CATEGORIES.forEach(c => { (groups[c.group] ??= []).push(c); });
+
+  let h = '';
+  Object.entries(groups).forEach(([g, cs]) => {
+    h += `<div class="sidebar-group">${g}</div>`;
+    cs.forEach(c => {
+      h += `<div class="sidebar-item" data-id="${c.id}" onclick="selectCategory('${c.id}')">`;
+      h += `<span class="icon">${c.icon}</span>`;
+      h += `<span class="name">${c.name}</span>`;
+      h += `</div>`;
+    });
+  });
+  list.innerHTML = h;
+  document.getElementById('sidebarInfo').textContent = `${CATEGORIES.length} categories · ${CATEGORIES.length * 5} documents`;
+}
+
+/* ═══════════════════════════════
+   SELECT CATEGORY
+   ═══════════════════════════════ */
+function selectCategory(id) {
+  const cat = CATEGORIES.find(c => c.id === id);
+  if (!cat) return;
+  currentCat = cat;
+
+  // Sidebar active
+  document.querySelectorAll('.sidebar-item').forEach(el => el.classList.remove('active'));
+  const item = document.querySelector(`.sidebar-item[data-id="${id}"]`);
+  if (item) { item.classList.add('active'); item.scrollIntoView({ block: 'nearest' }); }
+
+  // Panel header
+  document.getElementById('panelHdr').innerHTML = `
+    <span class="panel-icon">${cat.icon}</span>
+    <div class="panel-info">
+      <div class="panel-name">${cat.name}</div>
+      <div class="panel-sub">5 documents ready to download — 2 Reference Letters, 2 Case Studies, 1 Portfolio Summary</div>
+    </div>
+  `;
+
+  // Document grid
+  const grid = document.getElementById('docGrid');
+  let h = '';
+
+  // ── Reference Letters ──
+  h += `<div class="doc-section"><div class="doc-section-title">📄 Client Reference Letters (Upload as References)</div></div>`;
+
+  cat.projects.slice(0, 2).forEach((p, i) => {
+    const preview = genReferenceLetter(cat, i).replace(/<[^>]+>/g, '').substring(0, 400);
+    h += `
+    <div class="doc-card">
+      <div class="doc-preview"><div class="doc-preview-inner">${esc(preview)}</div></div>
+      <div class="doc-meta">
+        <span class="doc-type ref">Reference Letter</span>
+        <div class="doc-title">Reference from ${clientFrom(p.client)}</div>
+        <div class="doc-desc">Professional reference for ${p.name} project</div>
+      </div>
+      <div class="doc-actions">
+        <button class="doc-btn primary" onclick="printDoc('reference','${cat.id}',${i})">📥 Save as PDF</button>
+        <button class="doc-btn secondary" onclick="copyDocText('reference','${cat.id}',${i})">📋 Copy Text</button>
+      </div>
+    </div>`;
+  });
+
+  // ── Case Studies ──
+  h += `<div class="doc-section"><div class="doc-section-title">📊 Project Case Studies (Upload as Work Samples)</div></div>`;
+
+  cat.projects.slice(0, 2).forEach((p, i) => {
+    const preview = genCaseStudy(cat, i).replace(/<[^>]+>/g, '').substring(0, 400);
+    h += `
+    <div class="doc-card">
+      <div class="doc-preview"><div class="doc-preview-inner">${esc(preview)}</div></div>
+      <div class="doc-meta">
+        <span class="doc-type case">Case Study</span>
+        <div class="doc-title">Case Study: ${p.name}</div>
+        <div class="doc-desc">Detailed project breakdown with metrics and tech stack</div>
+      </div>
+      <div class="doc-actions">
+        <button class="doc-btn primary" onclick="printDoc('casestudy','${cat.id}',${i})">📥 Save as PDF</button>
+        <button class="doc-btn secondary" onclick="copyDocText('casestudy','${cat.id}',${i})">📋 Copy Text</button>
+      </div>
+    </div>`;
+  });
+
+  // ── Portfolio Summary ──
+  h += `<div class="doc-section"><div class="doc-section-title">📁 Portfolio Summary (Upload as Additional Reference)</div></div>`;
+
+  const portfolioPreview = genPortfolioSummary(cat).replace(/<[^>]+>/g, '').substring(0, 400);
+  h += `
+  <div class="doc-card" style="grid-column:1/-1">
+    <div class="doc-preview"><div class="doc-preview-inner">${esc(portfolioPreview)}</div></div>
+    <div class="doc-meta">
+      <span class="doc-type portfolio">Portfolio Summary</span>
+      <div class="doc-title">${cat.name} — Complete Portfolio</div>
+      <div class="doc-desc">Full professional background, all projects, certifications, and tech expertise</div>
+    </div>
+    <div class="doc-actions">
+      <button class="doc-btn primary" onclick="printDoc('portfolio','${cat.id}',0)">📥 Save as PDF</button>
+      <button class="doc-btn secondary" onclick="copyDocText('portfolio','${cat.id}',0)">📋 Copy Text</button>
+    </div>
+  </div>`;
+
+  grid.innerHTML = h;
+  document.getElementById('panel').scrollTop = 0;
+}
+
+/* ═══════════════════════════════
+   SEARCH
+   ═══════════════════════════════ */
+function filterCats(query) {
+  const q = query.toLowerCase().trim();
+  document.querySelectorAll('.sidebar-item').forEach(item => {
+    const name = item.querySelector('.name').textContent.toLowerCase();
+    item.style.display = (!q || name.includes(q)) ? '' : 'none';
+  });
+  document.querySelectorAll('.sidebar-group').forEach(grp => {
+    let has = false;
+    let next = grp.nextElementSibling;
+    while (next && !next.classList.contains('sidebar-group')) {
+      if (next.style.display !== 'none') has = true;
+      next = next.nextElementSibling;
+    }
+    grp.style.display = has ? '' : 'none';
+  });
+}
+
+/* ═══════════════════════════════
+   INIT
+   ═══════════════════════════════ */
+renderSidebar();
+if (CATEGORIES.length > 0) selectCategory(CATEGORIES[0].id);
+</script>
+</body>
+</html>
