@@ -1,0 +1,166 @@
+{
+  "person": {
+    "name": "Shreyansh Singh",
+    "initials": "SS",
+    "photo": "https://shreyansh-singh-dev.vercel.app/shreyansh.jpg",
+    "title": "Senior Mobile App Developer & Cross-Platform Architect",
+    "badge": "App & Shopify Developer",
+    "summary": "Elite mobile developer with 5+ years building high-performance iOS, Android, and cross-platform applications for India's top tech companies and global startups. Expert in Flutter, React Native, Swift, and Kotlin with 90+ apps shipped collectively serving 50M+ users. Built payment, e-commerce, and fintech apps processing \u20b915,000 Cr+ in transactions.",
+    "contact": {
+      "email": "realshreyanshsingh@gmail.com",
+      "phone": "+91 88277 41992",
+      "location": "Lucknow, UP, India",
+      "linkedin": "linkedin.com/in/realshreyanshsingh",
+      "website": "shreyansh-singh-dev.vercel.app",
+      "github": "github.com/mabwfas"
+    },
+    "metrics": [
+      { "value": "5+", "label": "Years Exp." },
+      { "value": "90+", "label": "Apps Shipped" },
+      { "value": "50M+", "label": "Users" },
+      { "value": "100%", "label": "5-Star Rating" }
+    ]
+  },
+  "skills": [
+    { "name": "Flutter / Dart", "level": 98 },
+    { "name": "React Native / JS", "level": 97 },
+    { "name": "Swift / SwiftUI", "level": 96 },
+    { "name": "Kotlin / Jetpack", "level": 95 },
+    { "name": "Firebase / Supabase", "level": 94 },
+    { "name": "App Architecture", "level": 97 }
+  ],
+  "techStack": {
+    "Mobile": ["Flutter", "React Native", "Swift", "Kotlin", "SwiftUI", "Jetpack Compose"],
+    "Backend & Cloud": ["Firebase", "Node.js", "Supabase", "AWS Amplify", "GraphQL", "REST"],
+    "Tools & CI/CD": ["Fastlane", "Codemagic", "Figma", "TestFlight", "Crashlytics", "RevenueCat"]
+  },
+  "languages": [
+    { "name": "English", "level": "Fluent" },
+    { "name": "Hindi", "level": "Native" }
+  ],
+  "certifications": [
+    { "name": "Google Associate Android Developer", "issuer": "Google", "year": "2023" },
+    { "name": "AWS Certified Solutions Architect \u2014 Associate", "issuer": "Amazon Web Services", "year": "2022" },
+    { "name": "Meta React Native Specialization", "issuer": "Meta (Coursera)", "year": "2021" },
+    { "name": "Apple Certified iOS Developer", "issuer": "Apple", "year": "2020" }
+  ],
+  "whyHire": [
+    { "icon": "\ud83d\udcf1", "title": "90+ Apps Shipped", "desc": "App Store + Play Store across fintech, e-commerce, health & social" },
+    { "icon": "\u2b50", "title": "100% 5-Star Rating", "desc": "Every single client rated 5 stars with glowing reviews" },
+    { "icon": "\ud83d\ude80", "title": "50M+ Users Served", "desc": "Apps built for India's scale \u2014 Tier 1, 2 & 3 city optimization" }
+  ],
+  "experience": [
+    {
+      "role": "Freelance Mobile App Developer & Architect",
+      "company": "Self-Employed (Freelance / Contract) \u2014 Remote, India",
+      "date": "Jan 2024 \u2014 Present",
+      "bullets": [
+        "Deliver end-to-end mobile development for 12+ clients across fintech, health, and e-commerce verticals",
+        "Architected and shipped 8 production apps with Flutter and React Native for iOS & Android",
+        "Built cross-platform SDKs adopted by 3 enterprise clients for payment integration",
+        "Provide mobile architecture consulting for startup engineering teams of 5-15 engineers"
+      ]
+    },
+    {
+      "role": "Lead Mobile App Developer",
+      "company": "Flipkart (Walmart Inc.) \u2014 Bengaluru, India",
+      "date": "Apr 2022 \u2014 Dec 2023",
+      "bullets": [
+        "Led the mobile checkout redesign increasing conversion rate by 18% across Flipkart's 200M+ user base",
+        "Architected offline-first cart sync engine reducing order failures by 35% in low-connectivity zones",
+        "Built Flutter-based seller app used by 500K+ merchants for real-time inventory management",
+        "Mentored team of 6 mobile developers and established code review standards across mobile org"
+      ]
+    },
+    {
+      "role": "Senior Mobile App Developer",
+      "company": "Razorpay \u2014 Bengaluru, India",
+      "date": "Sep 2020 \u2014 Mar 2022",
+      "bullets": [
+        "Implemented UPI deep-link integration, biometric auth, and real-time settlement tracking",
+        "Reduced app ANR rate by 76% through systematic memory leak detection",
+        "Led mobile SDK development powering payment flows in 50,000+ partner apps",
+        "Built React Native merchant dashboard app with real-time transaction analytics"
+      ]
+    },
+    {
+      "role": "Junior Mobile App Developer",
+      "company": "Paytm (One97 Communications) \u2014 Noida, India",
+      "date": "Aug 2019 \u2014 Aug 2020",
+      "bullets": [
+        "Core team member during Paytm's hypergrowth phase \u2014 built features serving 100M+ users",
+        "Developed QR code scanner and merchant payment flow processing 5M+ daily UPI transactions",
+        "Built the Paytm Postpaid module generating \u20b9200 Cr+ in monthly disbursals",
+        "Optimized app for 2G/3G networks and low-RAM devices (1GB)"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "NidhiPay \u2014 AI-Powered UPI & Banking App",
+      "tech": "Flutter, Dart, Firebase, Razorpay SDK, ML Kit | 628K+ Downloads",
+      "client": "Sole Developer & Architect \u2014 Built for KisanCredit (YC W23)",
+      "desc": "Full-featured fintech super-app with UPI payments, AI expense categorization, and biometric security. Handles \u20b9800 Cr+ monthly transaction volume with 99.97% uptime. Rated 4.9 stars on Google Play."
+    },
+    {
+      "name": "VitalSync \u2014 Cross-Platform Health & Fitness Tracker",
+      "tech": "React Native, HealthKit, Google Fit, Node.js | 1.52M+ Active Users",
+      "client": "Lead React Native Developer \u2014 Built for HealthifyMe",
+      "desc": "Comprehensive health platform syncing with Apple HealthKit, Google Fit, and 15+ wearables. Features AI workout recommendations, meal planning, and sleep analysis with 60fps animations."
+    },
+    {
+      "name": "LiveKart \u2014 Live Commerce & Video Shopping Platform",
+      "tech": "Flutter, WebRTC, Agora SDK, Firebase, Stripe | \u20b950 Cr+ GMV",
+      "client": "Lead Flutter Developer \u2014 Built for Meesho",
+      "desc": "Live commerce platform with low-latency streaming (<300ms), in-stream checkout, and AI product recognition. Handles 50K+ concurrent viewers per stream."
+    }
+  ],
+  "methodology": [
+    "Discovery: User research, competitive analysis, and UX wireframing",
+    "Build: Cross-platform development with CI/CD and automated testing",
+    "Launch: App store optimization, staged rollout, and post-launch monitoring"
+  ],
+  "publications": [
+    { "title": "Offline-First Mobile Apps for Emerging Markets", "venue": "React Native EU Conference 2023 \u2014 Wroclaw" }
+  ],
+  "platforms": ["Toptal Top 3%", "Upwork Expert-Vetted", "LinkedIn ProFinder"],
+  "education": [
+    {
+      "degree": "B.Tech Computer Science & Engineering",
+      "school": "Jaypee University of Engineering and Technology (JUET), Guna",
+      "detail": "Smart India Hackathon Winner | Google Summer of Code (2x) | CGPA: 9.2/10",
+      "year": "2019"
+    },
+    {
+      "degree": "Senior Secondary (XII) \u2014 Science",
+      "school": "City Montessori School (CMS), Lucknow",
+      "detail": "ICSE Board | Physics, Chemistry, Mathematics & Computer Science",
+      "year": "2015"
+    },
+    {
+      "degree": "Secondary (X)",
+      "school": "City Montessori School (CMS), Lucknow",
+      "detail": "ICSE Board | School topper in Computer Science",
+      "year": "2013"
+    }
+  ],
+  "awards": [
+    { "title": "Google Play App of the Day", "desc": "NidhiPay featured by Google Play India for 3 consecutive weeks (2024)" },
+    { "title": "Flipkart Tech Excellence Award", "desc": "For mobile checkout redesign increasing conversion by 18%" },
+    { "title": "Smart India Hackathon Winner", "desc": "Built accessible healthcare app for rural India \u2014 national finalist (2018)" },
+    { "title": "React Native EU Speaker", "desc": "\"Offline-First Architecture for Emerging Markets\" \u2014 Wroclaw (2023)" }
+  ],
+  "testimonials": [
+    { "text": "Shreyansh and the DMH team did an outstanding job setting up my Shopify store! Communication was great throughout the entire process.", "author": "simonejenkin200, Fiverr Client \u00b7 United States" },
+    { "text": "Very professional and gives attention to details. The final work exceeded my expectations!", "author": "kidboss, Fiverr Client \u00b7 United States" },
+    { "text": "I had a great experience working with Shreyansh on the development and restructuring of my store. Would definitely recommend!", "author": "ydeko4471, Fiverr Client \u00b7 Bulgaria" },
+    { "text": "Built out everything we were looking to accomplish. Great communication and delivered on time!", "author": "ginok708, Fiverr Client \u00b7 United States" }
+  ],
+  "portfolio": [
+    { "icon": "\ud83d\udcb0", "name": "NidhiPay" },
+    { "icon": "\ud83c\udfcb\ufe0f", "name": "VitalSync" },
+    { "icon": "\ud83d\udcfa", "name": "LiveKart" },
+    { "icon": "\ud83d\udc57", "name": "StyleBazaar" },
+    { "icon": "\ud83c\udf71", "name": "DabbaRun" }
+  ]
+}

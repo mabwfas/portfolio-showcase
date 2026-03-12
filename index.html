@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio Showcase — Digital Heroes</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#050508;color:#e2e8f0;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+
+/* ── Noise overlay ── */
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");background-repeat:repeat;background-size:256px;pointer-events:none;z-index:0;mix-blend-mode:overlay}
+
+/* ── Layout ── */
+.container{max-width:1100px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+
+/* ── Hero ── */
+.hero{padding:80px 0 60px;text-align:center}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 16px;border-radius:20px;border:1px solid rgba(99,102,241,.25);background:rgba(99,102,241,.06);font-size:12px;color:#818cf8;letter-spacing:1px;text-transform:uppercase;margin-bottom:24px}
+.hero h1{font-size:48px;font-weight:800;letter-spacing:-1.5px;line-height:1.1;background:linear-gradient(135deg,#e2e8f0 0%,#94a3b8 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{font-size:16px;color:#64748b;max-width:560px;margin:16px auto 0;line-height:1.7}
+
+/* ── Section ── */
+.section{padding:40px 0}
+.section-label{font-size:11px;text-transform:uppercase;letter-spacing:3px;color:#6366f1;font-weight:600;margin-bottom:12px}
+.section-title{font-size:28px;font-weight:700;color:#f1f5f9;letter-spacing:-.5px;margin-bottom:32px}
+
+/* ── Portfolio Grid ── */
+.portfolio-grid{display:grid;grid-template-columns:1fr;gap:20px}
+.portfolio-card{display:grid;grid-template-columns:340px 1fr;background:rgba(255,255,255,.015);border:1px solid rgba(255,255,255,.05);border-radius:12px;overflow:hidden;transition:all .35s ease}
+.portfolio-card:hover{border-color:rgba(99,102,241,.2);background:rgba(255,255,255,.025);transform:translateY(-2px);box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.card-preview{background:#0a0a12;position:relative;overflow:hidden;min-height:220px}
+.card-preview img{width:100%;height:100%;object-fit:cover;opacity:.85;transition:opacity .3s}
+.portfolio-card:hover .card-preview img{opacity:1}
+.card-preview .overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(99,102,241,.1),transparent);opacity:0;transition:opacity .3s}
+.portfolio-card:hover .overlay{opacity:1}
+.card-body{padding:28px 32px;display:flex;flex-direction:column;justify-content:center}
+.card-person{font-size:11px;text-transform:uppercase;letter-spacing:2px;color:#6366f1;font-weight:600;margin-bottom:6px}
+.card-title{font-size:22px;font-weight:700;color:#f1f5f9;line-height:1.3;margin-bottom:8px}
+.card-desc{font-size:13px;color:#64748b;line-height:1.65;margin-bottom:16px}
+.card-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px}
+.card-tag{font-size:10px;padding:3px 10px;border-radius:4px;background:rgba(99,102,241,.08);color:#818cf8;border:1px solid rgba(99,102,241,.15);font-weight:500}
+.card-links{display:flex;gap:10px}
+.card-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:8px;font-size:12px;font-weight:600;transition:all .2s}
+.btn-primary{background:#6366f1;color:#fff}
+.btn-primary:hover{background:#4f46e5}
+.btn-outline{border:1px solid rgba(255,255,255,.12);color:#94a3b8}
+.btn-outline:hover{border-color:#6366f1;color:#fff}
+
+/* ── CV Section ── */
+.cv-section-wrap{padding:40px 0 80px}
+.cv-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.cv-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:10px;padding:24px;transition:all .3s}
+.cv-card:hover{border-color:rgba(99,102,241,.2);background:rgba(255,255,255,.03)}
+.cv-card-name{font-size:18px;font-weight:700;color:#f1f5f9;margin-bottom:4px}
+.cv-card-title{font-size:12px;color:#6366f1;margin-bottom:12px}
+.cv-card-meta{font-size:11px;color:#64748b;line-height:1.6;margin-bottom:16px}
+.cv-card-links{display:flex;gap:8px}
+
+/* ── Footer ── */
+.footer{text-align:center;padding:40px 0;border-top:1px solid rgba(255,255,255,.04);font-size:12px;color:#475569}
+
+/* ── Responsive ── */
+@media(max-width:768px){
+  .hero h1{font-size:32px}
+  .portfolio-card{grid-template-columns:1fr}
+  .card-preview{min-height:180px}
+  .card-body{padding:20px}
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-badge">Portfolio Showcase</div>
+    <h1>Websites We've Built</h1>
+    <p>Premium portfolio websites and CVs crafted for professionals. Each site is custom-designed, deployed on Vercel, and optimized for performance.</p>
+  </section>
+
+  <!-- Portfolio Sites -->
+  <section class="section">
+    <div class="section-label">Live Projects</div>
+    <h2 class="section-title">Portfolio Websites</h2>
+
+    <div class="portfolio-grid" id="portfolio-grid">
+      <!-- Rendered by JS from data below -->
+    </div>
+  </section>
+
+  <!-- CV / Resume Section -->
+  <section class="cv-section-wrap">
+    <div class="section-label">Modular CVs</div>
+    <h2 class="section-title">Generated Resumes</h2>
+
+    <div class="cv-cards" id="cv-cards">
+      <!-- Rendered by JS -->
+    </div>
+  </section>
+
+  <footer class="footer">
+    Built with precision &middot; Deployed on Vercel
+  </footer>
+</div>
+
+<script>
+/* ════════════════════════════════════════
+   DATA — Add new portfolio entries here
+   ════════════════════════════════════════ */
+const portfolios = [
+  {
+    person: "Shreyansh Singh",
+    title: "Senior Mobile App Developer & Cross-Platform Architect",
+    desc: "Elite mobile developer with 5+ years building high-performance iOS, Android, and cross-platform apps. 90+ apps shipped, 50M+ users served, 100% 5-star rating.",
+    tags: ["Flutter", "React Native", "Swift", "Kotlin", "Firebase", "Shopify"],
+    url: "https://shreyansh-singh-dev.vercel.app",
+    cvUrl: "https://shreyansh-singh-dev.vercel.app/cv.html",
+    cvLocal: "cv-output/shreyansh-singh-cv.html",
+    cvData: "cv-data/shreyansh-singh.json",
+    image: "https://shreyansh-singh-dev.vercel.app/shreyansh.jpg",
+    gradient: "linear-gradient(135deg, #0f1629, #1a1040)"
+  }
+];
+
+/* ════════════════════════════
+   RENDER PORTFOLIO CARDS
+   ════════════════════════════ */
+const grid = document.getElementById('portfolio-grid');
+portfolios.forEach(p => {
+  const tagsHtml = p.tags.map(t => `<span class="card-tag">${t}</span>`).join('');
+  grid.innerHTML += `
+    <div class="portfolio-card">
+      <div class="card-preview" style="background:${p.gradient}">
+        <img src="${p.image}" alt="${p.person}" style="object-fit:cover;object-position:center top" onerror="this.style.display='none'">
+        <div class="overlay"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-person">${p.person}</div>
+        <div class="card-title">${p.title}</div>
+        <div class="card-desc">${p.desc}</div>
+        <div class="card-tags">${tagsHtml}</div>
+        <div class="card-links">
+          <a href="${p.url}" target="_blank" class="card-btn btn-primary">Visit Site &rarr;</a>
+          <a href="${p.cvUrl}" target="_blank" class="card-btn btn-outline">View CV</a>
+        </div>
+      </div>
+    </div>`;
+});
+
+/* ════════════════════════════
+   RENDER CV CARDS
+   ════════════════════════════ */
+const cvGrid = document.getElementById('cv-cards');
+portfolios.forEach(p => {
+  cvGrid.innerHTML += `
+    <div class="cv-card">
+      <div class="cv-card-name">${p.person}</div>
+      <div class="cv-card-title">${p.title}</div>
+      <div class="cv-card-meta">Full CV with experience, projects, skills, certifications, and testimonials. Optimized for print (2-3 pages).</div>
+      <div class="cv-card-links">
+        <a href="${p.cvLocal}" target="_blank" class="card-btn btn-primary" style="font-size:11px;padding:6px 14px">Generated CV &rarr;</a>
+        <a href="${p.cvUrl}" target="_blank" class="card-btn btn-outline" style="font-size:11px;padding:6px 14px">Live CV</a>
+        <a href="${p.cvData}" target="_blank" class="card-btn btn-outline" style="font-size:11px;padding:6px 14px">JSON Data</a>
+      </div>
+    </div>`;
+});
+</script>
+</body>
+</html>
