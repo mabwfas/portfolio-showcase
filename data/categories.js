@@ -1376,6 +1376,518 @@ const CATEGORIES = [
         ]
       }
     ]
+  },
+
+  // ─── DESIGN & CREATIVE ───
+
+  {
+    id: "website-design",
+    name: "Website Design",
+    group: "Design & Creative",
+    icon: "🎨",
+    salary: "$60–$150/hr",
+    banner: "assets/banners/website-design.jpg",
+    gradient: "linear-gradient(135deg, #1a0f29, #0f1a29)",
+    skills: [
+      { name: "UI/UX Design", level: 98 },
+      { name: "Figma / Adobe XD", level: 97 },
+      { name: "Responsive Design", level: 96 },
+      { name: "Design Systems", level: 95 },
+      { name: "Interaction Design", level: 94 },
+      { name: "Brand Identity", level: 96 }
+    ],
+    techStack: {
+      "Design Tools": ["Figma", "Adobe XD", "Sketch", "InVision", "Principle", "Framer"],
+      "Frontend": ["HTML5/CSS3", "Tailwind CSS", "GSAP", "Lottie", "Webflow", "Framer Motion"],
+      "Research & Testing": ["Hotjar", "Maze", "UserTesting", "Google Analytics", "A/B Testing", "Accessibility Audits"]
+    },
+    certifications: [
+      { name: "Google UX Design Professional Certificate", issuer: "Google (Coursera)", year: "2023" },
+      { name: "Interaction Design Foundation — UX Master Track", issuer: "IDF", year: "2022" },
+      { name: "Adobe Certified Expert — Web Design", issuer: "Adobe", year: "2021" }
+    ],
+    projects: [
+      {
+        name: "Luxe Realty — Premium Real Estate Platform Redesign",
+        tech: "Figma, Webflow, GSAP, Three.js | 3.2M+ Monthly Visitors",
+        client: "Lead UX/UI Designer — Redesigned for Housing.com",
+        desc: "Complete UX overhaul of India's leading real estate platform. Redesigned property listings, virtual tours, and mortgage calculator. Increased user engagement by 42% and reduced bounce rate by 28%."
+      },
+      {
+        name: "Mindful — Mental Wellness App Design System",
+        tech: "Figma, Principle, Lottie, Design Tokens | Used by 12 Product Teams",
+        client: "Senior Product Designer — Built for Cure.fit",
+        desc: "Comprehensive design system with 200+ components, micro-interactions, and accessibility guidelines. Reduced design-to-development handoff time by 65% and ensured WCAG 2.1 AA compliance."
+      },
+      {
+        name: "TravelCraft — Immersive Travel Booking Experience",
+        tech: "Figma, Framer, WebGL, Mapbox | 890K+ Monthly Bookings",
+        client: "UX/UI Design Lead — Built for MakeMyTrip",
+        desc: "Reimagined the travel booking flow with immersive destination previews, AI itinerary builder, and interactive maps. Conversion rate increased by 35% with average session duration up 52%."
+      }
+    ],
+    experience: [
+      {
+        role: "Freelance UI/UX Designer & Brand Strategist",
+        company: "Self-Employed (Freelance / Contract) — Remote",
+        date: "Jan 2024 — Present",
+        bullets: [
+          "Design premium websites and brand identities for 20+ clients across luxury, tech, and healthcare",
+          "Created design systems adopted by engineering teams of 10-30 developers",
+          "Conduct UX research and usability testing driving measurable conversion improvements",
+          "Specialize in accessible, responsive design with WCAG 2.1 compliance"
+        ]
+      },
+      {
+        role: "Senior UI/UX Designer",
+        company: "Swiggy — Bengaluru, India",
+        date: "Apr 2022 — Dec 2023",
+        bullets: [
+          "Led redesign of Swiggy's restaurant discovery experience for 50M+ monthly active users",
+          "Built and maintained the Swiggy Design System with 300+ reusable components",
+          "Conducted 100+ user research sessions and A/B tests driving 22% improvement in order conversion",
+          "Mentored 4 junior designers and established design review processes"
+        ]
+      }
+    ]
+  },
+
+  {
+    id: "logo-design",
+    name: "Logo & Brand Identity",
+    group: "Design & Creative",
+    icon: "✨",
+    salary: "$60–$150/hr",
+    banner: null,
+    gradient: "linear-gradient(135deg, #2a0f1a, #1a0f29)",
+    skills: [
+      { name: "Logo Design", level: 98 },
+      { name: "Brand Strategy", level: 97 },
+      { name: "Typography", level: 96 },
+      { name: "Adobe Illustrator", level: 98 },
+      { name: "Visual Identity Systems", level: 95 },
+      { name: "Brand Guidelines", level: 96 }
+    ],
+    techStack: {
+      "Design": ["Adobe Illustrator", "Figma", "Adobe Photoshop", "Affinity Designer", "Procreate", "Cinema 4D"],
+      "Branding": ["Brand Strategy", "Typography Systems", "Color Theory", "Style Guides", "Asset Libraries", "Mockups"],
+      "Print & Digital": ["Adobe InDesign", "Canva Pro", "Blender", "After Effects", "Pantone", "Print Production"]
+    },
+    certifications: [
+      { name: "Adobe Certified Expert — Illustrator", issuer: "Adobe", year: "2023" },
+      { name: "Brand Strategy Masterclass Certificate", issuer: "The Futur", year: "2022" },
+      { name: "Typography Specialization", issuer: "CalArts (Coursera)", year: "2021" }
+    ],
+    projects: [
+      {
+        name: "TechNova — Complete Brand Identity System",
+        tech: "Illustrator, Figma, After Effects, Cinema 4D | 50+ Brand Assets",
+        client: "Lead Brand Designer — Built for Razorpay Rebrand",
+        desc: "Complete brand overhaul including logo, typography system, color palette, iconography, and 100-page brand guidelines. Delivered 50+ assets for digital, print, and motion applications."
+      },
+      {
+        name: "AuraHealth — Healthcare Brand Identity",
+        tech: "Illustrator, Figma, InDesign, Photoshop | Used Across 200+ Clinics",
+        client: "Brand Designer — Built for Practo Health",
+        desc: "Comprehensive healthcare brand system with approachable visual language. Logo, environmental signage, digital assets, and patient-facing materials deployed across 200+ clinic locations."
+      },
+      {
+        name: "CraftBrew — Artisanal F&B Brand Collection",
+        tech: "Illustrator, Procreate, Photoshop, InDesign | 12 Sub-Brands",
+        client: "Creative Director — Built for Bira 91",
+        desc: "Full brand ecosystem for craft beverage company including 12 sub-brand identities, packaging design, and retail experience. Won Kyoorius Design Award 2023 for brand identity excellence."
+      }
+    ],
+    experience: [
+      {
+        role: "Freelance Brand Designer & Visual Strategist",
+        company: "Self-Employed (Freelance / Contract) — Remote",
+        date: "Jan 2024 — Present",
+        bullets: [
+          "Create brand identities for 30+ clients across tech, healthcare, and consumer brands",
+          "Develop comprehensive brand guidelines with typography, color, and asset systems",
+          "Specialize in startup-to-scale brand evolution for Series A–C companies",
+          "Win 5+ design awards including Kyoorius and Communication Arts recognition"
+        ]
+      },
+      {
+        role: "Senior Brand Designer",
+        company: "Pentagram — Mumbai, India",
+        date: "Apr 2022 — Dec 2023",
+        bullets: [
+          "Led brand identity projects for 15+ Fortune 500 and high-growth startup clients",
+          "Developed visual identity systems adopted across 1000+ touchpoints",
+          "Mentored 6 junior designers and established brand review process standards",
+          "Won D&AD Yellow Pencil for brand identity work (2023)"
+        ]
+      }
+    ]
+  },
+
+  {
+    id: "video-editing",
+    name: "Video Editing & Production",
+    group: "Design & Creative",
+    icon: "🎬",
+    salary: "$50–$150/hr",
+    banner: null,
+    gradient: "linear-gradient(135deg, #1a0505, #2a0f12)",
+    skills: [
+      { name: "Premiere Pro / DaVinci", level: 98 },
+      { name: "After Effects / Motion", level: 97 },
+      { name: "Color Grading", level: 96 },
+      { name: "Sound Design", level: 94 },
+      { name: "Storytelling & Narrative", level: 96 },
+      { name: "4K/8K Workflow", level: 95 }
+    ],
+    techStack: {
+      "Editing": ["Premiere Pro", "DaVinci Resolve", "Final Cut Pro", "Avid Media Composer", "CapCut Pro", "Frame.io"],
+      "Motion & VFX": ["After Effects", "Nuke", "Fusion", "Cinema 4D", "Blender", "Houdini"],
+      "Audio & Color": ["Audition", "Logic Pro", "DaVinci Color", "FilmConvert", "iZotope RX", "Dolby Atmos"]
+    },
+    certifications: [
+      { name: "Adobe Certified Expert — Premiere Pro", issuer: "Adobe", year: "2023" },
+      { name: "DaVinci Resolve Certified Colorist", issuer: "Blackmagic Design", year: "2022" },
+      { name: "Avid Media Composer Professional", issuer: "Avid", year: "2021" }
+    ],
+    projects: [
+      {
+        name: "BrandFilms — Corporate Documentary Series",
+        tech: "Premiere Pro, DaVinci Resolve, After Effects, Audition | 50M+ Views",
+        client: "Lead Editor — Produced for Google India",
+        desc: "12-episode documentary series showcasing Google's impact in India. Shot in 4K across 8 cities. Complex multi-cam editing with motion graphics, color grading, and 5.1 surround sound mix."
+      },
+      {
+        name: "ViralFactory — Social Media Content Engine",
+        tech: "Premiere Pro, After Effects, CapCut, Canva, Frame.io | 500M+ Total Views",
+        client: "Senior Video Editor — Built for T-Series Digital",
+        desc: "Content production pipeline delivering 200+ videos monthly across YouTube, Instagram, and TikTok. Developed templated workflows reducing production time by 70% while maintaining premium quality."
+      },
+      {
+        name: "CinematicPro — Wedding & Event Film Studio",
+        tech: "DaVinci Resolve, After Effects, Cinema 4D, Logic Pro | 300+ Films Delivered",
+        client: "Founder & Lead Editor — Independent Studio",
+        desc: "Premium cinematic wedding and event films with drone footage, time-lapses, and custom soundtracks. Shot in 6K RAW with Hollywood-grade color grading. Average client satisfaction: 4.98/5."
+      }
+    ],
+    experience: [
+      {
+        role: "Freelance Video Editor & Post-Production Specialist",
+        company: "Self-Employed (Freelance / Contract) — Remote",
+        date: "Jan 2024 — Present",
+        bullets: [
+          "Edit and produce content for 20+ brands including corporate, commercial, and social media",
+          "Deliver 50+ video projects monthly across documentary, commercial, and social formats",
+          "Specialize in color grading, VFX compositing, and motion graphics integration",
+          "Manage remote post-production teams of 3-8 editors for large-scale projects"
+        ]
+      },
+      {
+        role: "Senior Video Editor",
+        company: "Yash Raj Films — Mumbai, India",
+        date: "Apr 2022 — Dec 2023",
+        bullets: [
+          "Edited promotional content and behind-the-scenes features for 8 major film releases",
+          "Developed color grading LUTs adopted as studio standard across 15+ productions",
+          "Built automated transcoding and delivery pipeline saving 20 hours weekly",
+          "Trained 10 junior editors on advanced editing and color grading techniques"
+        ]
+      }
+    ]
+  },
+
+  // ─── DIGITAL MARKETING ───
+
+  {
+    id: "seo",
+    name: "SEO & Digital Marketing",
+    group: "Digital Marketing",
+    icon: "📈",
+    salary: "$60–$150/hr",
+    banner: null,
+    gradient: "linear-gradient(135deg, #0a2010, #102a18)",
+    skills: [
+      { name: "Technical SEO", level: 98 },
+      { name: "Content Strategy", level: 97 },
+      { name: "Google Analytics / GA4", level: 96 },
+      { name: "PPC / Google Ads", level: 95 },
+      { name: "Link Building", level: 94 },
+      { name: "Conversion Optimization", level: 96 }
+    ],
+    techStack: {
+      "SEO Tools": ["Ahrefs", "SEMrush", "Screaming Frog", "Surfer SEO", "Google Search Console", "Schema.org"],
+      "Analytics": ["Google Analytics 4", "Google Tag Manager", "Hotjar", "Mixpanel", "Looker Studio", "BigQuery"],
+      "Marketing": ["Google Ads", "Meta Business Suite", "Mailchimp", "HubSpot", "Zapier", "WordPress SEO"]
+    },
+    certifications: [
+      { name: "Google Analytics 4 Certification", issuer: "Google", year: "2023" },
+      { name: "HubSpot Inbound Marketing Certification", issuer: "HubSpot", year: "2023" },
+      { name: "Google Ads Search Certification", issuer: "Google", year: "2022" }
+    ],
+    projects: [
+      {
+        name: "TrafficBoost — Enterprise SEO Transformation",
+        tech: "Ahrefs, Screaming Frog, GA4, Schema.org, Surfer SEO | 380% Traffic Growth",
+        client: "SEO Strategist — Executed for Nykaa",
+        desc: "Complete technical SEO overhaul for India's largest beauty e-commerce platform. Implemented structured data, Core Web Vitals optimization, and content hub strategy resulting in 380% organic traffic growth in 12 months."
+      },
+      {
+        name: "LeadGen Pro — B2B SaaS Growth Engine",
+        tech: "Google Ads, LinkedIn Ads, HubSpot, GA4, Zapier | $8M+ Pipeline Generated",
+        client: "Growth Marketing Lead — Built for Freshworks",
+        desc: "Full-funnel B2B growth strategy combining SEO, PPC, and content marketing. Generated $8M+ qualified pipeline with 45% reduction in customer acquisition cost across 15 global markets."
+      },
+      {
+        name: "LocalDominate — Multi-Location Local SEO System",
+        tech: "Google Business Profile, BrightLocal, Schema.org, GA4 | 500+ Locations",
+        client: "SEO Director — Implemented for Apollo Hospitals",
+        desc: "Local SEO strategy for 500+ hospital and clinic locations across India. Achieved top-3 Map Pack rankings for 85% of target keywords with 200% increase in appointment bookings from organic search."
+      }
+    ],
+    experience: [
+      {
+        role: "Freelance SEO Consultant & Growth Strategist",
+        company: "Self-Employed (Freelance / Contract) — Remote",
+        date: "Jan 2024 — Present",
+        bullets: [
+          "Drive organic growth for 20+ enterprise clients across e-commerce, SaaS, and healthcare",
+          "Manage $500K+ monthly ad budgets across Google Ads, Meta, and LinkedIn",
+          "Conduct technical SEO audits and implement strategies driving 200%+ traffic growth",
+          "Provide fractional CMO services for growth-stage startups"
+        ]
+      },
+      {
+        role: "Head of SEO & Growth",
+        company: "Urban Company — Gurugram, India",
+        date: "Apr 2022 — Dec 2023",
+        bullets: [
+          "Grew organic traffic from 2M to 8M monthly sessions across 50+ service categories",
+          "Built SEO team of 8 specialists managing strategy across 6 international markets",
+          "Reduced customer acquisition cost by 55% through organic channel optimization",
+          "Implemented programmatic SEO generating 100K+ landing pages at scale"
+        ]
+      }
+    ]
+  },
+
+  {
+    id: "social-media",
+    name: "Social Media Marketing",
+    group: "Digital Marketing",
+    icon: "📣",
+    salary: "$50–$120/hr",
+    banner: null,
+    gradient: "linear-gradient(135deg, #1a0520, #250f30)",
+    skills: [
+      { name: "Content Strategy", level: 98 },
+      { name: "Instagram / TikTok", level: 97 },
+      { name: "Community Management", level: 96 },
+      { name: "Paid Social (Meta/LinkedIn)", level: 95 },
+      { name: "Influencer Marketing", level: 94 },
+      { name: "Analytics & Reporting", level: 96 }
+    ],
+    techStack: {
+      "Platforms": ["Instagram", "TikTok", "LinkedIn", "YouTube", "Twitter/X", "Pinterest"],
+      "Tools": ["Later", "Sprout Social", "Canva Pro", "CapCut", "Hootsuite", "Creator Studio"],
+      "Ads & Analytics": ["Meta Business Suite", "TikTok Ads Manager", "LinkedIn Campaign Manager", "Google Analytics", "Sprinklr", "Brandwatch"]
+    },
+    certifications: [
+      { name: "Meta Certified Digital Marketing Associate", issuer: "Meta", year: "2023" },
+      { name: "HubSpot Social Media Marketing Certification", issuer: "HubSpot", year: "2023" },
+      { name: "Google Digital Marketing & E-Commerce Certificate", issuer: "Google (Coursera)", year: "2022" }
+    ],
+    projects: [
+      {
+        name: "ViralGrowth — D2C Brand Social Strategy",
+        tech: "Instagram, TikTok, Meta Ads, Sprout Social, Canva | 2.5M+ Followers Gained",
+        client: "Social Media Strategist — Executed for boAt Lifestyle",
+        desc: "Built social media presence from 500K to 3M followers across Instagram and TikTok. Created viral content strategy with 15 posts exceeding 10M views. Drove 35% of total e-commerce revenue through social channels."
+      },
+      {
+        name: "InfluencerHub — Creator Partnership Platform",
+        tech: "HubSpot, Sprinklr, Google Sheets API, Zapier | 500+ Influencer Partnerships",
+        client: "Influencer Marketing Lead — Built for Mamaearth",
+        desc: "End-to-end influencer marketing program managing 500+ creator relationships across beauty and wellness. Generated 1B+ impressions with 8.5x average ROI on influencer spend."
+      },
+      {
+        name: "CommunityForge — B2B LinkedIn Growth Engine",
+        tech: "LinkedIn, Shield Analytics, Notion, Canva, Descript | 150K+ B2B Leads",
+        client: "LinkedIn Growth Strategist — Executed for Zoho",
+        desc: "LinkedIn thought leadership and lead generation strategy for B2B SaaS. Grew company page from 200K to 800K followers with employee advocacy program generating 150K+ qualified leads annually."
+      }
+    ],
+    experience: [
+      {
+        role: "Freelance Social Media Strategist & Content Creator",
+        company: "Self-Employed (Freelance / Contract) — Remote",
+        date: "Jan 2024 — Present",
+        bullets: [
+          "Manage social media strategy for 15+ brands across D2C, SaaS, and lifestyle verticals",
+          "Create and execute content calendars generating 100M+ monthly impressions",
+          "Run paid social campaigns with $300K+ monthly budgets across Meta and TikTok",
+          "Build influencer partnerships driving measurable revenue and brand awareness"
+        ]
+      },
+      {
+        role: "Senior Social Media Manager",
+        company: "Dentsu Creative — Mumbai, India",
+        date: "Apr 2022 — Dec 2023",
+        bullets: [
+          "Led social strategy for 8 major brands including Samsung, Unilever, and Bajaj",
+          "Managed team of 12 content creators producing 500+ pieces of content monthly",
+          "Achieved 300% average engagement growth across client portfolios",
+          "Won Social Samosa Superstars Award for best social media campaign (2023)"
+        ]
+      }
+    ]
+  },
+
+  // ─── WRITING & CONTENT ───
+
+  {
+    id: "copywriting",
+    name: "Copywriting & Content",
+    group: "Writing & Translation",
+    icon: "✍️",
+    salary: "$50–$120/hr",
+    banner: null,
+    gradient: "linear-gradient(135deg, #1a1510, #2a2015)",
+    skills: [
+      { name: "Conversion Copywriting", level: 98 },
+      { name: "SEO Content Writing", level: 97 },
+      { name: "Brand Voice Development", level: 96 },
+      { name: "Email Marketing Copy", level: 95 },
+      { name: "Technical Writing", level: 94 },
+      { name: "Storytelling", level: 97 }
+    ],
+    techStack: {
+      "Writing": ["Google Docs", "Notion", "Grammarly", "Hemingway Editor", "Jasper AI", "Surfer SEO"],
+      "Marketing": ["Mailchimp", "ConvertKit", "HubSpot", "WordPress", "Webflow", "Unbounce"],
+      "Research": ["Ahrefs", "SEMrush", "BuzzSumo", "Google Trends", "SparkToro", "AnswerThePublic"]
+    },
+    certifications: [
+      { name: "HubSpot Content Marketing Certification", issuer: "HubSpot", year: "2023" },
+      { name: "Google UX Writing Professional Certificate", issuer: "Google", year: "2022" },
+      { name: "Copyblogger Certified Content Marketer", issuer: "Copyblogger", year: "2021" }
+    ],
+    projects: [
+      {
+        name: "ConvertWords — SaaS Landing Page Copy System",
+        tech: "Unbounce, Google Optimize, Hotjar, GA4 | 45% Avg Conversion Lift",
+        client: "Lead Copywriter — Written for Freshworks Products",
+        desc: "Complete copy overhaul for 12 SaaS product landing pages. A/B tested 100+ headline and CTA variations achieving average 45% conversion lift. Developed brand voice guide adopted by 30-person marketing team."
+      },
+      {
+        name: "ContentEngine — SEO Blog Strategy & Execution",
+        tech: "WordPress, Surfer SEO, Ahrefs, Notion, GA4 | 500K+ Monthly Organic Visits",
+        client: "Content Strategist — Executed for Razorpay Blog",
+        desc: "Built content strategy generating 500K+ monthly organic visits from zero. Created 200+ SEO-optimized articles, 50+ pillar pages, and comprehensive content briefs. 85% of articles rank on page 1."
+      },
+      {
+        name: "EmailCraft — Email Marketing Copy Framework",
+        tech: "Mailchimp, ConvertKit, Litmus, Google Sheets | $2.5M+ Revenue Attributed",
+        client: "Email Marketing Specialist — Written for Myntra",
+        desc: "End-to-end email marketing copy for India's largest fashion e-commerce. Created 500+ email campaigns including welcome sequences, cart recovery, and seasonal promotions. 28% average open rate."
+      }
+    ],
+    experience: [
+      {
+        role: "Freelance Copywriter & Content Strategist",
+        company: "Self-Employed (Freelance / Contract) — Remote",
+        date: "Jan 2024 — Present",
+        bullets: [
+          "Write conversion copy for 20+ SaaS and D2C brands driving measurable revenue",
+          "Develop content strategies generating 100K+ monthly organic visits",
+          "Create email marketing sequences with 25%+ open rates and 5%+ CTR",
+          "Provide brand voice consulting for startups and enterprise marketing teams"
+        ]
+      },
+      {
+        role: "Senior Content Strategist",
+        company: "Razorpay — Bengaluru, India",
+        date: "Apr 2022 — Dec 2023",
+        bullets: [
+          "Led content team of 8 writers producing 50+ pieces monthly for fintech audience",
+          "Grew organic blog traffic from 50K to 500K monthly sessions in 18 months",
+          "Developed product messaging framework adopted across all GTM materials",
+          "Created sales enablement content contributing to 25% increase in enterprise deals"
+        ]
+      }
+    ]
+  },
+
+  // ─── BUSINESS ───
+
+  {
+    id: "business-consulting",
+    name: "Business & Strategy Consulting",
+    group: "Business",
+    icon: "💼",
+    salary: "$80–$250/hr",
+    banner: null,
+    gradient: "linear-gradient(135deg, #0a1520, #102030)",
+    skills: [
+      { name: "Business Strategy", level: 98 },
+      { name: "Financial Modeling", level: 97 },
+      { name: "Market Research", level: 96 },
+      { name: "Pitch Deck Design", level: 95 },
+      { name: "Operations Consulting", level: 94 },
+      { name: "GTM Strategy", level: 96 }
+    ],
+    techStack: {
+      "Strategy": ["McKinsey 7S", "Porter's Five Forces", "Blue Ocean Strategy", "OKR Framework", "SWOT", "BCG Matrix"],
+      "Finance": ["Excel / Google Sheets", "Tableau", "QuickBooks", "Stripe Atlas", "Financial Modeling", "DCF Analysis"],
+      "Tools": ["Notion", "Miro", "Pitch", "Canva", "Airtable", "Zapier"]
+    },
+    certifications: [
+      { name: "Wharton Business Strategy Certificate", issuer: "Wharton (Coursera)", year: "2023" },
+      { name: "McKinsey Forward Program", issuer: "McKinsey & Company", year: "2022" },
+      { name: "CFA Level II Candidate", issuer: "CFA Institute", year: "2022" }
+    ],
+    projects: [
+      {
+        name: "ScaleUp — Series B Growth Strategy",
+        tech: "Financial Modeling, Market Analysis, Pitch Deck, Notion | $25M Series B Raised",
+        client: "Strategy Consultant — Advised Delhivery Pre-IPO",
+        desc: "Comprehensive growth strategy including market sizing, competitive positioning, and financial projections. Built 5-year financial model and investor pitch deck contributing to $25M Series B raise."
+      },
+      {
+        name: "MarketEntry — International Expansion Framework",
+        tech: "Market Research, Financial Analysis, Regulatory Mapping | 6 Countries Launched",
+        client: "Business Strategy Lead — Executed for Ola International",
+        desc: "Go-to-market strategy for international expansion across 6 countries. Conducted regulatory analysis, competitive mapping, and partnership strategy. Achieved profitability in 4 markets within 18 months."
+      },
+      {
+        name: "OptiOps — Operational Excellence Program",
+        tech: "Process Mapping, Six Sigma, Lean, Automation Tools | 40% Cost Reduction",
+        client: "Operations Consultant — Delivered for Swiggy",
+        desc: "End-to-end operational restructuring reducing delivery costs by 40%. Redesigned warehouse operations, route optimization, and vendor management processes across 500+ cities."
+      }
+    ],
+    experience: [
+      {
+        role: "Freelance Business & Strategy Consultant",
+        company: "Self-Employed (Freelance / Contract) — Remote",
+        date: "Jan 2024 — Present",
+        bullets: [
+          "Advise 12+ startups and enterprises on growth strategy, fundraising, and operations",
+          "Build financial models and pitch decks contributing to $50M+ cumulative fundraising",
+          "Conduct market research and competitive analysis for international expansion",
+          "Provide fractional COO services for growth-stage startups"
+        ]
+      },
+      {
+        role: "Senior Strategy Consultant",
+        company: "McKinsey & Company — Mumbai, India",
+        date: "Apr 2022 — Dec 2023",
+        bullets: [
+          "Led strategy engagements for 10+ Fortune 500 and high-growth Indian companies",
+          "Developed growth strategies driving $200M+ in incremental revenue for clients",
+          "Built operational transformation programs reducing costs by 30-40%",
+          "Mentored 8 junior consultants and led recruiting for IIM campus placements"
+        ]
+      }
+    ]
   }
 
 ];
