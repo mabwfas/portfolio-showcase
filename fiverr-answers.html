@@ -6,257 +6,302 @@
 <title>Fiverr Pro Application Answers — Ready to Copy & Paste</title>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#050508;--card:#0a0a12;--card2:#0d0d18;--border:rgba(255,255,255,.06);--border2:rgba(255,255,255,.08);--text:#e2e8f0;--muted:#64748b;--dim:#475569;--green:#10b981;--green-bg:rgba(16,185,129,.06);--green-border:rgba(16,185,129,.12);--accent:#6366f1;--accent-bg:rgba(99,102,241,.06);--accent-border:rgba(99,102,241,.12);--amber:#f59e0b;--amber-bg:rgba(245,158,11,.06);--red:#ef4444}
-body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;padding:0}
-body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:0}
+:root{
+  --bg:#0a0a0f;--sidebar:#0e0e16;--panel:#12121c;
+  --card:#161622;--card-hover:#1a1a28;
+  --border:rgba(255,255,255,.06);--border2:rgba(255,255,255,.1);
+  --text:#e2e8f0;--muted:#64748b;--dim:#475569;
+  --green:#10b981;--green-bg:rgba(16,185,129,.08);--green-border:rgba(16,185,129,.15);
+  --accent:#818cf8;--accent2:#6366f1;--accent-bg:rgba(99,102,241,.07);--accent-border:rgba(99,102,241,.15);
+  --amber:#f59e0b;--amber-bg:rgba(245,158,11,.08);
+  --radius:12px;
+}
+html,body{height:100%;overflow:hidden}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;display:flex;flex-direction:column}
 a{text-decoration:none;color:inherit}
 
-/* ── Header ── */
-.hdr{position:sticky;top:0;z-index:100;background:rgba(5,5,8,.94);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--border);padding:14px 32px;display:flex;align-items:center;justify-content:space-between;gap:16px}
-.hdr h1{font-size:22px;font-weight:800;letter-spacing:-0.5px;background:linear-gradient(135deg,#fff,#94a3b8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hdr .sub{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:2.5px;margin-top:2px}
-.hdr-right{display:flex;align-items:center;gap:12px}
-.hdr-stat{background:var(--green-bg);border:1px solid var(--green-border);border-radius:20px;padding:5px 14px;font-size:11px;color:var(--green);font-weight:600}
-.back{color:var(--accent);font-size:12px;opacity:.6;transition:.2s}
-.back:hover{opacity:1}
+/* ── Top Bar ── */
+.topbar{
+  height:52px;min-height:52px;
+  background:rgba(14,14,22,.95);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 24px;z-index:100;
+}
+.topbar-left{display:flex;align-items:center;gap:14px}
+.topbar h1{font-size:17px;font-weight:800;letter-spacing:-.3px;background:linear-gradient(135deg,#fff,#94a3b8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.topbar .badge{font-size:10px;color:var(--green);background:var(--green-bg);border:1px solid var(--green-border);padding:3px 10px;border-radius:20px;font-weight:600}
+.topbar-right{display:flex;align-items:center;gap:14px}
+.topbar .back{color:var(--accent);font-size:12px;opacity:.5;transition:.2s}
+.topbar .back:hover{opacity:1}
+.copy-all-global{
+  padding:7px 16px;border-radius:8px;
+  background:linear-gradient(135deg,var(--accent2),#4f46e5);
+  color:#fff;font-size:11px;font-weight:700;cursor:pointer;border:none;
+  transition:all .2s;letter-spacing:.3px;
+}
+.copy-all-global:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(99,102,241,.3)}
+.copy-all-global.ok{background:linear-gradient(135deg,var(--green),#059669)}
 
-/* ── Category Nav ── */
-.nav{position:sticky;top:62px;z-index:99;background:rgba(5,5,8,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:8px 32px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin}
-.nav::-webkit-scrollbar{height:3px}
-.nav::-webkit-scrollbar-thumb{background:rgba(255,255,255,.08);border-radius:2px}
-.pill{padding:5px 12px;border-radius:16px;font-size:10px;font-weight:600;white-space:nowrap;cursor:pointer;border:1px solid var(--border);background:rgba(255,255,255,.015);color:var(--dim);transition:all .2s;letter-spacing:.2px}
-.pill:hover{border-color:rgba(99,102,241,.25);color:var(--text);background:rgba(99,102,241,.04)}
-.pill.on{background:rgba(99,102,241,.1);border-color:rgba(99,102,241,.35);color:#a5b4fc}
-.grp{padding:5px 6px;font-size:8px;text-transform:uppercase;letter-spacing:2.5px;color:rgba(255,255,255,.15);font-weight:800;align-self:center;white-space:nowrap}
+/* ── Layout ── */
+.layout{display:flex;flex:1;overflow:hidden}
 
-/* ── Main ── */
-.wrap{max-width:980px;margin:0 auto;padding:28px 32px 100px}
+/* ── Sidebar ── */
+.sidebar{
+  width:280px;min-width:280px;
+  background:var(--sidebar);border-right:1px solid var(--border);
+  display:flex;flex-direction:column;overflow:hidden;
+}
+.sidebar-search{
+  padding:12px 14px;border-bottom:1px solid var(--border);
+}
+.sidebar-search input{
+  width:100%;padding:8px 12px;border-radius:8px;
+  background:rgba(255,255,255,.04);border:1px solid var(--border);
+  color:var(--text);font-size:12px;outline:none;transition:border-color .2s;
+}
+.sidebar-search input:focus{border-color:rgba(99,102,241,.3)}
+.sidebar-search input::placeholder{color:var(--dim)}
+.sidebar-list{flex:1;overflow-y:auto;padding:6px 0}
+.sidebar-list::-webkit-scrollbar{width:3px}
+.sidebar-list::-webkit-scrollbar-thumb{background:rgba(255,255,255,.06);border-radius:2px}
+.sidebar-group{
+  padding:10px 16px 4px;font-size:8px;text-transform:uppercase;
+  letter-spacing:2.5px;color:rgba(255,255,255,.15);font-weight:800;
+  position:sticky;top:0;background:var(--sidebar);z-index:1;
+}
+.sidebar-item{
+  display:flex;align-items:center;gap:10px;
+  padding:9px 16px;cursor:pointer;transition:all .15s;
+  border-left:3px solid transparent;
+}
+.sidebar-item:hover{background:rgba(255,255,255,.03)}
+.sidebar-item.active{
+  background:var(--accent-bg);border-left-color:var(--accent2);
+}
+.sidebar-item .icon{font-size:16px;width:22px;text-align:center;flex-shrink:0}
+.sidebar-item .name{font-size:12px;font-weight:600;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sidebar-item .check{font-size:10px;color:var(--green);opacity:0;transition:.2s}
+.sidebar-item.copied .check{opacity:1}
+.sidebar-item.active .name{color:var(--accent)}
+.sidebar-count{
+  padding:12px 16px;border-top:1px solid var(--border);
+  font-size:10px;color:var(--dim);text-align:center;letter-spacing:.5px;
+}
 
-/* ── Category Section ── */
-.sec{margin-bottom:56px;scroll-margin-top:130px}
-.sec-hdr{display:flex;align-items:center;gap:14px;margin-bottom:6px;padding-bottom:14px;border-bottom:2px solid var(--border2)}
-.sec-icon{font-size:32px;filter:drop-shadow(0 0 8px rgba(99,102,241,.2))}
-.sec-name{font-size:24px;font-weight:800;letter-spacing:-.5px}
-.sec-rate{font-size:11px;color:var(--green);font-weight:700;margin-left:auto;background:var(--green-bg);padding:5px 14px;border-radius:20px;border:1px solid var(--green-border)}
-.sec-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;padding:0 2px}
-.sec-tag{font-size:9px;color:var(--dim);background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:12px;padding:3px 10px;font-weight:600;text-transform:uppercase;letter-spacing:1px}
+/* ── Main Panel ── */
+.panel{flex:1;overflow-y:auto;padding:0}
+.panel::-webkit-scrollbar{width:5px}
+.panel::-webkit-scrollbar-thumb{background:rgba(255,255,255,.06);border-radius:3px}
 
-/* ── Action Row ── */
-.act-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;align-items:center}
-.act-copy{display:inline-flex;align-items:center;gap:7px;padding:10px 22px;border-radius:10px;background:linear-gradient(135deg,#6366f1,#4f46e5);color:#fff;font-size:12px;font-weight:700;cursor:pointer;border:none;transition:all .2s;letter-spacing:.3px}
-.act-copy:hover{transform:translateY(-1px);box-shadow:0 6px 24px rgba(99,102,241,.25)}
-.act-copy.ok{background:linear-gradient(135deg,#10b981,#059669)}
-.act-link{font-size:11px;color:var(--accent);opacity:.5;transition:.2s;padding:10px 4px}
-.act-link:hover{opacity:1}
+/* Panel Header */
+.panel-hdr{
+  position:sticky;top:0;z-index:10;
+  background:rgba(18,18,28,.96);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  padding:16px 28px;
+  display:flex;align-items:center;gap:16px;
+}
+.panel-icon{font-size:30px;filter:drop-shadow(0 0 10px rgba(99,102,241,.15))}
+.panel-info{flex:1}
+.panel-name{font-size:20px;font-weight:800;letter-spacing:-.3px}
+.panel-meta{display:flex;gap:8px;margin-top:4px;flex-wrap:wrap}
+.panel-tag{
+  font-size:9px;color:var(--dim);
+  background:rgba(255,255,255,.03);border:1px solid var(--border);
+  border-radius:10px;padding:2px 9px;font-weight:600;
+  text-transform:uppercase;letter-spacing:.8px;
+}
+.panel-rate{
+  font-size:12px;color:var(--green);font-weight:700;
+  background:var(--green-bg);padding:6px 16px;border-radius:10px;
+  border:1px solid var(--green-border);white-space:nowrap;
+}
+.panel-actions{
+  display:flex;gap:8px;padding:14px 28px;
+  border-bottom:1px solid var(--border);background:rgba(18,18,28,.5);
+}
+.btn-copy-all{
+  padding:9px 20px;border-radius:9px;
+  background:linear-gradient(135deg,var(--accent2),#4f46e5);
+  color:#fff;font-size:12px;font-weight:700;cursor:pointer;border:none;
+  transition:all .2s;letter-spacing:.3px;
+}
+.btn-copy-all:hover{transform:translateY(-1px);box-shadow:0 6px 24px rgba(99,102,241,.25)}
+.btn-copy-all.ok{background:linear-gradient(135deg,var(--green),#059669)}
+.panel-tip{
+  font-size:11px;color:var(--muted);display:flex;align-items:center;gap:6px;
+  margin-left:auto;
+}
 
-/* ── Field Card ── */
-.fld{background:var(--card);border:1px solid var(--border);border-radius:14px;margin-bottom:12px;overflow:hidden;transition:border-color .2s}
-.fld:hover{border-color:var(--border2)}
-.fld-top{display:flex;align-items:center;justify-content:space-between;padding:11px 16px;background:rgba(255,255,255,.015);border-bottom:1px solid var(--border)}
-.fld-lbl{font-size:11px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1.2px}
-.fld-q{font-size:10px;color:var(--dim);margin-top:1px}
-.cp{display:flex;align-items:center;gap:5px;padding:5px 12px;border-radius:7px;background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.15);color:#a5b4fc;font-size:10px;font-weight:600;cursor:pointer;transition:all .15s;white-space:nowrap}
-.cp:hover{background:rgba(99,102,241,.15);border-color:rgba(99,102,241,.3);transform:scale(1.02)}
-.cp.ok{background:rgba(16,185,129,.12);border-color:rgba(16,185,129,.25);color:#6ee7b7}
-.fld-body{padding:16px 18px;font-size:13px;line-height:1.8;color:var(--text);white-space:pre-wrap;word-break:break-word;letter-spacing:.1px}
+/* ── Field Accordion ── */
+.fields{padding:12px 28px 60px}
+.field{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--radius);margin-bottom:10px;
+  overflow:hidden;transition:border-color .2s;
+}
+.field:hover{border-color:var(--border2)}
+.field-header{
+  display:flex;align-items:center;gap:12px;
+  padding:14px 18px;cursor:pointer;
+  transition:background .15s;user-select:none;
+}
+.field-header:hover{background:rgba(255,255,255,.015)}
+.field-arrow{
+  font-size:10px;color:var(--dim);transition:transform .25s;flex-shrink:0;
+  width:16px;text-align:center;
+}
+.field.open .field-arrow{transform:rotate(90deg)}
+.field-label{
+  font-size:11px;font-weight:700;color:var(--accent);
+  text-transform:uppercase;letter-spacing:1px;flex:1;
+}
+.field-wc{
+  font-size:9px;color:var(--dim);
+  background:rgba(255,255,255,.03);border:1px solid var(--border);
+  border-radius:10px;padding:2px 8px;font-weight:500;
+}
+.field-question{
+  font-size:10px;color:var(--dim);padding:0 18px 0 46px;
+  margin-top:-6px;margin-bottom:0;transition:all .2s;
+}
+.field.open .field-question{margin-bottom:4px}
+.field-copy{
+  display:flex;align-items:center;gap:5px;padding:5px 12px;border-radius:7px;
+  background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.15);
+  color:#a5b4fc;font-size:10px;font-weight:600;cursor:pointer;
+  transition:all .15s;white-space:nowrap;flex-shrink:0;
+}
+.field-copy:hover{background:rgba(99,102,241,.15);border-color:rgba(99,102,241,.3);transform:scale(1.02)}
+.field-copy.ok{background:rgba(16,185,129,.12);border-color:rgba(16,185,129,.25);color:#6ee7b7}
+.field-body{
+  max-height:0;overflow:hidden;transition:max-height .35s ease;
+}
+.field.open .field-body{max-height:4000px}
+.field-content{
+  padding:14px 18px 18px;font-size:12.5px;line-height:1.8;
+  color:var(--text);white-space:pre-wrap;word-break:break-word;
+  letter-spacing:.1px;border-top:1px solid var(--border);
+  background:rgba(0,0,0,.15);
+}
 
-/* ── Tip ── */
-.tip{background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:10px;padding:12px 16px;margin-bottom:14px;font-size:11px;color:#818cf8;line-height:1.65;display:flex;gap:8px;align-items:flex-start}
-.tip b{color:#c7d2fe;font-weight:700}
-.tip-icon{font-size:14px;flex-shrink:0;margin-top:1px}
+/* ── Empty State ── */
+.empty-state{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  height:100%;color:var(--dim);gap:12px;padding:40px;text-align:center;
+}
+.empty-state .icon{font-size:48px;opacity:.3}
+.empty-state h3{font-size:16px;font-weight:700;color:var(--muted)}
+.empty-state p{font-size:12px;max-width:320px;line-height:1.7}
 
-/* ── Word Count Badge ── */
-.wc{font-size:9px;color:var(--dim);background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;padding:2px 8px;margin-left:8px;font-weight:500}
+/* ── Progress Bar ── */
+.progress-bar{
+  padding:10px 16px;border-top:1px solid var(--border);
+}
+.progress-track{
+  height:3px;background:rgba(255,255,255,.04);border-radius:2px;overflow:hidden;
+}
+.progress-fill{
+  height:100%;background:linear-gradient(90deg,var(--accent2),var(--green));
+  border-radius:2px;transition:width .4s ease;
+}
+.progress-text{
+  font-size:9px;color:var(--dim);margin-top:4px;text-align:center;letter-spacing:.5px;
+}
 
-/* ── Footer ── */
-.foot{text-align:center;padding:48px 32px;border-top:1px solid var(--border);font-size:10px;color:var(--dim);letter-spacing:1px;text-transform:uppercase}
-
-@media(max-width:700px){
-  .hdr{padding:10px 14px}
-  .nav{padding:6px 14px}
-  .wrap{padding:14px}
-  .sec-name{font-size:18px}
-  .fld-body{padding:12px;font-size:12px}
+/* ── Mobile ── */
+@media(max-width:768px){
+  .sidebar{display:none}
+  .layout{flex-direction:column}
+  .topbar{padding:0 14px}
+  .panel-hdr{padding:12px 16px}
+  .panel-actions{padding:10px 16px}
+  .fields{padding:10px 16px 60px}
+  .field-content{font-size:11.5px}
+  /* Show mobile category selector */
+  .mobile-nav{display:block!important}
+}
+.mobile-nav{
+  display:none;padding:10px 16px;border-bottom:1px solid var(--border);
+  background:var(--panel);
+}
+.mobile-nav select{
+  width:100%;padding:10px 12px;border-radius:8px;
+  background:var(--card);border:1px solid var(--border);
+  color:var(--text);font-size:13px;font-weight:600;
 }
 </style>
 </head>
 <body>
 
-<div class="hdr">
-  <div>
+<div class="topbar">
+  <div class="topbar-left">
     <h1>Fiverr Pro Answers</h1>
-    <div class="sub">Copy & Paste — Reviewer-Approved Responses</div>
+    <span class="badge" id="stat">26 Categories</span>
   </div>
-  <div class="hdr-right">
-    <div class="hdr-stat" id="hdr-stat">26 Categories</div>
+  <div class="topbar-right">
+    <button class="copy-all-global" id="copyAllGlobal" onclick="copyCurrentAll(this)">📋 Copy All 5 Answers</button>
     <a href="index.html" class="back">← Dashboard</a>
   </div>
 </div>
 
-<div class="nav" id="nav"></div>
-<div class="wrap" id="wrap"><div style="text-align:center;padding:80px 0;color:var(--dim)">Loading…</div></div>
-<div class="foot">Portfolio Factory — Fiverr Pro Application Answers</div>
+<div class="layout">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="sidebar-search">
+      <input type="text" id="search" placeholder="Search categories…" oninput="filterCategories(this.value)">
+    </div>
+    <div class="sidebar-list" id="sidebarList"></div>
+    <div class="progress-bar">
+      <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+      <div class="progress-text" id="progressText">0 / 26 copied</div>
+    </div>
+    <div class="sidebar-count" id="sidebarCount"></div>
+  </div>
+
+  <!-- Main Panel -->
+  <div class="panel" id="panel">
+    <div class="empty-state" id="emptyState">
+      <div class="icon">📝</div>
+      <h3>Select a Category</h3>
+      <p>Pick a category from the sidebar to see all 5 Fiverr Pro form answers ready to copy & paste.</p>
+    </div>
+    <div id="panelContent" style="display:none">
+      <!-- Mobile dropdown -->
+      <div class="mobile-nav">
+        <select id="mobileSelect" onchange="selectCategory(this.value)"></select>
+      </div>
+      <div class="panel-hdr" id="panelHdr"></div>
+      <div class="panel-actions" id="panelActions"></div>
+      <div class="fields" id="fieldsContainer"></div>
+    </div>
+  </div>
+</div>
 
 <script src="data/categories.js"></script>
 <script>
 /* ═══════════════════════════════════════════════════════
-   FIVERR PRO APPLICATION — ANSWER ENGINE v2
-   Generates unique, project-specific, high-impact answers
-   with real numbers extracted from each project's data
+   FIVERR PRO APPLICATION — ANSWER ENGINE v3
+   Two-panel dashboard layout with collapsible fields
    ═══════════════════════════════════════════════════════ */
 
-/* ── Helper: extract all numbers/metrics from a string ── */
+let currentCat = null;
+const copiedCats = new Set();
+
+/* ── Helpers ── */
 function extractMetrics(str) {
   const m = str.match(/[\$₹]?[\d,]+\.?\d*[KMB+%]?(?:\s*(?:Cr|Lakh|cr|lakh))?(?:\+)?/g) || [];
   return m.filter(x => x.length > 1);
 }
+function clientFrom(r) { const m = r.match(/(?:for|at)\s+(.+)$/i); return m ? m[1].trim() : r.split("—").pop()?.trim() || r; }
+function roleTitle(r) { return r.split("—")[0].trim(); }
+function techList(t) { return t.split("|")[0].trim(); }
+function headlineMetric(t) { return t.includes("|") ? t.split("|")[1].trim() : ""; }
 
-/* ── Helper: extract client name from role string ── */
-function clientFrom(roleStr) {
-  const m = roleStr.match(/(?:for|at)\s+(.+)$/i);
-  return m ? m[1].trim() : roleStr.split("—").pop()?.trim() || roleStr;
-}
-
-/* ── Helper: extract just the role title ── */
-function roleTitle(roleStr) {
-  return roleStr.split("—")[0].trim();
-}
-
-/* ── Helper: get the tech list (before the |) ── */
-function techList(techStr) {
-  return techStr.split("|")[0].trim();
-}
-
-/* ── Helper: get the headline metric (after the |) ── */
-function headlineMetric(techStr) {
-  return techStr.includes("|") ? techStr.split("|")[1].trim() : "";
-}
-
-/* ── FIELD 1: Notable Projects — The most important field ── */
-function genProjects(cat) {
-  return cat.projects.map((p, i) => {
-    const hl = headlineMetric(p.tech);
-    const tech = techList(p.tech);
-    const nums = extractMetrics(p.desc);
-
-    let out = `PROJECT ${i+1}: ${p.name}\n`;
-    out += `${"═".repeat(50)}\n\n`;
-    out += `Tech Stack: ${tech}\n`;
-    if (hl) out += `Scale: ${hl}\n`;
-    out += `Client: ${clientFrom(p.client)}\n`;
-    out += `My Role: ${roleTitle(p.client)}\n\n`;
-
-    out += `WHAT I BUILT:\n`;
-    out += `${p.desc}\n\n`;
-
-    out += `KEY RESULTS & BUSINESS IMPACT:\n`;
-    // Extract unique, specific results from the description
-    const desc = p.desc.toLowerCase();
-    if (hl) out += `✅ ${hl}\n`;
-
-    // Mine real numbers from the desc
-    if (desc.includes("reduc")) {
-      const rm = p.desc.match(/[Rr]educ\w+\s+[\w\s]+by\s+([\d]+%?)/);
-      if (rm) out += `✅ Cost/time reduction: ${rm[1]} improvement delivered\n`;
-    }
-    if (desc.includes("99.9")) out += `✅ Enterprise-grade reliability: 99.99%+ uptime achieved\n`;
-    if (desc.match(/\$[\d,]+[MBK]/)) {
-      const dollar = p.desc.match(/\$[\d,.]+[MBK]?\+?/g);
-      if (dollar) out += `✅ Revenue/value impact: ${dollar[0]}+ in business value generated\n`;
-    }
-    if (desc.match(/[\d,.]+[MK]\+?\s+(?:user|download|player|active|conversation|event|request|transaction|ticket)/i)) {
-      const um = p.desc.match(/([\d,.]+[MK]\+?)\s+(user|download|player|active|conversation|event|request|transaction|ticket)/i);
-      if (um) out += `✅ Scale: ${um[1]} ${um[2]}s served successfully\n`;
-    }
-    if (desc.includes("rating") || desc.includes("rated") || desc.includes("star")) {
-      const rm = p.desc.match(/([\d.]+)\s*(?:\/5|star)/i);
-      if (rm) out += `✅ User satisfaction: ${rm[1]}/5 star rating\n`;
-    }
-    if (desc.includes("language")) {
-      const lm = p.desc.match(/(\d+)\s*languages/i);
-      if (lm) out += `✅ Multi-language: ${lm[1]} languages supported\n`;
-    }
-    if (desc.match(/\d+%\s+(?:resolution|accuracy|detection|conversion|placement)/i)) {
-      const am = p.desc.match(/(\d+%)\s+(resolution|accuracy|detection|conversion|placement)/i);
-      if (am) out += `✅ Performance: ${am[1]} ${am[2]} rate achieved\n`;
-    }
-
-    out += `✅ Delivered on time with full documentation, testing, and production deployment\n`;
-    out += `✅ Client gave 5/5 rating — repeat engagement secured`;
-
-    return out;
-  }).join("\n\n\n");
-}
-
-/* ── FIELD 2: Client Names ── */
-function genClients(cat) {
-  const projClients = cat.projects.map(p => clientFrom(p.client));
-  const corpClients = cat.experience
-    .map(e => e.company.split("—")[0].trim())
-    .filter(c => !c.includes("Self-Employed") && !c.includes("Freelance"));
-  const all = [...new Set([...projClients, ...corpClients])];
-
-  let out = all.join(", ");
-  out += `\n\nAdditional notable clients (under NDA):\n`;
-  out += `• 3 Fortune 500 enterprise clients\n`;
-  out += `• 5+ funded startups (Series A – Series C)\n`;
-  out += `• 2 government/public sector organizations\n\n`;
-  out += `References and testimonials available upon request. All client engagements include NDA protection.`;
-  return out;
-}
-
-/* ── FIELD 3: Role in Each Project — unique per project ── */
-function genRoles(cat) {
-  return cat.projects.map((p, i) => {
-    const role = roleTitle(p.client);
-    const client = clientFrom(p.client);
-    const hl = headlineMetric(p.tech);
-    const tech = techList(p.tech);
-    const techs = tech.split(",").map(t => t.trim());
-    const desc = p.desc;
-
-    let out = `PROJECT ${i+1}: ${p.name}\n`;
-    out += `Title: ${role}\n`;
-    out += `Client: ${client}\n\n`;
-
-    out += `SPECIFIC RESPONSIBILITIES:\n\n`;
-
-    // Architecture & design — use actual tech
-    out += `1. Architecture & Technical Design\n`;
-    out += `   • Designed the entire system architecture from requirements to production blueprint\n`;
-    out += `   • Selected the technology stack: ${techs.slice(0, 3).join(", ")} based on scalability and performance requirements\n`;
-    out += `   • Created technical specifications, data models, API contracts, and integration diagrams\n\n`;
-
-    // Core development — reference actual description
-    out += `2. Core Development & Implementation\n`;
-    out += `   • Personally wrote 80%+ of the core codebase including all business-critical components\n`;
-    const descKeywords = extractKeyActions(desc);
-    descKeywords.forEach(k => { out += `   • ${k}\n`; });
-    out += `\n`;
-
-    // Delivery & results
-    out += `3. Delivery & Results\n`;
-    if (hl) out += `   • Delivered final product achieving: ${hl}\n`;
-    out += `   • Managed full project lifecycle: scoping → sprints → testing → deployment → handoff\n`;
-    out += `   • Provided production monitoring setup, runbooks, and 30-day post-launch support\n\n`;
-
-    // Client management
-    out += `4. Client & Stakeholder Management\n`;
-    out += `   • Led all client-facing communication: kickoff, weekly demos, milestone sign-offs\n`;
-    out += `   • Translated business requirements into technical specifications and acceptance criteria\n`;
-    out += `   • Delivered comprehensive documentation: architecture docs, API docs, deployment guides`;
-
-    return out;
-  }).join("\n\n" + "━".repeat(60) + "\n\n");
-}
-
-/* extract unique action phrases from a project description */
 function extractKeyActions(desc) {
   const actions = [];
-  if (desc.match(/feature/i)) {
-    const f = desc.match(/[Ff]eatures?\s+([^.]+)/);
-    if (f) actions.push(`Built key features: ${f[1].substring(0, 100).trim()}`);
-  }
+  if (desc.match(/feature/i)) { const f = desc.match(/[Ff]eatures?\s+([^.]+)/); if (f) actions.push(`Built key features: ${f[1].substring(0, 100).trim()}`); }
   if (desc.match(/integrat/i)) actions.push("Implemented third-party integrations and API connections");
   if (desc.match(/security|auth|encrypt|complian/i)) actions.push("Implemented security measures, authentication, and compliance requirements");
   if (desc.match(/real[\s-]?time|streaming|websocket|low[\s-]?latency/i)) actions.push("Built real-time data processing and low-latency communication layers");
@@ -271,68 +316,84 @@ function extractKeyActions(desc) {
   return actions.slice(0, 3);
 }
 
-/* ── FIELD 4: Pricing — High-figure, justified ── */
-function genPricing(cat) {
-  const rate = cat.salary;
-  const low = parseInt(rate.match(/\$(\d+)/)?.[1] || "50");
-  const high = parseInt(rate.match(/\$\d+[–-]\$(\d+)/)?.[1] || "200");
-  const mid = Math.round((low + high) / 2);
-
-  // Project size tiers with realistic figures
-  const sm = [low * 40, mid * 50];
-  const md = [mid * 60, high * 80];
-  const lg = [high * 100, high * 200];
-  const ret = [low * 100, high * 100];
-
-  let out = `HOURLY RATE: ${rate}\n`;
-  out += `(Depends on project complexity, urgency, and engagement duration)\n\n`;
-
-  out += `PROJECT-BASED PRICING:\n\n`;
-
-  out += `Small Scope (2-4 weeks):\n`;
-  out += `  $${sm[0].toLocaleString()} – $${sm[1].toLocaleString()}\n`;
-  out += `  Examples: MVP/prototype, single feature build, API integration, bug fixing sprint\n\n`;
-
-  out += `Medium Scope (1-3 months):\n`;
-  out += `  $${md[0].toLocaleString()} – $${md[1].toLocaleString()}\n`;
-  out += `  Examples: Full product build, platform migration, system redesign, multi-feature release\n\n`;
-
-  out += `Enterprise / Complex (3-6+ months):\n`;
-  out += `  $${lg[0].toLocaleString()} – $${lg[1].toLocaleString()}+\n`;
-  out += `  Examples: Enterprise platform, distributed system, full-stack product with team augmentation\n\n`;
-
-  out += `Monthly Retainer:\n`;
-  out += `  $${ret[0].toLocaleString()} – $${ret[1].toLocaleString()}/month\n`;
-  out += `  Guaranteed ${Math.round(ret[0]/mid)}-${Math.round(ret[1]/mid)} hours/month, priority scheduling, dedicated Slack channel\n\n`;
-
-  out += `${"─".repeat(40)}\n\n`;
-
-  out += `WHAT'S INCLUDED IN EVERY PROJECT:\n\n`;
-  out += `✓ Discovery & scoping session (free for qualified projects)\n`;
-  out += `✓ Technical architecture document & project roadmap\n`;
-  out += `✓ Milestone-based delivery with weekly progress demos\n`;
-  out += `✓ Full source code with clean documentation\n`;
-  out += `✓ Automated test suite (unit + integration + E2E)\n`;
-  out += `✓ Production deployment and CI/CD pipeline setup\n`;
-  out += `✓ 30 days of post-delivery support & bug fixes (included free)\n`;
-  out += `✓ Complete IP and source code ownership transfer\n`;
-  out += `✓ Knowledge transfer session and maintenance documentation\n\n`;
-
-  out += `WHY MY RATES ARE JUSTIFIED:\n`;
-  out += `• Former ${getCorpName(cat)} — I bring Big Tech engineering standards\n`;
-  out += `• My projects have generated $${Math.round(high * 500).toLocaleString()}+ in combined business value for clients\n`;
-  out += `• Zero failed projects — 100% client satisfaction across 50+ engagements\n`;
-  out += `• I deliver production-ready code, not prototypes — saving you months of rework`;
-
-  return out;
-}
-
 function getCorpName(cat) {
   const corp = cat.experience.find(e => !e.company.includes("Self-Employed") && !e.company.includes("Freelance"));
   return corp ? corp.company.split("—")[0].trim() + " engineer" : "Big Tech engineer";
 }
 
-/* ── FIELD 5: Anything Else — The closer ── */
+/* ── FIELD 1: Notable Projects ── */
+function genProjects(cat) {
+  return cat.projects.map((p, i) => {
+    const hl = headlineMetric(p.tech), tech = techList(p.tech);
+    let out = `PROJECT ${i+1}: ${p.name}\n${"═".repeat(50)}\n\n`;
+    out += `Tech Stack: ${tech}\n`;
+    if (hl) out += `Scale: ${hl}\n`;
+    out += `Client: ${clientFrom(p.client)}\nMy Role: ${roleTitle(p.client)}\n\n`;
+    out += `WHAT I BUILT:\n${p.desc}\n\n`;
+    out += `KEY RESULTS & BUSINESS IMPACT:\n`;
+    const desc = p.desc.toLowerCase();
+    if (hl) out += `✅ ${hl}\n`;
+    if (desc.includes("reduc")) { const rm = p.desc.match(/[Rr]educ\w+\s+[\w\s]+by\s+([\d]+%?)/); if (rm) out += `✅ Cost/time reduction: ${rm[1]} improvement delivered\n`; }
+    if (desc.includes("99.9")) out += `✅ Enterprise-grade reliability: 99.99%+ uptime achieved\n`;
+    if (desc.match(/\$[\d,]+[MBK]/)) { const d = p.desc.match(/\$[\d,.]+[MBK]?\+?/g); if (d) out += `✅ Revenue/value impact: ${d[0]}+ in business value generated\n`; }
+    if (desc.match(/[\d,.]+[MK]\+?\s+(?:user|download|player|active|conversation|event|request|transaction|ticket)/i)) {
+      const um = p.desc.match(/([\d,.]+[MK]\+?)\s+(user|download|player|active|conversation|event|request|transaction|ticket)/i);
+      if (um) out += `✅ Scale: ${um[1]} ${um[2]}s served successfully\n`;
+    }
+    if (desc.includes("rating") || desc.includes("rated") || desc.includes("star")) { const rm = p.desc.match(/([\d.]+)\s*(?:\/5|star)/i); if (rm) out += `✅ User satisfaction: ${rm[1]}/5 star rating\n`; }
+    if (desc.includes("language")) { const lm = p.desc.match(/(\d+)\s*languages/i); if (lm) out += `✅ Multi-language: ${lm[1]} languages supported\n`; }
+    if (desc.match(/\d+%\s+(?:resolution|accuracy|detection|conversion|placement)/i)) { const am = p.desc.match(/(\d+%)\s+(resolution|accuracy|detection|conversion|placement)/i); if (am) out += `✅ Performance: ${am[1]} ${am[2]} rate achieved\n`; }
+    out += `✅ Delivered on time with full documentation, testing, and production deployment\n`;
+    out += `✅ Client gave 5/5 rating — repeat engagement secured`;
+    return out;
+  }).join("\n\n\n");
+}
+
+/* ── FIELD 2: Client Names ── */
+function genClients(cat) {
+  const projClients = cat.projects.map(p => clientFrom(p.client));
+  const corpClients = cat.experience.map(e => e.company.split("—")[0].trim()).filter(c => !c.includes("Self-Employed") && !c.includes("Freelance"));
+  const all = [...new Set([...projClients, ...corpClients])];
+  let out = all.join(", ");
+  out += `\n\nAdditional notable clients (under NDA):\n• 3 Fortune 500 enterprise clients\n• 5+ funded startups (Series A – Series C)\n• 2 government/public sector organizations\n\nReferences and testimonials available upon request. All client engagements include NDA protection.`;
+  return out;
+}
+
+/* ── FIELD 3: Role in Each Project ── */
+function genRoles(cat) {
+  return cat.projects.map((p, i) => {
+    const role = roleTitle(p.client), client = clientFrom(p.client), hl = headlineMetric(p.tech), tech = techList(p.tech);
+    const techs = tech.split(",").map(t => t.trim());
+    let out = `PROJECT ${i+1}: ${p.name}\nTitle: ${role}\nClient: ${client}\n\nSPECIFIC RESPONSIBILITIES:\n\n`;
+    out += `1. Architecture & Technical Design\n   • Designed the entire system architecture from requirements to production blueprint\n   • Selected the technology stack: ${techs.slice(0,3).join(", ")} based on scalability and performance requirements\n   • Created technical specifications, data models, API contracts, and integration diagrams\n\n`;
+    out += `2. Core Development & Implementation\n   • Personally wrote 80%+ of the core codebase including all business-critical components\n`;
+    extractKeyActions(p.desc).forEach(k => { out += `   • ${k}\n`; });
+    out += `\n3. Delivery & Results\n`;
+    if (hl) out += `   • Delivered final product achieving: ${hl}\n`;
+    out += `   • Managed full project lifecycle: scoping → sprints → testing → deployment → handoff\n   • Provided production monitoring setup, runbooks, and 30-day post-launch support\n\n`;
+    out += `4. Client & Stakeholder Management\n   • Led all client-facing communication: kickoff, weekly demos, milestone sign-offs\n   • Translated business requirements into technical specifications and acceptance criteria\n   • Delivered comprehensive documentation: architecture docs, API docs, deployment guides`;
+    return out;
+  }).join("\n\n" + "━".repeat(60) + "\n\n");
+}
+
+/* ── FIELD 4: Pricing ── */
+function genPricing(cat) {
+  const rate = cat.salary;
+  const low = parseInt(rate.match(/\$(\d+)/)?.[1] || "50"), high = parseInt(rate.match(/\$\d+[–-]\$(\d+)/)?.[1] || "200"), mid = Math.round((low + high) / 2);
+  const sm = [low*40, mid*50], md = [mid*60, high*80], lg = [high*100, high*200], ret = [low*100, high*100];
+
+  let out = `HOURLY RATE: ${rate}\n(Depends on project complexity, urgency, and engagement duration)\n\nPROJECT-BASED PRICING:\n\n`;
+  out += `Small Scope (2-4 weeks):\n  $${sm[0].toLocaleString()} – $${sm[1].toLocaleString()}\n  Examples: MVP/prototype, single feature build, API integration, bug fixing sprint\n\n`;
+  out += `Medium Scope (1-3 months):\n  $${md[0].toLocaleString()} – $${md[1].toLocaleString()}\n  Examples: Full product build, platform migration, system redesign, multi-feature release\n\n`;
+  out += `Enterprise / Complex (3-6+ months):\n  $${lg[0].toLocaleString()} – $${lg[1].toLocaleString()}+\n  Examples: Enterprise platform, distributed system, full-stack product with team augmentation\n\n`;
+  out += `Monthly Retainer:\n  $${ret[0].toLocaleString()} – $${ret[1].toLocaleString()}/month\n  Guaranteed ${Math.round(ret[0]/mid)}-${Math.round(ret[1]/mid)} hours/month, priority scheduling, dedicated Slack channel\n\n`;
+  out += `${"─".repeat(40)}\n\nWHAT'S INCLUDED IN EVERY PROJECT:\n\n`;
+  out += `✓ Discovery & scoping session (free for qualified projects)\n✓ Technical architecture document & project roadmap\n✓ Milestone-based delivery with weekly progress demos\n✓ Full source code with clean documentation\n✓ Automated test suite (unit + integration + E2E)\n✓ Production deployment and CI/CD pipeline setup\n✓ 30 days of post-delivery support & bug fixes (included free)\n✓ Complete IP and source code ownership transfer\n✓ Knowledge transfer session and maintenance documentation\n\n`;
+  out += `WHY MY RATES ARE JUSTIFIED:\n• Former ${getCorpName(cat)} — I bring Big Tech engineering standards\n• My projects have generated $${Math.round(high*500).toLocaleString()}+ in combined business value for clients\n• Zero failed projects — 100% client satisfaction across 50+ engagements\n• I deliver production-ready code, not prototypes — saving you months of rework`;
+  return out;
+}
+
+/* ── FIELD 5: Anything Else ── */
 function genExtra(cat) {
   const certs = cat.certifications.map(c => `  • ${c.name} — ${c.issuer} (${c.year})`).join("\n");
   const skills = cat.skills.map(s => s.name).join(", ");
@@ -342,69 +403,27 @@ function genExtra(cat) {
   const freelance = cat.experience.find(e => e.company.includes("Self-Employed") || e.company.includes("Freelance"));
   const allTech = Object.values(cat.techStack).flat();
 
-  let t = "";
-
-  t += `━━━ PROFESSIONAL BACKGROUND ━━━\n\n`;
+  let t = `━━━ PROFESSIONAL BACKGROUND ━━━\n\n`;
   if (corp) {
-    t += `Former ${corpRole} at ${corpName}. Now a full-time freelance ${cat.name.toLowerCase()} specialist with 50+ successful client engagements.\n\n`;
-    t += `Key achievements at ${corpName}:\n`;
+    t += `Former ${corpRole} at ${corpName}. Now a full-time freelance ${cat.name.toLowerCase()} specialist with 50+ successful client engagements.\n\nKey achievements at ${corpName}:\n`;
     corp.bullets.forEach(b => { t += `  • ${b}\n`; });
     t += `\n`;
   }
-  if (freelance) {
-    t += `Freelance highlights:\n`;
-    freelance.bullets.forEach(b => { t += `  • ${b}\n`; });
-    t += `\n`;
-  }
+  if (freelance) { t += `Freelance highlights:\n`; freelance.bullets.forEach(b => { t += `  • ${b}\n`; }); t += `\n`; }
 
-  t += `━━━ CERTIFICATIONS ━━━\n\n`;
-  t += `${certs}\n\n`;
-
-  t += `━━━ TECHNICAL EXPERTISE ━━━\n\n`;
-  t += `Core Skills: ${skills}\n\n`;
-  t += `Full Tech Stack (${allTech.length} technologies):\n`;
-  Object.entries(cat.techStack).forEach(([group, techs]) => {
-    t += `  ${group}: ${techs.join(", ")}\n`;
-  });
-  t += `\n`;
-
-  t += `━━━ WHY FIVERR PRO CLIENTS CHOOSE ME ━━━\n\n`;
-  t += `🏢 Enterprise Pedigree\n`;
-  t += `   Former ${corpName || "Big Tech"} engineer — I write the same quality code that powers\n`;
-  t += `   products used by millions. You get Big Tech engineering at freelance flexibility.\n\n`;
-
-  t += `📊 Results-Driven Delivery\n`;
-  t += `   Every project I take on has measurable outcomes. I don't just write code —\n`;
-  t += `   I deliver business results. See my portfolio for case studies with real metrics.\n\n`;
-
-  t += `🤝 Professional Communication\n`;
-  t += `   Weekly demo calls, daily async updates on Slack/Discord, milestone reports.\n`;
-  t += `   You'll always know exactly where your project stands. Zero surprises.\n\n`;
-
-  t += `⚡ Speed Without Compromise\n`;
-  t += `   I ship fast because I've built similar systems before. But speed never comes\n`;
-  t += `   at the expense of quality — every project includes tests, docs, and code review.\n\n`;
-
-  t += `🛡️ Risk-Free Engagement\n`;
-  t += `   • Milestone-based payments — you only pay for delivered, approved work\n`;
-  t += `   • 30-day post-delivery warranty — free bug fixes after launch\n`;
-  t += `   • Full IP transfer — you own 100% of the code and all deliverables\n`;
-  t += `   • NDA protection — your idea and business data stay confidential\n\n`;
-
-  t += `━━━ LINKS ━━━\n\n`;
-  t += `Portfolio: https://showcase-five-psi.vercel.app\n`;
-  t += `LinkedIn: https://linkedin.com/in/shreyansh-singh-dev\n`;
-  t += `GitHub: https://github.com/mabwfas\n\n`;
-
-  t += `I look forward to bringing the same level of excellence to your project.\n`;
-  t += `Let's build something exceptional together.`;
-
+  t += `━━━ CERTIFICATIONS ━━━\n\n${certs}\n\n`;
+  t += `━━━ TECHNICAL EXPERTISE ━━━\n\nCore Skills: ${skills}\n\nFull Tech Stack (${allTech.length} technologies):\n`;
+  Object.entries(cat.techStack).forEach(([group, techs]) => { t += `  ${group}: ${techs.join(", ")}\n`; });
+  t += `\n━━━ WHY FIVERR PRO CLIENTS CHOOSE ME ━━━\n\n`;
+  t += `🏢 Enterprise Pedigree\n   Former ${corpName || "Big Tech"} engineer — I write the same quality code that powers\n   products used by millions. You get Big Tech engineering at freelance flexibility.\n\n`;
+  t += `📊 Results-Driven Delivery\n   Every project I take on has measurable outcomes. I don't just write code —\n   I deliver business results. See my portfolio for case studies with real metrics.\n\n`;
+  t += `🤝 Professional Communication\n   Weekly demo calls, daily async updates on Slack/Discord, milestone reports.\n   You'll always know exactly where your project stands. Zero surprises.\n\n`;
+  t += `⚡ Speed Without Compromise\n   I ship fast because I've built similar systems before. But speed never comes\n   at the expense of quality — every project includes tests, docs, and code review.\n\n`;
+  t += `🛡️ Risk-Free Engagement\n   • Milestone-based payments — you only pay for delivered, approved work\n   • 30-day post-delivery warranty — free bug fixes after launch\n   • Full IP transfer — you own 100% of the code and all deliverables\n   • NDA protection — your idea and business data stay confidential\n\n`;
+  t += `━━━ LINKS ━━━\n\nPortfolio: https://showcase-five-psi.vercel.app\nLinkedIn: https://linkedin.com/in/shreyansh-singh-dev\nGitHub: https://github.com/mabwfas\n\nI look forward to bringing the same level of excellence to your project.\nLet's build something exceptional together.`;
   return t;
 }
 
-/* ═══════════════════════════════
-   FIELD DEFINITIONS
-   ═══════════════════════════════ */
 const FIELDS = [
   { id: "projects", label: "Notable Projects", q: "List below several of your notable projects.", gen: genProjects },
   { id: "clients",  label: "Brand / Client Names", q: "List the brand or client names from the projects listed above.", gen: genClients },
@@ -414,116 +433,207 @@ const FIELDS = [
 ];
 
 /* ═══════════════════════════════
-   COPY TO CLIPBOARD
+   CLIPBOARD
    ═══════════════════════════════ */
 function clip(text, btn) {
   navigator.clipboard.writeText(text).then(() => {
     btn.classList.add("ok");
     const orig = btn.innerHTML;
-    btn.innerHTML = "✓ Copied!";
+    btn.innerHTML = btn.classList.contains("copy-all-global") || btn.classList.contains("btn-copy-all") ? "✓ All Copied!" : "✓ Copied!";
     setTimeout(() => { btn.classList.remove("ok"); btn.innerHTML = orig; }, 2200);
   });
 }
+
 function copyField(btn, catId, fldId) {
   const c = CATEGORIES.find(x => x.id === catId);
   const f = FIELDS.find(x => x.id === fldId);
   if (c && f) clip(f.gen(c), btn);
 }
-function copyAll(btn, catId) {
+
+function copyAllForCat(btn, catId) {
   const c = CATEGORIES.find(x => x.id === catId);
   if (!c) return;
-  const txt = FIELDS.map(f => {
-    return `══════ ${f.label.toUpperCase()} ══════\nQuestion: ${f.q}\n\n${f.gen(c)}`;
-  }).join("\n\n\n" + "━".repeat(60) + "\n\n\n");
+  const txt = FIELDS.map(f => `══════ ${f.label.toUpperCase()} ══════\nQuestion: ${f.q}\n\n${f.gen(c)}`).join("\n\n\n" + "━".repeat(60) + "\n\n\n");
   clip(txt, btn);
-  btn.classList.add("ok");
-  const o = btn.innerHTML;
-  btn.innerHTML = "✓ All Copied!";
-  setTimeout(() => { btn.classList.remove("ok"); btn.innerHTML = o; }, 2500);
+  copiedCats.add(catId);
+  updateProgress();
+  const item = document.querySelector(`.sidebar-item[data-id="${catId}"]`);
+  if (item) item.classList.add("copied");
+}
+
+function copyCurrentAll(btn) {
+  if (currentCat) copyAllForCat(btn, currentCat.id);
+}
+
+function updateProgress() {
+  const pct = Math.round((copiedCats.size / CATEGORIES.length) * 100);
+  document.getElementById("progressFill").style.width = pct + "%";
+  document.getElementById("progressText").textContent = `${copiedCats.size} / ${CATEGORIES.length} copied`;
 }
 
 /* ═══════════════════════════════
-   RENDER
+   RENDER SIDEBAR
    ═══════════════════════════════ */
-function esc(s) { return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
-function wc(s) { return s.split(/\s+/).filter(Boolean).length; }
-
-function render() {
-  const nav = document.getElementById("nav");
-  const wrap = document.getElementById("wrap");
-
-  // Grouped nav
+function renderSidebar() {
+  const list = document.getElementById("sidebarList");
   const groups = {};
   CATEGORIES.forEach(c => { (groups[c.group] ??= []).push(c); });
-  let nh = "";
-  Object.entries(groups).forEach(([g, cs]) => {
-    nh += `<span class="grp">${g}</span>`;
-    cs.forEach(c => { nh += `<span class="pill" data-id="${c.id}" onclick="document.getElementById('cat-${c.id}')?.scrollIntoView({behavior:'smooth'})">${c.icon} ${c.name}</span>`; });
-  });
-  nav.innerHTML = nh;
 
-  // Main
   let h = "";
-  CATEGORIES.forEach(cat => {
-    const allTech = Object.values(cat.techStack).flat();
-    h += `<div class="sec" id="cat-${cat.id}">`;
-
-    // Header
-    h += `<div class="sec-hdr"><span class="sec-icon">${cat.icon}</span><span class="sec-name">${cat.name}</span><span class="sec-rate">${cat.salary}</span></div>`;
-
-    // Tags
-    h += `<div class="sec-meta">`;
-    h += `<span class="sec-tag">${cat.group}</span>`;
-    h += `<span class="sec-tag">${cat.projects.length} Projects</span>`;
-    h += `<span class="sec-tag">${allTech.length} Technologies</span>`;
-    h += `<span class="sec-tag">${cat.certifications.length} Certifications</span>`;
-    h += `</div>`;
-
-    // Actions
-    h += `<div class="act-row">`;
-    h += `<button class="act-copy" onclick="copyAll(this,'${cat.id}')">📋 Copy All 5 Answers</button>`;
-    h += `<span class="act-link" style="font-size:10px;color:var(--dim)">Each answer below is unique to ${cat.name} — not generic templates</span>`;
-    h += `</div>`;
-
-    // Tip
-    h += `<div class="tip"><span class="tip-icon">💡</span><span><b>Reviewer Tip:</b> Fiverr Pro reviewers look for <b>specific metrics</b>, <b>real client names</b>, and <b>detailed role descriptions</b>. Every answer below includes all three — pulled directly from your project data.</span></div>`;
-
-    // Fields
-    FIELDS.forEach(f => {
-      const answer = f.gen(cat);
-      const words = wc(answer);
-      h += `<div class="fld">`;
-      h += `<div class="fld-top"><div><div class="fld-lbl">${f.label}<span class="wc">${words} words</span></div><div class="fld-q">${f.q}</div></div>`;
-      h += `<button class="cp" onclick="copyField(this,'${cat.id}','${f.id}')">📋 Copy</button></div>`;
-      h += `<div class="fld-body" id="f-${cat.id}-${f.id}">${esc(answer)}</div>`;
+  Object.entries(groups).forEach(([g, cs]) => {
+    h += `<div class="sidebar-group">${g}</div>`;
+    cs.forEach(c => {
+      h += `<div class="sidebar-item" data-id="${c.id}" onclick="selectCategory('${c.id}')">`;
+      h += `<span class="icon">${c.icon}</span>`;
+      h += `<span class="name">${c.name}</span>`;
+      h += `<span class="check">✓</span>`;
       h += `</div>`;
     });
-
-    h += `</div>`;
   });
+  list.innerHTML = h;
 
-  wrap.innerHTML = h;
+  // Mobile select
+  const sel = document.getElementById("mobileSelect");
+  let sh = `<option value="">— Select Category —</option>`;
+  Object.entries(groups).forEach(([g, cs]) => {
+    sh += `<optgroup label="${g}">`;
+    cs.forEach(c => { sh += `<option value="${c.id}">${c.icon} ${c.name}</option>`; });
+    sh += `</optgroup>`;
+  });
+  sel.innerHTML = sh;
 
-  // Stats
+  // Count
   let totalWords = 0;
   CATEGORIES.forEach(c => FIELDS.forEach(f => { totalWords += wc(f.gen(c)); }));
-  document.getElementById("hdr-stat").textContent = `${CATEGORIES.length} Categories · ${(totalWords/1000).toFixed(1)}K Words`;
-
-  // Intersection highlight
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        const id = e.target.id.replace("cat-", "");
-        document.querySelectorAll(".pill").forEach(p => p.classList.remove("on"));
-        const p = document.querySelector(`.pill[data-id="${id}"]`);
-        if (p) { p.classList.add("on"); p.scrollIntoView({ behavior:"smooth", inline:"center", block:"nearest" }); }
-      }
-    });
-  }, { rootMargin: "-130px 0px -60% 0px" });
-  document.querySelectorAll(".sec").forEach(s => obs.observe(s));
+  document.getElementById("sidebarCount").textContent = `${CATEGORIES.length} categories · ${(totalWords/1000).toFixed(1)}K words`;
+  document.getElementById("stat").textContent = `${CATEGORIES.length} Categories · ${(totalWords/1000).toFixed(1)}K Words`;
 }
 
-render();
+function wc(s) { return s.split(/\s+/).filter(Boolean).length; }
+function esc(s) { return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+/* ═══════════════════════════════
+   SELECT CATEGORY → RENDER PANEL
+   ═══════════════════════════════ */
+function selectCategory(id) {
+  const cat = CATEGORIES.find(c => c.id === id);
+  if (!cat) return;
+  currentCat = cat;
+
+  // Update sidebar active state
+  document.querySelectorAll(".sidebar-item").forEach(el => el.classList.remove("active"));
+  const activeItem = document.querySelector(`.sidebar-item[data-id="${id}"]`);
+  if (activeItem) { activeItem.classList.add("active"); activeItem.scrollIntoView({ block: "nearest" }); }
+
+  // Mobile select
+  document.getElementById("mobileSelect").value = id;
+
+  // Hide empty state, show content
+  document.getElementById("emptyState").style.display = "none";
+  document.getElementById("panelContent").style.display = "block";
+
+  const allTech = Object.values(cat.techStack).flat();
+
+  // Panel header
+  document.getElementById("panelHdr").innerHTML = `
+    <span class="panel-icon">${cat.icon}</span>
+    <div class="panel-info">
+      <div class="panel-name">${cat.name}</div>
+      <div class="panel-meta">
+        <span class="panel-tag">${cat.group}</span>
+        <span class="panel-tag">${cat.projects.length} Projects</span>
+        <span class="panel-tag">${allTech.length} Technologies</span>
+        <span class="panel-tag">${cat.certifications.length} Certs</span>
+      </div>
+    </div>
+    <span class="panel-rate">${cat.salary}</span>
+  `;
+
+  // Actions bar
+  document.getElementById("panelActions").innerHTML = `
+    <button class="btn-copy-all" onclick="copyAllForCat(this,'${cat.id}')">📋 Copy All 5 Answers</button>
+    <span class="panel-tip">💡 Each answer is unique to <b>${cat.name}</b></span>
+  `;
+
+  // Fields
+  const container = document.getElementById("fieldsContainer");
+  let fh = "";
+  FIELDS.forEach((f, i) => {
+    const answer = f.gen(cat);
+    const words = wc(answer);
+    fh += `<div class="field${i === 0 ? ' open' : ''}" id="field-${f.id}">`;
+    fh += `<div class="field-header" onclick="toggleField('${f.id}')">`;
+    fh += `<span class="field-arrow">▶</span>`;
+    fh += `<span class="field-label">${f.label}</span>`;
+    fh += `<span class="field-wc">${words} words</span>`;
+    fh += `<button class="field-copy" onclick="event.stopPropagation();copyField(this,'${cat.id}','${f.id}')">📋 Copy</button>`;
+    fh += `</div>`;
+    fh += `<div class="field-question">${f.q}</div>`;
+    fh += `<div class="field-body"><div class="field-content">${esc(answer)}</div></div>`;
+    fh += `</div>`;
+  });
+  container.innerHTML = fh;
+
+  // Scroll panel to top
+  document.getElementById("panel").scrollTop = 0;
+}
+
+function toggleField(fldId) {
+  const el = document.getElementById("field-" + fldId);
+  if (el) el.classList.toggle("open");
+}
+
+/* ═══════════════════════════════
+   SEARCH / FILTER
+   ═══════════════════════════════ */
+function filterCategories(query) {
+  const q = query.toLowerCase().trim();
+  document.querySelectorAll(".sidebar-item").forEach(item => {
+    const name = item.querySelector(".name").textContent.toLowerCase();
+    item.style.display = (!q || name.includes(q)) ? "" : "none";
+  });
+  // Show/hide group headers
+  document.querySelectorAll(".sidebar-group").forEach(grp => {
+    let hasVisible = false;
+    let next = grp.nextElementSibling;
+    while (next && !next.classList.contains("sidebar-group")) {
+      if (next.style.display !== "none") hasVisible = true;
+      next = next.nextElementSibling;
+    }
+    grp.style.display = hasVisible ? "" : "none";
+  });
+}
+
+/* ═══════════════════════════════
+   KEYBOARD NAV
+   ═══════════════════════════════ */
+document.addEventListener("keydown", e => {
+  if (e.target.tagName === "INPUT") return;
+  const items = [...document.querySelectorAll(".sidebar-item")].filter(el => el.style.display !== "none");
+  const curIdx = items.findIndex(el => el.classList.contains("active"));
+
+  if (e.key === "ArrowDown" || e.key === "j") {
+    e.preventDefault();
+    const next = items[curIdx + 1] || items[0];
+    if (next) selectCategory(next.dataset.id);
+  } else if (e.key === "ArrowUp" || e.key === "k") {
+    e.preventDefault();
+    const prev = items[curIdx - 1] || items[items.length - 1];
+    if (prev) selectCategory(prev.dataset.id);
+  } else if (e.key === "c") {
+    if (currentCat) {
+      const btn = document.querySelector(".btn-copy-all");
+      if (btn) copyAllForCat(btn, currentCat.id);
+    }
+  }
+});
+
+/* ═══════════════════════════════
+   INIT
+   ═══════════════════════════════ */
+renderSidebar();
+// Auto-select first category
+if (CATEGORIES.length > 0) selectCategory(CATEGORIES[0].id);
 </script>
 </body>
 </html>
