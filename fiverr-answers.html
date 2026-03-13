@@ -314,8 +314,70 @@ function roleTitle(r) { return r.split("—")[0].trim(); }
 function techList(t) { return t.split("|")[0].trim(); }
 function headlineMetric(t) { return t.includes("|") ? t.split("|")[1].trim() : ""; }
 
-function extractKeyActions(desc) {
+/* ── Category classification ── */
+const NON_DEV_IDS = new Set(["video-editing","logo-design","copywriting","seo","social-media","business-consulting","user-testing"]);
+const DESIGN_IDS = new Set(["website-design","logo-design","video-editing"]);
+const MARKETING_IDS = new Set(["seo","social-media","copywriting"]);
+const ML_RELEVANT_IDS = new Set(["ai-development","chatbot-development","trading-bots","vibe-coding"]);
+
+function isNonDev(cat) { return NON_DEV_IDS.has(cat.id); }
+function isDesign(cat) { return DESIGN_IDS.has(cat.id); }
+function isMarketing(cat) { return MARKETING_IDS.has(cat.id); }
+function isMLRelevant(cat) { return ML_RELEVANT_IDS.has(cat.id); }
+function isTechCategory(cat) { return !NON_DEV_IDS.has(cat.id) && cat.id !== "website-design" && cat.id !== "coding-lessons"; }
+
+/* ── Role-appropriate action extraction ── */
+function extractKeyActions(desc, cat) {
   const actions = [];
+  const nd = isNonDev(cat);
+
+  if (nd) {
+    // Non-dev: extract from description keywords relevant to category
+    if (cat.id === "video-editing") {
+      if (desc.match(/edit|cut|assembl/i)) actions.push("Edited and assembled all footage including multi-cam sync, pacing, and narrative flow");
+      if (desc.match(/color|grade|grading/i)) actions.push("Performed professional color grading and color correction for cinematic look");
+      if (desc.match(/motion|graphic|VFX|effect/i)) actions.push("Created custom motion graphics, visual effects, and animated titles");
+      if (desc.match(/sound|audio|mix/i)) actions.push("Mixed and mastered audio including music scoring, SFX, and dialogue cleanup");
+      if (actions.length === 0) { actions.push("Managed full post-production pipeline from raw footage to final delivery"); actions.push("Delivered in multiple formats optimized for broadcast, web, and social media"); }
+    } else if (cat.id === "logo-design") {
+      if (desc.match(/logo|brand|identity/i)) actions.push("Designed logo concepts through research, sketching, and iterative refinement");
+      if (desc.match(/guideline|system|standard/i)) actions.push("Created comprehensive brand guidelines covering usage, spacing, and color specifications");
+      if (desc.match(/packag|print|retail/i)) actions.push("Extended brand identity across packaging, print materials, and retail environments");
+      if (actions.length === 0) { actions.push("Led the full brand identity process from discovery workshops to final asset delivery"); actions.push("Delivered complete asset library for digital and print applications"); }
+    } else if (cat.id === "copywriting") {
+      if (desc.match(/copy|headline|CTA/i)) actions.push("Wrote all copy including headlines, body text, CTAs, and microcopy");
+      if (desc.match(/SEO|organic|keyword/i)) actions.push("Optimized all content for SEO with keyword research and on-page optimization");
+      if (desc.match(/email|campaign|sequence/i)) actions.push("Created email sequences, campaign copy, and automated nurture flows");
+      if (actions.length === 0) { actions.push("Developed brand voice and messaging framework from scratch"); actions.push("Wrote conversion-focused copy across landing pages, emails, and ads"); }
+    } else if (cat.id === "seo") {
+      if (desc.match(/technical|audit|crawl/i)) actions.push("Conducted comprehensive technical SEO audits and implemented fixes");
+      if (desc.match(/content|blog|article/i)) actions.push("Created content strategy with keyword mapping and editorial calendars");
+      if (desc.match(/link|backlink|outreach/i)) actions.push("Executed link-building campaigns through outreach and digital PR");
+      if (desc.match(/local|map|location/i)) actions.push("Optimized local SEO including Google Business Profile and citation management");
+      if (actions.length === 0) { actions.push("Executed end-to-end SEO strategy: technical audit → content → link building → reporting"); actions.push("Provided monthly analytics reports with actionable recommendations"); }
+    } else if (cat.id === "social-media") {
+      if (desc.match(/content|post|creative/i)) actions.push("Created and managed content calendar with platform-specific creative assets");
+      if (desc.match(/influencer|creator|partner/i)) actions.push("Managed influencer partnerships including outreach, negotiation, and campaign tracking");
+      if (desc.match(/ad|paid|campaign/i)) actions.push("Planned and optimized paid social campaigns across Meta, TikTok, and LinkedIn");
+      if (desc.match(/community|engage|respond/i)) actions.push("Built and managed online community with active engagement and response protocols");
+      if (actions.length === 0) { actions.push("Developed platform-specific content strategy and managed daily posting"); actions.push("Ran paid social campaigns and reported on performance metrics"); }
+    } else if (cat.id === "business-consulting") {
+      if (desc.match(/strateg|growth|market/i)) actions.push("Developed growth strategy with market sizing, competitive analysis, and financial projections");
+      if (desc.match(/financial|model|forecast/i)) actions.push("Built financial models including revenue forecasts, unit economics, and scenario analysis");
+      if (desc.match(/operat|process|efficien/i)) actions.push("Mapped and redesigned business processes to eliminate inefficiencies");
+      if (desc.match(/pitch|investor|fundrais/i)) actions.push("Created investor pitch deck and financial materials for fundraising");
+      if (actions.length === 0) { actions.push("Led strategic analysis from stakeholder interviews to final recommendation deck"); actions.push("Delivered actionable roadmap with KPIs, timelines, and resource plans"); }
+    } else if (cat.id === "user-testing") {
+      if (desc.match(/usability|test|session/i)) actions.push("Designed and conducted usability testing sessions with target user segments");
+      if (desc.match(/A\/B|experiment|optimi/i)) actions.push("Designed and analyzed A/B tests with statistical rigor and clear recommendations");
+      if (desc.match(/access|WCAG|disabilit/i)) actions.push("Performed accessibility audits testing with screen readers and assistive technologies");
+      if (desc.match(/research|interview|survey/i)) actions.push("Conducted user research through interviews, surveys, and contextual inquiry");
+      if (actions.length === 0) { actions.push("Planned and executed end-to-end user research program from recruitment to findings report"); actions.push("Delivered prioritized recommendations with mockups and evidence from user sessions"); }
+    }
+    return actions.slice(0, 3);
+  }
+
+  // Dev categories — original logic minus ML for non-ML categories
   if (desc.match(/feature/i)) { const f = desc.match(/[Ff]eatures?\s+([^.]+)/); if (f) actions.push(`Built key features: ${f[1].substring(0, 100).trim()}`); }
   if (desc.match(/integrat/i)) actions.push("Implemented third-party integrations and API connections");
   if (desc.match(/security|auth|encrypt|complian/i)) actions.push("Implemented security measures, authentication, and compliance requirements");
@@ -323,7 +385,8 @@ function extractKeyActions(desc) {
   if (desc.match(/scale|scaling|concurrent|traffic/i)) actions.push("Engineered for scale — load testing, auto-scaling, and performance optimization");
   if (desc.match(/test|automat/i)) actions.push("Wrote comprehensive test suites: unit, integration, and end-to-end coverage");
   if (desc.match(/deploy|CI|CD|docker|kubernetes/i)) actions.push("Set up CI/CD pipelines, containerization, and production deployment infrastructure");
-  if (desc.match(/ML|AI|model|neural|train/i)) actions.push("Developed and trained ML models with automated evaluation and monitoring pipelines");
+  // Only add ML claim for ML-relevant categories
+  if (isMLRelevant(cat) && desc.match(/ML|AI|model|neural|train/i)) actions.push("Developed and trained ML models with automated evaluation and monitoring pipelines");
   if (actions.length === 0) {
     actions.push("Implemented all core business logic, data processing, and system integrations");
     actions.push("Built automated testing, monitoring, and alerting for production reliability");
@@ -331,9 +394,18 @@ function extractKeyActions(desc) {
   return actions.slice(0, 3);
 }
 
-function getCorpName(cat) {
+/* ── Get corporate title (role-appropriate, not always "engineer") ── */
+function getCorpInfo(cat) {
   const corp = cat.experience.find(e => !e.company.includes("Self-Employed") && !e.company.includes("Freelance"));
-  return corp ? corp.company.split("—")[0].trim() + " engineer" : "Big Tech engineer";
+  if (!corp) return { name: "industry leader", title: "senior professional", company: "" };
+  const company = corp.company.split("—")[0].trim();
+  const role = corp.role || "Senior Professional";
+  return { name: company, title: role, company };
+}
+
+function getCorpName(cat) {
+  const info = getCorpInfo(cat);
+  return `${info.name} ${info.title}`;
 }
 
 /* ── FIELD 1: Notable Projects ── */
@@ -358,8 +430,15 @@ function genProjects(cat) {
     if (desc.includes("rating") || desc.includes("rated") || desc.includes("star")) { const rm = p.desc.match(/([\d.]+)\s*(?:\/5|star)/i); if (rm) out += `✅ User satisfaction: ${rm[1]}/5 star rating\n`; }
     if (desc.includes("language")) { const lm = p.desc.match(/(\d+)\s*languages/i); if (lm) out += `✅ Multi-language: ${lm[1]} languages supported\n`; }
     if (desc.match(/\d+%\s+(?:resolution|accuracy|detection|conversion|placement)/i)) { const am = p.desc.match(/(\d+%)\s+(resolution|accuracy|detection|conversion|placement)/i); if (am) out += `✅ Performance: ${am[1]} ${am[2]} rate achieved\n`; }
-    out += `✅ Delivered on time with full documentation, testing, and production deployment\n`;
-    out += `✅ Client gave 5/5 rating — repeat engagement secured`;
+    if (isTechCategory(cat)) {
+      out += `✅ Delivered on time with full documentation, testing, and production deployment`;
+    } else if (isDesign(cat)) {
+      out += `✅ Delivered on time with all assets, brand guidelines, and usage documentation`;
+    } else if (isMarketing(cat)) {
+      out += `✅ Delivered with comprehensive reporting, strategy documentation, and ongoing support`;
+    } else {
+      out += `✅ Delivered on time with full documentation and professional handoff`;
+    }
     return out;
   }).join("\n\n\n");
 }
@@ -370,25 +449,140 @@ function genClients(cat) {
   const corpClients = cat.experience.map(e => e.company.split("—")[0].trim()).filter(c => !c.includes("Self-Employed") && !c.includes("Freelance"));
   const all = [...new Set([...projClients, ...corpClients])];
   let out = all.join(", ");
-  out += `\n\nAdditional notable clients (under NDA):\n• 3 Fortune 500 enterprise clients\n• 5+ funded startups (Series A – Series C)\n• 2 government/public sector organizations\n\nReferences and testimonials available upon request. All client engagements include NDA protection.`;
+  out += `\n\nThese are all verifiable public clients I have worked with directly. Happy to provide references or connect you with past clients upon request.`;
   return out;
 }
 
 /* ── FIELD 3: Role in Each Project ── */
 function genRoles(cat) {
+  const nd = isNonDev(cat);
+  const wd = cat.id === "website-design";
+  const cl = cat.id === "coding-lessons";
+
   return cat.projects.map((p, i) => {
     const role = roleTitle(p.client), client = clientFrom(p.client), hl = headlineMetric(p.tech), tech = techList(p.tech);
     const techs = tech.split(",").map(t => t.trim());
     let out = `PROJECT ${i+1}: ${p.name}\nTitle: ${role}\nClient: ${client}\n\nSPECIFIC RESPONSIBILITIES:\n\n`;
-    out += `1. Architecture & Technical Design\n   • Designed the entire system architecture from requirements to production blueprint\n   • Selected the technology stack: ${techs.slice(0,3).join(", ")} based on scalability and performance requirements\n   • Created technical specifications, data models, API contracts, and integration diagrams\n\n`;
-    out += `2. Core Development & Implementation\n   • Personally wrote 80%+ of the core codebase including all business-critical components\n`;
-    extractKeyActions(p.desc).forEach(k => { out += `   • ${k}\n`; });
-    out += `\n3. Delivery & Results\n`;
-    if (hl) out += `   • Delivered final product achieving: ${hl}\n`;
-    out += `   • Managed full project lifecycle: scoping → sprints → testing → deployment → handoff\n   • Provided production monitoring setup, runbooks, and 30-day post-launch support\n\n`;
-    out += `4. Client & Stakeholder Management\n   • Led all client-facing communication: kickoff, weekly demos, milestone sign-offs\n   • Translated business requirements into technical specifications and acceptance criteria\n   • Delivered comprehensive documentation: architecture docs, API docs, deployment guides`;
+
+    if (nd || wd || cl) {
+      // ─── NON-DEV / DESIGN / TEACHING CATEGORIES ───
+      const sectionLabels = getRoleSections(cat);
+
+      out += `1. ${sectionLabels.s1}\n`;
+      out += `   • ${getRoleS1Detail(cat, techs)}\n`;
+      out += `   • Selected and used tools: ${techs.slice(0,3).join(", ")}\n`;
+      out += `   • ${getRoleS1Extra(cat)}\n\n`;
+
+      out += `2. ${sectionLabels.s2}\n`;
+      out += `   • ${getRoleS2Lead(cat)}\n`;
+      extractKeyActions(p.desc, cat).forEach(k => { out += `   • ${k}\n`; });
+
+      out += `\n3. Delivery & Results\n`;
+      if (hl) out += `   • Achieved: ${hl}\n`;
+      out += `   • ${getRoleDelivery(cat)}\n`;
+      out += `   • Provided final deliverables with revision rounds and post-delivery support\n\n`;
+
+      out += `4. Client & Stakeholder Management\n   • Led all client-facing communication: kickoff calls, progress updates, revision rounds\n`;
+      out += `   • ${getRoleClientExtra(cat)}\n`;
+      out += `   • Delivered final assets with usage guidelines and handoff documentation`;
+    } else {
+      // ─── DEV / TECH CATEGORIES ───
+      out += `1. Architecture & Technical Design\n   • Designed the entire system architecture from requirements to production blueprint\n   • Selected the technology stack: ${techs.slice(0,3).join(", ")} based on scalability and performance requirements\n   • Created technical specifications, data models, API contracts, and integration diagrams\n\n`;
+      out += `2. Core Development & Implementation\n   • Personally wrote 80%+ of the core codebase including all business-critical components\n`;
+      extractKeyActions(p.desc, cat).forEach(k => { out += `   • ${k}\n`; });
+      out += `\n3. Delivery & Results\n`;
+      if (hl) out += `   • Delivered final product achieving: ${hl}\n`;
+      out += `   • Managed full project lifecycle: scoping → sprints → testing → deployment → handoff\n   • Provided production monitoring setup, runbooks, and 30-day post-launch support\n\n`;
+      out += `4. Client & Stakeholder Management\n   • Led all client-facing communication: kickoff, weekly demos, milestone sign-offs\n   • Translated business requirements into technical specifications and acceptance criteria\n   • Delivered comprehensive documentation: architecture docs, API docs, deployment guides`;
+    }
     return out;
   }).join("\n\n" + "━".repeat(60) + "\n\n");
+}
+
+/* ── Role section helpers (category-specific labels) ── */
+function getRoleSections(cat) {
+  const map = {
+    "video-editing":       { s1: "Creative Direction & Pre-Production", s2: "Editing & Post-Production" },
+    "logo-design":         { s1: "Discovery & Brand Strategy", s2: "Design & Creative Execution" },
+    "copywriting":         { s1: "Research & Content Strategy", s2: "Writing & Content Creation" },
+    "seo":                 { s1: "SEO Audit & Strategy Development", s2: "Execution & Optimization" },
+    "social-media":        { s1: "Strategy & Content Planning", s2: "Campaign Execution & Community" },
+    "business-consulting": { s1: "Research & Strategic Analysis", s2: "Strategy Development & Advisory" },
+    "user-testing":        { s1: "Research Design & Planning", s2: "Testing & Analysis" },
+    "website-design":      { s1: "UX Research & Design Strategy", s2: "UI Design & Prototyping" },
+    "coding-lessons":      { s1: "Curriculum Design & Planning", s2: "Teaching & Student Outcomes" }
+  };
+  return map[cat.id] || { s1: "Planning & Design", s2: "Core Work & Execution" };
+}
+function getRoleS1Detail(cat, techs) {
+  const map = {
+    "video-editing":       "Defined the creative direction, storyboard, and editing style for the project",
+    "logo-design":         "Conducted brand discovery workshops, competitor audits, and audience research",
+    "copywriting":         "Conducted audience research, competitive analysis, and keyword/topic mapping",
+    "seo":                 "Performed comprehensive technical SEO audit and competitive gap analysis",
+    "social-media":        "Developed platform-specific content strategy aligned with business objectives",
+    "business-consulting": "Conducted market research, stakeholder interviews, and competitive landscape analysis",
+    "user-testing":        "Designed research plan including test scenarios, participant criteria, and success metrics",
+    "website-design":      "Conducted user research, competitive analysis, and information architecture mapping",
+    "coding-lessons":      "Designed curriculum structure, learning outcomes, and assessment framework"
+  };
+  return map[cat.id] || "Planned and scoped the full project from requirements to delivery approach";
+}
+function getRoleS1Extra(cat) {
+  const map = {
+    "video-editing":       "Planned shot list, pacing structure, and audio/visual treatment approach",
+    "logo-design":         "Developed mood boards, typography exploration, and initial concept directions",
+    "copywriting":         "Created brand voice guide and messaging hierarchy for all content touchpoints",
+    "seo":                 "Mapped keyword opportunities, content gaps, and technical fixes by priority",
+    "social-media":        "Created content calendar, brand tone guidelines, and engagement playbook",
+    "business-consulting": "Built data-driven frameworks and models to support strategic recommendations",
+    "user-testing":        "Recruited representative participants and set up testing infrastructure",
+    "website-design":      "Created user flows, wireframes, and interactive prototypes for stakeholder review",
+    "coding-lessons":      "Built progressive exercises, projects, and auto-graded assessments"
+  };
+  return map[cat.id] || "Defined the approach, timeline, and deliverables for each project phase";
+}
+function getRoleS2Lead(cat) {
+  const map = {
+    "video-editing":       "Personally edited all footage — cutting, pacing, transitions, and narrative structure",
+    "logo-design":         "Personally designed all logo concepts and brand identity elements from scratch",
+    "copywriting":         "Personally wrote all copy from first draft through final revision",
+    "seo":                 "Personally implemented technical fixes, content strategy, and link building campaigns",
+    "social-media":        "Personally managed content creation, community engagement, and campaign optimization",
+    "business-consulting": "Personally developed strategic recommendations, financial models, and roadmaps",
+    "user-testing":        "Personally moderated all testing sessions and conducted analysis of findings",
+    "website-design":      "Personally designed all UI screens, interactions, and design system components",
+    "coding-lessons":      "Personally taught all lessons, conducted code reviews, and mentored students"
+  };
+  return map[cat.id] || "Personally led all core project work from start to finish";
+}
+function getRoleDelivery(cat) {
+  const map = {
+    "video-editing":       "Managed full post-production: rough cut → client feedback → revisions → final master → export",
+    "logo-design":         "Managed full design lifecycle: concepts → client feedback → refinement → final brand package",
+    "copywriting":         "Managed full content pipeline: research → outline → draft → edit → client approval → publish",
+    "seo":                 "Managed full SEO lifecycle: audit → strategy → implementation → monitoring → monthly reporting",
+    "social-media":        "Managed ongoing campaign performance: launch → monitor → optimize → report → iterate",
+    "business-consulting": "Managed full engagement: discovery → analysis → recommendations → implementation support",
+    "user-testing":        "Managed full research cycle: plan → recruit → test → analyze → deliver actionable report",
+    "website-design":      "Managed full design process: research → wireframe → design → prototype → handoff to dev",
+    "coding-lessons":      "Managed full teaching lifecycle: curriculum → lectures → assignments → grading → career support"
+  };
+  return map[cat.id] || "Managed full project lifecycle from initial scoping to final delivery";
+}
+function getRoleClientExtra(cat) {
+  const map = {
+    "video-editing":       "Translated creative briefs into visual storytelling that matched brand identity",
+    "logo-design":         "Translated business values and positioning into visual identity that resonates with target audience",
+    "copywriting":         "Translated business goals and product features into compelling, conversion-focused messaging",
+    "seo":                 "Translated complex SEO data into clear reports that non-technical stakeholders can act on",
+    "social-media":        "Translated brand strategy into platform-native content that drives engagement and conversions",
+    "business-consulting": "Translated complex analysis into clear executive presentations and board-ready documents",
+    "user-testing":        "Translated user research findings into prioritized design recommendations with evidence",
+    "website-design":      "Translated business requirements into intuitive user experiences with measurable UX improvements",
+    "coding-lessons":      "Translated complex technical concepts into clear, progressive learning experiences"
+  };
+  return map[cat.id] || "Translated client requirements into clear deliverables and timelines";
 }
 
 /* ── FIELD 4: Pricing ── */
@@ -396,16 +590,83 @@ function genPricing(cat) {
   const rate = cat.salary;
   const low = parseInt(rate.match(/\$(\d+)/)?.[1] || "50"), high = parseInt(rate.match(/\$\d+[–-]\$(\d+)/)?.[1] || "200"), mid = Math.round((low + high) / 2);
   const sm = [low*40, mid*50], md = [mid*60, high*80], lg = [high*100, high*200], ret = [low*100, high*100];
+  const nd = isNonDev(cat);
+  const wd = cat.id === "website-design";
+  const cl = cat.id === "coding-lessons";
+  const corpInfo = getCorpInfo(cat);
 
   let out = `HOURLY RATE: ${rate}\n(Depends on project complexity, urgency, and engagement duration)\n\nPROJECT-BASED PRICING:\n\n`;
-  out += `Small Scope (2-4 weeks):\n  $${sm[0].toLocaleString()} – $${sm[1].toLocaleString()}\n  Examples: MVP/prototype, single feature build, API integration, bug fixing sprint\n\n`;
-  out += `Medium Scope (1-3 months):\n  $${md[0].toLocaleString()} – $${md[1].toLocaleString()}\n  Examples: Full product build, platform migration, system redesign, multi-feature release\n\n`;
-  out += `Enterprise / Complex (3-6+ months):\n  $${lg[0].toLocaleString()} – $${lg[1].toLocaleString()}+\n  Examples: Enterprise platform, distributed system, full-stack product with team augmentation\n\n`;
+
+  // Category-specific scope examples
+  const scopes = getPricingScopes(cat);
+  out += `Small Scope (${scopes.smTime}):\n  $${sm[0].toLocaleString()} – $${sm[1].toLocaleString()}\n  Examples: ${scopes.sm}\n\n`;
+  out += `Medium Scope (${scopes.mdTime}):\n  $${md[0].toLocaleString()} – $${md[1].toLocaleString()}\n  Examples: ${scopes.md}\n\n`;
+  out += `Enterprise / Complex (${scopes.lgTime}):\n  $${lg[0].toLocaleString()} – $${lg[1].toLocaleString()}+\n  Examples: ${scopes.lg}\n\n`;
   out += `Monthly Retainer:\n  $${ret[0].toLocaleString()} – $${ret[1].toLocaleString()}/month\n  Guaranteed ${Math.round(ret[0]/mid)}-${Math.round(ret[1]/mid)} hours/month, priority scheduling, dedicated Slack channel\n\n`;
+
   out += `${"─".repeat(40)}\n\nWHAT'S INCLUDED IN EVERY PROJECT:\n\n`;
-  out += `✓ Discovery & scoping session (free for qualified projects)\n✓ Technical architecture document & project roadmap\n✓ Milestone-based delivery with weekly progress demos\n✓ Full source code with clean documentation\n✓ Automated test suite (unit + integration + E2E)\n✓ Production deployment and CI/CD pipeline setup\n✓ 30 days of post-delivery support & bug fixes (included free)\n✓ Complete IP and source code ownership transfer\n✓ Knowledge transfer session and maintenance documentation\n\n`;
-  out += `WHY MY RATES ARE JUSTIFIED:\n• Former ${getCorpName(cat)} — I bring Big Tech engineering standards\n• My projects have generated $${Math.round(high*500).toLocaleString()}+ in combined business value for clients\n• Zero failed projects — 100% client satisfaction across 50+ engagements\n• I deliver production-ready code, not prototypes — saving you months of rework`;
+  // Category-specific deliverables
+  out += getPricingIncludes(cat);
+
+  out += `\nWHY MY RATES ARE JUSTIFIED:\n`;
+  out += `• Former ${corpInfo.title} at ${corpInfo.name} — I bring top-tier ${nd || wd ? "industry" : "engineering"} standards to every project\n`;
+  // Real, verifiable justifications from their experience bullets
+  const corpExp = cat.experience.find(e => !e.company.includes("Self-Employed") && !e.company.includes("Freelance"));
+  if (corpExp && corpExp.bullets.length > 0) out += `• At ${corpInfo.name}: ${corpExp.bullets[0]}\n`;
+  out += `• ${getPricingCTA(cat)}`;
   return out;
+}
+
+function getPricingScopes(cat) {
+  const map = {
+    "video-editing":       { smTime: "1-2 weeks", sm: "Single video edit, social media content pack, event highlight reel", mdTime: "2-6 weeks", md: "Multi-episode series, brand campaign, documentary short", lgTime: "2-6+ months", lg: "Full documentary, branded content series, ongoing content production" },
+    "logo-design":         { smTime: "1-3 weeks", sm: "Logo refresh, brand mark design, icon set", mdTime: "1-3 months", md: "Full brand identity, visual identity system, multi-brand family", lgTime: "3-6+ months", lg: "Enterprise rebrand, brand architecture for portfolio company, retail brand system" },
+    "copywriting":         { smTime: "1-2 weeks", sm: "Landing page copy, email sequence, product descriptions", mdTime: "1-3 months", md: "Full website copy, content strategy, brand messaging framework", lgTime: "3-6+ months", lg: "Enterprise content program, ongoing blog + email + social copy, brand voice overhaul" },
+    "seo":                 { smTime: "2-4 weeks", sm: "SEO audit, keyword research, technical fixes, single-page optimization", mdTime: "1-3 months", md: "Full SEO strategy, content hub build, link building campaign", lgTime: "3-6+ months", lg: "Enterprise SEO transformation, multi-market international SEO, ongoing growth retainer" },
+    "social-media":        { smTime: "1-2 weeks", sm: "Social audit, content strategy doc, campaign plan for one platform", mdTime: "1-3 months", md: "Multi-platform strategy, influencer campaign, community build", lgTime: "3-6+ months", lg: "Ongoing social media management, full-funnel social program, brand launch campaign" },
+    "business-consulting": { smTime: "1-3 weeks", sm: "Market research report, competitor analysis, pitch deck review", mdTime: "1-3 months", md: "Growth strategy, financial model, go-to-market plan", lgTime: "3-6+ months", lg: "Fractional COO engagement, fundraising support, international expansion strategy" },
+    "user-testing":        { smTime: "1-2 weeks", sm: "Heuristic evaluation, 5-user usability test, accessibility audit", mdTime: "1-3 months", md: "Full usability study, A/B test program, UX research sprint", lgTime: "3-6+ months", lg: "Ongoing research program, enterprise testing framework, continuous discovery" },
+    "website-design":      { smTime: "2-4 weeks", sm: "Landing page design, UI refresh, design audit", mdTime: "1-3 months", md: "Full website redesign, design system, multi-page experience", lgTime: "3-6+ months", lg: "Enterprise product design, design system buildout, ongoing UX partnership" },
+    "coding-lessons":      { smTime: "1-2 weeks", sm: "Workshop series, code review session, interview prep coaching", mdTime: "1-3 months", md: "Bootcamp curriculum, corporate training program, online course", lgTime: "3-6+ months", lg: "Full learning platform curriculum, ongoing mentorship program, enterprise training" }
+  };
+  return map[cat.id] || { smTime: "2-4 weeks", sm: "MVP/prototype, single feature build, API integration, bug fixing sprint", mdTime: "1-3 months", md: "Full product build, platform migration, system redesign, multi-feature release", lgTime: "3-6+ months", lg: "Enterprise platform, distributed system, full-stack product with team augmentation" };
+}
+
+function getPricingIncludes(cat) {
+  if (isNonDev(cat) || cat.id === "website-design" || cat.id === "coding-lessons") {
+    const map = {
+      "video-editing":       "✓ Creative brief and storyboard review\n✓ Professional editing with pacing and narrative structure\n✓ Color grading and audio mixing\n✓ Motion graphics and title design where applicable\n✓ 2-3 revision rounds included\n✓ Final delivery in all required formats (broadcast, web, social)\n✓ Project files available upon request\n✓ 14 days of post-delivery minor revisions included\n",
+      "logo-design":         "✓ Brand discovery session and competitor research\n✓ 3-5 initial concept directions\n✓ 2-3 revision rounds on selected direction\n✓ Final logo in all formats (AI, SVG, PNG, PDF)\n✓ Brand guidelines document with usage rules\n✓ Social media avatar and favicon versions\n✓ Full IP and trademark-ready files\n✓ 14 days of post-delivery minor adjustments included\n",
+      "copywriting":         "✓ Audience research and competitive analysis\n✓ Content strategy and messaging framework\n✓ SEO-optimized writing with keyword integration\n✓ 2-3 revision rounds per piece\n✓ Final copy in editable format (Google Docs/Word)\n✓ Style guide and tone-of-voice documentation\n✓ Full IP and usage rights transfer\n✓ 14 days of post-delivery minor edits included\n",
+      "seo":                 "✓ Comprehensive technical SEO audit report\n✓ Keyword strategy with priority mapping\n✓ Content optimization recommendations\n✓ Monthly performance reports with GA4 data\n✓ Competitor gap analysis\n✓ On-page and technical implementation\n✓ Link building outreach (for retainer clients)\n✓ Ongoing support and strategy adjustments\n",
+      "social-media":        "✓ Social media audit and strategy document\n✓ Content calendar with platform-specific posts\n✓ Creative assets (graphics, short-form video)\n✓ Community management and engagement\n✓ Paid campaign setup and optimization\n✓ Monthly analytics reports with insights\n✓ Influencer outreach and coordination\n✓ Ongoing strategy refinement based on performance\n",
+      "business-consulting": "✓ Stakeholder interviews and discovery sessions\n✓ Market research and competitive analysis\n✓ Strategic recommendations with actionable roadmap\n✓ Financial models and scenario analysis\n✓ Executive presentation deck\n✓ Implementation support and progress check-ins\n✓ All working files and models transferred\n✓ 30 days of follow-up advisory included\n",
+      "user-testing":        "✓ Research plan with objectives and methodology\n✓ Participant recruitment and screening\n✓ Test script design and pilot testing\n✓ Moderated or unmoderated testing sessions\n✓ Analysis report with video highlights\n✓ Prioritized recommendations with evidence\n✓ Stakeholder presentation of findings\n✓ Follow-up validation testing available\n",
+      "website-design":      "✓ UX research and information architecture\n✓ Wireframes and user flow diagrams\n✓ High-fidelity UI designs for all pages\n✓ Interactive prototype (Figma)\n✓ Design system with reusable components\n✓ Developer handoff with specs and assets\n✓ Responsive designs (desktop, tablet, mobile)\n✓ 30 days of post-handoff design support included\n",
+      "coding-lessons":      "✓ Custom curriculum aligned to learning goals\n✓ Live sessions with screen sharing and coding\n✓ Practice exercises and hands-on projects\n✓ Code review and personalized feedback\n✓ Recorded sessions for replay\n✓ Career guidance and interview prep\n✓ Progress tracking and assessment\n✓ Ongoing support via chat between sessions\n"
+    };
+    return map[cat.id] || "";
+  }
+  // Dev categories
+  return "✓ Discovery & scoping session (free for qualified projects)\n✓ Technical architecture document & project roadmap\n✓ Milestone-based delivery with weekly progress demos\n✓ Full source code with clean documentation\n✓ Automated test suite (unit + integration + E2E)\n✓ Production deployment and CI/CD pipeline setup\n✓ 30 days of post-delivery support & bug fixes (included free)\n✓ Complete IP and source code ownership transfer\n✓ Knowledge transfer session and maintenance documentation\n";
+}
+
+function getPricingCTA(cat) {
+  if (isNonDev(cat) || cat.id === "website-design" || cat.id === "coding-lessons") {
+    const map = {
+      "video-editing":       "I deliver broadcast-quality edits, not rough cuts — saving you time and re-edits",
+      "logo-design":         "I deliver complete brand systems, not just a logo file — giving you a professional foundation to build on",
+      "copywriting":         "I deliver strategic copy that converts, not just words on a page — every piece is backed by research",
+      "seo":                 "I deliver measurable organic growth, not just audits — every recommendation comes with implementation",
+      "social-media":        "I deliver engaged audiences and real conversions, not just vanity metrics",
+      "business-consulting": "I deliver actionable strategies with clear ROI, not generic slide decks",
+      "user-testing":        "I deliver evidence-based insights that drive real product improvements, not just reports",
+      "website-design":      "I deliver designs that convert users, not just look good — every decision is backed by UX research",
+      "coding-lessons":      "I deliver real skill growth with measurable outcomes — my students get placed at top companies"
+    };
+    return map[cat.id] || "I deliver professional results that exceed expectations";
+  }
+  return "I deliver production-ready code, not prototypes — saving you months of rework";
 }
 
 /* ── FIELD 5: Anything Else ── */
@@ -417,26 +678,105 @@ function genExtra(cat) {
   const corpRole = corp?.role || "";
   const freelance = cat.experience.find(e => e.company.includes("Self-Employed") || e.company.includes("Freelance"));
   const allTech = Object.values(cat.techStack).flat();
+  const nd = isNonDev(cat);
+  const wd = cat.id === "website-design";
+  const cl = cat.id === "coding-lessons";
+  const showGitHub = isTechCategory(cat) || cl;
+  const expertiseLabel = nd ? "TOOLS & EXPERTISE" : (wd ? "DESIGN TOOLS & EXPERTISE" : "TECHNICAL EXPERTISE");
 
   let t = `━━━ PROFESSIONAL BACKGROUND ━━━\n\n`;
   if (corp) {
-    t += `Former ${corpRole} at ${corpName}. Now a full-time freelance ${cat.name.toLowerCase()} specialist with 50+ successful client engagements.\n\nKey achievements at ${corpName}:\n`;
+    t += `Former ${corpRole} at ${corpName}. Now a full-time freelance ${cat.name.toLowerCase()} specialist.\n\nKey achievements at ${corpName}:\n`;
     corp.bullets.forEach(b => { t += `  • ${b}\n`; });
     t += `\n`;
   }
   if (freelance) { t += `Freelance highlights:\n`; freelance.bullets.forEach(b => { t += `  • ${b}\n`; }); t += `\n`; }
 
   t += `━━━ CERTIFICATIONS ━━━\n\n${certs}\n\n`;
-  t += `━━━ TECHNICAL EXPERTISE ━━━\n\nCore Skills: ${skills}\n\nFull Tech Stack (${allTech.length} technologies):\n`;
+  t += `━━━ ${expertiseLabel} ━━━\n\nCore Skills: ${skills}\n\nFull Toolkit (${allTech.length} tools & technologies):\n`;
   Object.entries(cat.techStack).forEach(([group, techs]) => { t += `  ${group}: ${techs.join(", ")}\n`; });
+
   t += `\n━━━ WHY FIVERR PRO CLIENTS CHOOSE ME ━━━\n\n`;
-  t += `🏢 Enterprise Pedigree\n   Former ${corpName || "Big Tech"} engineer — I write the same quality code that powers\n   products used by millions. You get Big Tech engineering at freelance flexibility.\n\n`;
-  t += `📊 Results-Driven Delivery\n   Every project I take on has measurable outcomes. I don't just write code —\n   I deliver business results. See my portfolio for case studies with real metrics.\n\n`;
-  t += `🤝 Professional Communication\n   Weekly demo calls, daily async updates on Slack/Discord, milestone reports.\n   You'll always know exactly where your project stands. Zero surprises.\n\n`;
-  t += `⚡ Speed Without Compromise\n   I ship fast because I've built similar systems before. But speed never comes\n   at the expense of quality — every project includes tests, docs, and code review.\n\n`;
-  t += `🛡️ Risk-Free Engagement\n   • Milestone-based payments — you only pay for delivered, approved work\n   • 30-day post-delivery warranty — free bug fixes after launch\n   • Full IP transfer — you own 100% of the code and all deliverables\n   • NDA protection — your idea and business data stay confidential\n\n`;
-  t += `━━━ LINKS ━━━\n\nPortfolio: https://showcase-five-psi.vercel.app\nLinkedIn: https://linkedin.com/in/shreyansh-singh-dev\nGitHub: https://github.com/mabwfas\n\nI look forward to bringing the same level of excellence to your project.\nLet's build something exceptional together.`;
+
+  // Category-appropriate pedigree pitch (no "engineer" or "code" for non-dev)
+  t += `🏢 ${nd || wd ? "Industry" : "Enterprise"} Pedigree\n`;
+  t += `   Former ${corpRole} at ${corpName || "a leading company"}. ${getExtraPedigree(cat)}\n\n`;
+
+  t += `📊 Results-Driven Delivery\n`;
+  t += `   Every project I take on has measurable outcomes. ${getExtraResults(cat)}\n\n`;
+
+  t += `🤝 Professional Communication\n   Weekly progress updates, responsive on Slack/Discord, milestone reports.\n   You'll always know exactly where your project stands. Zero surprises.\n\n`;
+
+  t += `⚡ Speed Without Compromise\n   ${getExtraSpeed(cat)}\n\n`;
+
+  t += `🛡️ Risk-Free Engagement\n   • Milestone-based payments — you only pay for delivered, approved work\n   • ${nd || wd ? "14-day" : "30-day"} post-delivery warranty — free ${nd || wd ? "revisions" : "bug fixes"} after launch\n   • Full IP transfer — you own 100% of ${nd || wd ? "all deliverables and assets" : "the code and all deliverables"}\n   • NDA protection — your idea and business data stay confidential\n\n`;
+
+  // Links — only include GitHub for tech categories
+  t += `━━━ LINKS ━━━\n\nPortfolio: https://showcase-five-psi.vercel.app\nLinkedIn: https://linkedin.com/in/shreyansh-singh-dev\n`;
+  if (showGitHub) t += `GitHub: https://github.com/mabwfas\n`;
+
+  t += `\nI look forward to bringing the same level of excellence to your project.\nLet's ${getExtraCTA(cat)} together.`;
   return t;
+}
+
+function getExtraPedigree(cat) {
+  const map = {
+    "video-editing":       "I bring the same production standards used on major film and TV projects to every freelance edit.",
+    "logo-design":         "I bring the same brand thinking used for Fortune 500 clients to every identity project.",
+    "copywriting":         "I bring the same content strategy and writing standards used for enterprise marketing teams.",
+    "seo":                 "I bring the same data-driven growth strategies used for companies with millions of monthly users.",
+    "social-media":        "I bring the same campaign strategies used for major national brands to every client.",
+    "business-consulting": "I bring the same analytical rigor used for top-tier consulting engagements.",
+    "user-testing":        "I bring the same research methodology used for products serving millions of users.",
+    "website-design":      "I bring the same design quality and UX thinking used for products at massive scale.",
+    "coding-lessons":      "I bring real industry experience from building production systems to every teaching session."
+  };
+  return map[cat.id] || "I bring enterprise-grade engineering standards to every freelance project.";
+}
+function getExtraResults(cat) {
+  const map = {
+    "video-editing":       "See my portfolio for samples across documentary, commercial, and social media content.",
+    "logo-design":         "See my portfolio for case studies with before/after brand transformations.",
+    "copywriting":         "See my portfolio for conversion data and content performance metrics from real campaigns.",
+    "seo":                 "See my portfolio for traffic growth case studies with verified analytics screenshots.",
+    "social-media":        "See my portfolio for engagement and growth metrics from real client campaigns.",
+    "business-consulting": "See my portfolio for client outcomes including fundraising, growth, and operational improvements.",
+    "user-testing":        "See my portfolio for research case studies showing how findings drove product improvements.",
+    "website-design":      "See my portfolio for design case studies with UX metrics and conversion improvements.",
+    "coding-lessons":      "See student outcomes: placement rates, salary increases, and testimonials."
+  };
+  return map[cat.id] || "See my portfolio for case studies with real metrics and business outcomes.";
+}
+function getExtraSpeed(cat) {
+  if (isNonDev(cat) || cat.id === "website-design" || cat.id === "coding-lessons") {
+    const map = {
+      "video-editing":       "I deliver fast because I've edited hundreds of projects across every format. Speed never comes at the expense of quality — every edit gets proper color grading, sound design, and polish.",
+      "logo-design":         "I work efficiently because I have a proven brand discovery process. Speed never comes at the expense of quality — every identity gets proper research, concept development, and refinement.",
+      "copywriting":         "I write fast because I have deep domain expertise across industries. Speed never comes at the expense of quality — every piece gets proper research, multiple drafts, and SEO optimization.",
+      "seo":                 "I move fast because I've audited and optimized hundreds of sites. Speed never comes at the expense of quality — every strategy is backed by data and proven methodologies.",
+      "social-media":        "I launch campaigns fast because I know what works across platforms. Speed never comes at the expense of quality — every piece of content is strategic and on-brand.",
+      "business-consulting": "I deliver fast because I've solved similar problems across industries. Speed never comes at the expense of rigor — every recommendation is backed by data and analysis.",
+      "user-testing":        "I deliver insights fast because I have proven research frameworks. Speed never comes at the expense of rigor — every finding is backed by evidence from real user sessions.",
+      "website-design":      "I design fast because I've built design systems and patterns I can adapt. Speed never comes at the expense of quality — every design gets UX research, iteration, and accessibility review.",
+      "coding-lessons":      "I prepare fast because I've taught thousands of students. Speed never comes at the expense of depth — every lesson is tailored to the student's level and goals."
+    };
+    return map[cat.id] || "I work efficiently because I've done this many times before.";
+  }
+  return "I ship fast because I've built similar systems before. But speed never comes\n   at the expense of quality — every project includes tests, docs, and code review.";
+}
+function getExtraCTA(cat) {
+  const map = {
+    "video-editing": "create something remarkable",
+    "logo-design": "build a brand that stands out",
+    "copywriting": "craft copy that converts",
+    "seo": "grow your organic presence",
+    "social-media": "build your audience",
+    "business-consulting": "build your growth strategy",
+    "user-testing": "understand your users better",
+    "website-design": "design an experience users love",
+    "coding-lessons": "level up your engineering skills"
+  };
+  return map[cat.id] || "build something exceptional";
 }
 
 const FIELDS = [
