@@ -255,6 +255,7 @@ a{text-decoration:none;color:inherit}
   </div>
   <div class="topbar-right">
     <button class="copy-all-global" id="copyAllGlobal" onclick="copyCurrentAll(this)">📋 Copy All 5 Answers</button>
+    <button class="copy-all-global" id="btnGenSite" onclick="openWebsiteGenerator()" style="background:linear-gradient(135deg,#a855f7,#7c3aed);font-size:10px;padding:6px 12px">🌐 Generate Website</button>
     <a href="fiverr-guide.html" class="back" style="color:#10b981">🎯 Approval Guide</a>
     <a href="fiverr-uploads.html" class="back" style="color:#fbbf24">📄 Upload Kit</a>
     <a href="index.html" class="back">← Dashboard</a>
@@ -295,6 +296,8 @@ a{text-decoration:none;color:inherit}
 </div>
 
 <script src="data/categories.js"></script>
+<script src="data/people.js"></script>
+<script src="website-gen.js"></script>
 <script>
 /* ═══════════════════════════════════════════════════════
    FIVERR PRO APPLICATION — ANSWER ENGINE v3
@@ -988,6 +991,61 @@ document.addEventListener("keydown", e => {
     }
   }
 });
+
+/* ═══════════════════════════════
+   WEBSITE GENERATOR MODAL
+   ═══════════════════════════════ */
+function openWebsiteGenerator() {
+  // Build a modal to pick person + generate
+  let overlay = document.getElementById('site-gen-overlay');
+  if (overlay) { overlay.style.display = 'flex'; return; }
+
+  overlay = document.createElement('div');
+  overlay.id = 'site-gen-overlay';
+  overlay.style.cssText = 'position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center';
+  overlay.onclick = (e) => { if (e.target === overlay) overlay.style.display = 'none'; };
+
+  const personOptions = PEOPLE.map(p => `<option value="${p.id}">${p.name}</option>`).join('');
+  const catName = currentCat ? currentCat.name : 'No category selected';
+
+  overlay.innerHTML = `
+    <div style="background:#12121c;border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:32px;width:420px;max-width:90vw">
+      <h3 style="color:#fff;font-size:18px;font-weight:800;margin-bottom:4px">🌐 Generate Portfolio Website</h3>
+      <p style="color:#64748b;font-size:12px;margin-bottom:20px">Creates a full portfolio + CV site for the selected person & field.</p>
+
+      <label style="font-size:10px;text-transform:uppercase;letter-spacing:2px;color:#818cf8;font-weight:600;display:block;margin-bottom:6px">Select Person</label>
+      <select id="sg-person" style="width:100%;padding:10px 12px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:8px;color:#e2e8f0;font-size:13px;margin-bottom:16px;outline:none">
+        ${personOptions}
+      </select>
+
+      <label style="font-size:10px;text-transform:uppercase;letter-spacing:2px;color:#818cf8;font-weight:600;display:block;margin-bottom:6px">Field / Category</label>
+      <div style="padding:10px 12px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:8px;color:#e2e8f0;font-size:13px;margin-bottom:24px">${currentCat ? currentCat.icon + ' ' + catName : '— Select a category from sidebar first —'}</div>
+
+      <div style="display:flex;gap:10px">
+        <button onclick="doGenWebsite('preview')" style="flex:1;padding:12px;border-radius:8px;border:none;background:linear-gradient(135deg,#a855f7,#7c3aed);color:#fff;font-size:13px;font-weight:700;cursor:pointer;transition:opacity .2s" ${!currentCat?'disabled style="opacity:.4;flex:1;padding:12px;border-radius:8px;border:none;background:#333;color:#888;font-size:13px;font-weight:700;cursor:not-allowed"':''}>👁 Preview</button>
+        <button onclick="doGenWebsite('zip')" style="flex:1;padding:12px;border-radius:8px;border:none;background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff;font-size:13px;font-weight:700;cursor:pointer;transition:opacity .2s" ${!currentCat?'disabled style="opacity:.4;flex:1;padding:12px;border-radius:8px;border:none;background:#333;color:#888;font-size:13px;font-weight:700;cursor:not-allowed"':''}>📦 Download ZIP</button>
+      </div>
+      <button onclick="document.getElementById('site-gen-overlay').style.display='none'" style="width:100%;margin-top:10px;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,.08);background:transparent;color:#64748b;font-size:12px;cursor:pointer">Cancel</button>
+    </div>`;
+  document.body.appendChild(overlay);
+}
+
+function doGenWebsite(mode) {
+  const personId = document.getElementById('sg-person').value;
+  const person = PEOPLE.find(p => p.id === personId);
+  if (!person || !currentCat) return;
+
+  if (mode === 'preview') {
+    previewWebsite(person, currentCat, '#6366f1');
+  } else {
+    downloadWebsiteZIP(person, currentCat, '#6366f1').then(() => {
+      const btn = document.getElementById('btnGenSite');
+      btn.textContent = '✅ ZIP Downloaded';
+      setTimeout(() => { btn.textContent = '🌐 Generate Website'; }, 2000);
+    });
+  }
+  document.getElementById('site-gen-overlay').style.display = 'none';
+}
 
 /* ═══════════════════════════════
    INIT

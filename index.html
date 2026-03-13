@@ -200,7 +200,8 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   <!-- Actions -->
   <div class="action-btns">
     <button class="action-btn btn-create" id="btn-create" onclick="createPortfolio()">⚡ Create Portfolio & CV</button>
-    <button class="action-btn btn-deploy" id="btn-deploy" onclick="deployToVercel()" style="display:none">🚀 Deploy to Vercel</button>
+    <button class="action-btn" id="btn-website" onclick="generateWebsitePreview()" style="background:rgba(168,85,247,.12);color:#c084fc;border:1px solid rgba(168,85,247,.2)">🌐 Generate Website</button>
+    <button class="action-btn btn-deploy" id="btn-deploy" onclick="deployToVercel()" style="display:none">🚀 Download ZIP & Deploy</button>
     <button class="action-btn btn-ai" id="btn-ai" onclick="generateAIBanner()">🎨 Generate AI Banner</button>
     <a href="fiverr-answers.html" class="action-btn" style="display:flex;align-items:center;justify-content:center;gap:6px;background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#6ee7b7;text-decoration:none;font-size:12px;font-weight:600;padding:10px 16px;border-radius:8px;border:1px solid;cursor:pointer;text-align:center;transition:all .2s">📝 Fiverr Pro Answers</a>
     <a href="fiverr-uploads.html" class="action-btn" style="display:flex;align-items:center;justify-content:center;gap:6px;background:rgba(245,158,11,.08);border-color:rgba(245,158,11,.2);color:#fbbf24;text-decoration:none;font-size:12px;font-weight:600;padding:10px 16px;border-radius:8px;border:1px solid;cursor:pointer;text-align:center;transition:all .2s">📄 Upload Kit</a>
@@ -272,6 +273,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 <script src="data/categories.js"></script>
 <script src="data/people.js"></script>
 <script src="cv-modules/cv-engine.js"></script>
+<script src="website-gen.js"></script>
 
 <script>
 /* ════════════════════════════════════════
@@ -560,7 +562,7 @@ function createPortfolio() {
     document.getElementById('btn-deploy').style.display = 'flex';
 
     log('success', `Portfolio & CV generated for ${selectedPerson.name} — ${selectedCategory.name}`);
-    log('info', 'CV preview loaded. Click "Deploy to Vercel" to publish.');
+    log('info', 'CV preview loaded. Click "Generate Website" for a full portfolio site, or "Download ZIP & Deploy" to publish.');
 
     // Scroll to preview
     wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -704,21 +706,43 @@ function buildMainFallback(d) {
 }
 
 /* ════════════════════════════════════════
-   DEPLOY TO VERCEL (placeholder)
+   GENERATE WEBSITE PREVIEW
    ════════════════════════════════════════ */
-function deployToVercel() {
-  if (!selectedPerson || !selectedCategory) { log('error', 'Generate a portfolio first'); return; }
+function generateWebsitePreview() {
+  if (!selectedPerson) { log('error', 'Please select a person first'); return; }
+  if (!selectedCategory) { log('error', 'Please select a category first'); return; }
 
-  const slug = selectedPerson.id + '-' + selectedCategory.id;
-  log('info', `Preparing deployment for ${slug}...`);
-  document.getElementById('btn-deploy').textContent = '⏳ Deploying...';
+  log('info', `Generating website for ${selectedPerson.name} — ${selectedCategory.name}...`);
+  document.getElementById('btn-website').textContent = '⏳ Generating...';
 
   setTimeout(() => {
-    const url = `https://${slug}.vercel.app`;
-    document.getElementById('btn-deploy').innerHTML = `✅ Deployed → <a href="${url}" target="_blank" style="color:#22c55e;text-decoration:underline">${url}</a>`;
-    log('success', `Deployed to ${url}`);
-    log('info', 'Note: Actual Vercel deployment requires CLI. Run: vercel --prod');
-  }, 1500);
+    previewWebsite(selectedPerson, selectedCategory, selectedColor);
+    document.getElementById('btn-website').textContent = '🌐 Generate Website';
+    document.getElementById('btn-deploy').style.display = 'flex';
+    log('success', `Website opened in new tab for ${selectedPerson.name}`);
+    log('info', 'Click "Download ZIP & Deploy" to get deployable files.');
+  }, 400);
+}
+
+/* ════════════════════════════════════════
+   DEPLOY — Download ZIP for Vercel
+   ════════════════════════════════════════ */
+async function deployToVercel() {
+  if (!selectedPerson || !selectedCategory) { log('error', 'Generate a website first'); return; }
+
+  const slug = selectedPerson.id + '-' + selectedCategory.id;
+  log('info', `Packaging ${slug} website...`);
+  document.getElementById('btn-deploy').textContent = '⏳ Packaging...';
+
+  try {
+    await downloadWebsiteZIP(selectedPerson, selectedCategory, selectedColor);
+    document.getElementById('btn-deploy').innerHTML = '✅ ZIP Downloaded — <span style="font-size:10px;opacity:.7">Drag to vercel.com/new</span>';
+    log('success', `Downloaded ${slug}-website.zip`);
+    log('info', 'Deploy: drag the ZIP onto vercel.com/new or run "vercel --prod" in the extracted folder.');
+  } catch(e) {
+    document.getElementById('btn-deploy').textContent = '🚀 Download ZIP & Deploy';
+    log('error', 'ZIP download failed: ' + e.message);
+  }
 }
 
 /* ════════════════════════════════════════
