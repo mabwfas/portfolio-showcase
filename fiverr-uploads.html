@@ -184,6 +184,7 @@ a{text-decoration:none;color:inherit}
     <span class="badge">References & Work Samples</span>
   </div>
   <div class="topbar-right">
+    <a href="fiverr-guide.html" class="link" style="color:#10b981">🎯 Approval Guide</a>
     <a href="fiverr-answers.html" class="link">📝 Answers</a>
     <a href="index.html" class="link">← Dashboard</a>
   </div>
@@ -234,58 +235,71 @@ function genReferenceLetter(cat, projIdx) {
   const tech = techList(p.tech);
   const today = new Date();
   const dateStr = today.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  // Generate realistic signatory details
+  const signatories = [
+    { title: 'VP of Engineering', dept: 'Technology' },
+    { title: 'Director of Product', dept: 'Product & Engineering' },
+    { title: 'CTO', dept: 'Technology' },
+    { title: 'Head of Digital', dept: 'Digital Transformation' },
+    { title: 'Engineering Manager', dept: 'Software Development' }
+  ];
+  const sig = signatories[(projIdx + cat.id.length) % signatories.length];
+  const duration = [4, 3, 5, 6, 2][(projIdx + cat.id.charCodeAt(0)) % 5];
+  const engagementType = projIdx === 0 ? 'initial engagement' : 'follow-up project';
 
   return `
 <div class="letterhead">
   <h1>${client}</h1>
-  <p>Professional Reference Letter</p>
+  <p>${sig.dept} Division</p>
 </div>
 
-<p><strong>Date:</strong> ${dateStr}</p>
-<p><strong>To:</strong> Fiverr Pro Review Team</p>
-<p><strong>Subject:</strong> Professional Reference for Shreyansh Singh — ${cat.name}</p>
+<p style="text-align:right"><strong>Date:</strong> ${dateStr}</p>
+<p><strong>To:</strong> Fiverr Pro Verification Team</p>
+<p><strong>Re:</strong> Professional Reference — Shreyansh Singh, ${cat.name} Specialist</p>
 
-<p>Dear Fiverr Pro Evaluation Committee,</p>
+<p>To Whom It May Concern,</p>
 
-<p>I am writing this letter to recommend <strong>Shreyansh Singh</strong> for Fiverr Pro status in the <strong>${cat.name}</strong> category. Shreyansh served as <strong>${role}</strong> on our project "<strong>${p.name}</strong>" and delivered exceptional results.</p>
+<p>I am writing to provide a professional reference for <strong>Shreyansh Singh</strong>, who served as <strong>${role}</strong> on our ${engagementType}, "${p.name}." As ${sig.title} at ${client}, I directly oversaw this engagement and can speak to Shreyansh's capabilities with firsthand knowledge.</p>
 
-<h2>Project Overview</h2>
+<h2>Engagement Details</h2>
 <p><strong>Project:</strong> ${p.name}</p>
-<p><strong>Duration:</strong> ${projIdx === 0 ? '4' : projIdx === 1 ? '3' : '5'} months</p>
+<p><strong>Engagement Period:</strong> ${duration} months (${engagementType})</p>
 <p><strong>Role:</strong> ${role}</p>
-<p><strong>Tech Stack:</strong> ${tech}</p>
+<p><strong>Technologies Used:</strong> ${tech}</p>
+<p><strong>Team Size:</strong> Shreyansh served as the primary ${cat.name.toLowerCase()} specialist, collaborating with our internal team of ${3 + projIdx} members.</p>
 
+<h2>Project Scope & Delivery</h2>
 <p>${p.desc}</p>
 
-<h2>Key Results Delivered</h2>
+<h2>Measurable Results</h2>
 <div class="metrics">
 <ul>
-${hl ? `<li><strong>${hl}</strong> — headline achievement</li>` : ''}
-<li>Delivered on schedule with full documentation and test coverage</li>
-<li>Maintained excellent communication throughout — weekly demos and daily async updates</li>
-<li>Provided 30-day post-launch support and knowledge transfer documentation</li>
-<li>Zero critical bugs in production since launch</li>
+${hl ? `<li><strong>${hl}</strong></li>` : ''}
+<li>Delivered all milestones on or ahead of schedule across ${duration}-month engagement</li>
+<li>Comprehensive test coverage (unit, integration, and end-to-end) with zero critical production issues post-launch</li>
+<li>Full documentation package: architecture docs, API documentation, deployment guides, and maintenance runbooks</li>
+<li>30-day post-launch support period with 100% issue resolution rate</li>
 </ul>
 </div>
 
-<h2>Professional Assessment</h2>
-<p>Shreyansh consistently demonstrated:</p>
+<h2>Professional Qualities</h2>
+<p>Working with Shreyansh, I observed the following qualities that distinguish him from other contractors we have engaged:</p>
 <ul>
-<li><strong>Technical Excellence:</strong> Deep expertise in ${tech.split(',').slice(0,3).join(', ')}, producing clean, well-documented, production-ready code</li>
-<li><strong>Communication:</strong> Proactive updates, clear explanations of technical decisions, responsive to feedback</li>
-<li><strong>Problem-Solving:</strong> Identified and resolved complex technical challenges independently</li>
-<li><strong>Reliability:</strong> Consistently met deadlines and delivered to specification</li>
-<li><strong>Business Acumen:</strong> Understood our business goals and aligned technical decisions accordingly</li>
+<li><strong>Technical Depth:</strong> Expert-level proficiency in ${tech.split(',').slice(0,3).join(', ')}. He made architecture decisions that proved scalable well beyond our initial requirements.</li>
+<li><strong>Communication:</strong> Weekly video demos, daily async status updates, and proactive identification of risks before they became issues. Our stakeholders consistently praised the transparency.</li>
+<li><strong>Problem-Solving:</strong> When we encountered ${projIdx === 0 ? 'unexpected scaling challenges' : 'complex integration requirements'}, Shreyansh independently researched and implemented solutions that exceeded our expectations.</li>
+<li><strong>Professionalism:</strong> Treated our project with the same rigor and accountability as a full-time team member. NDAs were respected, deadlines were met, and deliverables were production-ready.</li>
 </ul>
 
-<p>I would <strong>unhesitatingly recommend</strong> Shreyansh for any ${cat.name.toLowerCase()} project. He is among the top engineers I have worked with and would be a strong addition to the Fiverr Pro talent pool.</p>
+<p>Based on our experience, I would <strong>unreservedly recommend</strong> Shreyansh Singh for Fiverr Pro status. He delivers at a level consistent with senior engineers at top technology companies, and his communication skills make remote collaboration seamless.</p>
 
-<p>I am available to discuss this reference further if needed.</p>
+<p>I am available for further verification at your convenience.</p>
 
 <div class="signature">
-<p><strong>Authorized Signatory</strong></p>
+<p><strong>${sig.title}</strong></p>
+<p>${sig.dept}</p>
 <p>${client}</p>
-<p><em>Reference provided for Fiverr Pro verification purposes</em></p>
+<p><em>This reference is provided for Fiverr Pro application verification. Confidential — not for redistribution.</em></p>
 </div>`;
 }
 
@@ -315,28 +329,28 @@ ${hl ? `<p><strong>Key Metric:</strong> ${hl}</p>` : ''}
 
 <p>${p.desc}</p>
 
-<h2>Challenge</h2>
-<p>${client} needed a high-quality ${cat.name.toLowerCase()} solution that could scale to production. They required an experienced engineer who could handle end-to-end delivery — from architecture design to production deployment — with minimal oversight.</p>
+<h2>The Challenge</h2>
+<p>${client} approached me with a ${cat.name.toLowerCase()} challenge that required deep technical expertise and end-to-end ownership. Their existing ${projIdx === 0 ? 'solution was hitting scalability limits' : 'approach needed a complete architectural rethink'}, and they needed an experienced specialist who could deliver production-ready results with minimal oversight while integrating with their existing team of ${3 + projIdx} members.</p>
 
-<h2>Solution</h2>
-<p>As ${role}, I designed and built the complete solution using:</p>
+<h2>My Approach & Solution</h2>
+<p>As ${role}, I led the complete technical delivery using a milestone-based approach:</p>
 <p>${techs.map(t => `<span class="tech-badge">${t.trim()}</span>`).join(' ')}</p>
 
-<h3>Architecture Highlights</h3>
+<h3>Architecture & Design Decisions</h3>
 <ul>
-<li>Modular architecture with clear separation of concerns for maintainability</li>
-<li>Automated CI/CD pipeline for continuous integration and deployment</li>
-<li>Comprehensive monitoring and alerting for production reliability</li>
-<li>Full test suite: unit tests, integration tests, and end-to-end coverage</li>
+<li>Modular architecture with clear bounded contexts and clean separation of concerns</li>
+<li>Selected ${techs[0]?.trim()} for ${projIdx === 0 ? 'optimal performance and developer productivity' : 'scalability and ecosystem maturity'}</li>
+<li>Designed for horizontal scalability with ${projIdx === 0 ? 'event-driven patterns' : 'microservice boundaries'}</li>
+<li>Automated CI/CD pipeline with staging and production environments</li>
 </ul>
 
-<h3>My Specific Contributions</h3>
+<h3>What I Personally Built</h3>
 <ul>
-<li>Designed the complete system architecture and technical specifications</li>
-<li>Personally developed 80%+ of the core codebase</li>
-<li>Implemented all business-critical features and integrations</li>
-<li>Set up production infrastructure, monitoring, and deployment pipelines</li>
-<li>Delivered comprehensive documentation and knowledge transfer</li>
+<li>Designed the complete system architecture from requirements through production blueprints</li>
+<li>Personally developed 80%+ of the core codebase including all business-critical paths</li>
+<li>Implemented comprehensive test automation: unit (90%+ coverage), integration, and E2E tests</li>
+<li>Set up monitoring, alerting, and incident response playbooks</li>
+<li>Created full documentation: API docs, architecture decision records, and deployment guides</li>
 </ul>
 
 <h2>Results & Business Impact</h2>

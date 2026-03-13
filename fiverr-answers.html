@@ -175,6 +175,19 @@ a{text-decoration:none;color:inherit}
 }
 .field-copy:hover{background:rgba(99,102,241,.15);border-color:rgba(99,102,241,.3);transform:scale(1.02)}
 .field-copy.ok{background:rgba(16,185,129,.12);border-color:rgba(16,185,129,.25);color:#6ee7b7}
+.field-tip{
+  display:none;padding:8px 18px 8px 46px;
+}
+.field.open .field-tip{display:block}
+.field-tip-inner{
+  display:flex;align-items:flex-start;gap:8px;
+  padding:8px 12px;border-radius:8px;
+  background:rgba(16,185,129,.04);border:1px solid rgba(16,185,129,.1);
+  font-size:10px;color:#6ee7b7;line-height:1.6;
+}
+.field-tip-inner .tip-icon{flex-shrink:0;font-size:12px;margin-top:1px}
+.field-tip-inner a{color:var(--accent);text-decoration:underline;opacity:.8}
+.field-tip-inner a:hover{opacity:1}
 .field-body{
   max-height:0;overflow:hidden;transition:max-height .35s ease;
 }
@@ -242,6 +255,7 @@ a{text-decoration:none;color:inherit}
   </div>
   <div class="topbar-right">
     <button class="copy-all-global" id="copyAllGlobal" onclick="copyCurrentAll(this)">📋 Copy All 5 Answers</button>
+    <a href="fiverr-guide.html" class="back" style="color:#10b981">🎯 Approval Guide</a>
     <a href="fiverr-uploads.html" class="back" style="color:#fbbf24">📄 Upload Kit</a>
     <a href="index.html" class="back">← Dashboard</a>
   </div>
@@ -426,11 +440,16 @@ function genExtra(cat) {
 }
 
 const FIELDS = [
-  { id: "projects", label: "Notable Projects", q: "List below several of your notable projects.", gen: genProjects },
-  { id: "clients",  label: "Brand / Client Names", q: "List the brand or client names from the projects listed above.", gen: genClients },
-  { id: "roles",    label: "Your Specific Role", q: "Describe your specific role in each project.", gen: genRoles },
-  { id: "pricing",  label: "Typical Charge", q: "How much do you typically charge for these types of projects?", gen: genPricing },
-  { id: "extra",    label: "Anything Else (Optional)", q: "Is there anything else you would like to mention?", gen: genExtra }
+  { id: "projects", label: "Notable Projects", q: "List below several of your notable projects.", gen: genProjects,
+    tip: "🎯 Reviewers spend the most time here. Include specific metrics (revenue, users, performance gains). Name real projects — vague descriptions get rejected." },
+  { id: "clients",  label: "Brand / Client Names", q: "List the brand or client names from the projects listed above.", gen: genClients,
+    tip: "🏢 Brand-name clients = instant credibility. Include corporate employers too. NDA mentions are fine but don't make everything anonymous." },
+  { id: "roles",    label: "Your Specific Role", q: "Describe your specific role in each project.", gen: genRoles,
+    tip: "👤 Use \"I\" not \"we\". Fiverr Pro is about YOUR expertise. Show you owned the work end-to-end: architecture → code → testing → deployment → client communication." },
+  { id: "pricing",  label: "Typical Charge", q: "How much do you typically charge for these types of projects?", gen: genPricing,
+    tip: "💰 Too low = not Pro material. Justify rates with your background and results. Show tiered pricing (hourly + project + retainer) to demonstrate professionalism." },
+  { id: "extra",    label: "Anything Else (Optional)", q: "Is there anything else you would like to mention?", gen: genExtra,
+    tip: "⭐ This \"optional\" field is your closing argument — NEVER skip it. Include certifications, full tech stack, links to LinkedIn/GitHub/portfolio, and 3-5 reasons to hire you." }
 ];
 
 /* ═══════════════════════════════
@@ -570,6 +589,7 @@ function selectCategory(id) {
     fh += `<button class="field-copy" onclick="event.stopPropagation();copyField(this,'${cat.id}','${f.id}')">📋 Copy</button>`;
     fh += `</div>`;
     fh += `<div class="field-question">${f.q}</div>`;
+    if (f.tip) fh += `<div class="field-tip"><div class="field-tip-inner"><span class="tip-icon">💡</span><span>${f.tip} <a href="fiverr-guide.html#field-${f.id}" target="_blank">Full guide →</a></span></div></div>`;
     fh += `<div class="field-body"><div class="field-content">${esc(answer)}</div></div>`;
     fh += `</div>`;
   });

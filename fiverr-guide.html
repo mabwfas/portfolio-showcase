@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fiverr Pro Approval Guide — Step-by-Step Strategy</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0a0f;--sidebar:#0e0e16;--panel:#12121c;
+  --card:#161622;--card-hover:#1a1a28;
+  --border:rgba(255,255,255,.06);--border2:rgba(255,255,255,.1);
+  --text:#e2e8f0;--muted:#64748b;--dim:#475569;
+  --green:#10b981;--green-bg:rgba(16,185,129,.08);--green-border:rgba(16,185,129,.15);
+  --accent:#818cf8;--accent2:#6366f1;--accent-bg:rgba(99,102,241,.07);--accent-border:rgba(99,102,241,.15);
+  --amber:#f59e0b;--amber-bg:rgba(245,158,11,.08);
+  --red:#ef4444;--red-bg:rgba(239,68,68,.08);
+  --radius:12px;
+}
+html,body{height:100%;overflow:hidden}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;display:flex;flex-direction:column}
+a{text-decoration:none;color:inherit}
+
+/* ── Top Bar ── */
+.topbar{
+  height:52px;min-height:52px;
+  background:rgba(14,14,22,.95);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 24px;z-index:100;
+}
+.topbar-left{display:flex;align-items:center;gap:14px}
+.topbar h1{font-size:17px;font-weight:800;letter-spacing:-.3px;background:linear-gradient(135deg,#fff,#94a3b8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.topbar .badge{font-size:10px;color:var(--green);background:var(--green-bg);border:1px solid var(--green-border);padding:3px 10px;border-radius:20px;font-weight:600}
+.topbar-right{display:flex;align-items:center;gap:14px}
+.topbar .link{color:var(--accent);font-size:12px;opacity:.5;transition:.2s}
+.topbar .link:hover{opacity:1}
+
+/* ── Layout ── */
+.layout{display:flex;flex:1;overflow:hidden}
+
+/* ── Sidebar ── */
+.sidebar{
+  width:260px;min-width:260px;
+  background:var(--sidebar);border-right:1px solid var(--border);
+  display:flex;flex-direction:column;overflow:hidden;
+}
+.sidebar-list{flex:1;overflow-y:auto;padding:12px 0}
+.sidebar-list::-webkit-scrollbar{width:3px}
+.sidebar-list::-webkit-scrollbar-thumb{background:rgba(255,255,255,.06);border-radius:2px}
+.nav-item{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 18px;cursor:pointer;transition:all .15s;
+  border-left:3px solid transparent;
+}
+.nav-item:hover{background:rgba(255,255,255,.03)}
+.nav-item.active{background:var(--accent-bg);border-left-color:var(--accent2)}
+.nav-item .icon{font-size:16px;width:22px;text-align:center;flex-shrink:0}
+.nav-item .name{font-size:12px;font-weight:600;flex:1}
+.nav-item.active .name{color:var(--accent)}
+.nav-item .status{font-size:10px;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.nav-item .status.done{color:var(--green);background:var(--green-bg)}
+.nav-item .status.warn{color:var(--amber);background:var(--amber-bg)}
+.nav-item .status.pending{color:var(--dim);background:rgba(255,255,255,.03)}
+.nav-sep{
+  padding:14px 18px 6px;font-size:8px;text-transform:uppercase;
+  letter-spacing:2.5px;color:rgba(255,255,255,.15);font-weight:800;
+}
+.sidebar-score{
+  padding:14px 18px;border-top:1px solid var(--border);text-align:center;
+}
+.score-ring{
+  width:80px;height:80px;margin:0 auto 8px;position:relative;
+}
+.score-ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.score-ring circle{fill:none;stroke-width:6}
+.score-ring .track{stroke:rgba(255,255,255,.04)}
+.score-ring .fill{stroke:var(--green);stroke-linecap:round;transition:stroke-dashoffset .6s ease}
+.score-val{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-size:22px;font-weight:800;color:var(--green);
+}
+.score-label{font-size:9px;color:var(--dim);letter-spacing:1px;text-transform:uppercase}
+
+/* ── Panel ── */
+.panel{flex:1;overflow-y:auto;padding:0}
+.panel::-webkit-scrollbar{width:5px}
+.panel::-webkit-scrollbar-thumb{background:rgba(255,255,255,.06);border-radius:3px}
+
+.section{padding:28px 32px 40px;max-width:880px}
+.section-icon{font-size:32px;margin-bottom:12px}
+.section h2{font-size:22px;font-weight:800;letter-spacing:-.3px;margin-bottom:6px}
+.section .subtitle{font-size:12px;color:var(--muted);margin-bottom:24px;line-height:1.7}
+
+/* Checklist */
+.checklist{display:flex;flex-direction:column;gap:10px}
+.check-item{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  padding:14px 18px;display:flex;align-items:flex-start;gap:14px;
+  transition:all .2s;cursor:pointer;
+}
+.check-item:hover{border-color:var(--border2)}
+.check-item.checked{border-color:var(--green-border);background:rgba(16,185,129,.03)}
+.check-box{
+  width:22px;height:22px;border-radius:6px;
+  border:2px solid var(--border2);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .2s;font-size:12px;color:transparent;margin-top:1px;
+}
+.check-item.checked .check-box{background:var(--green);border-color:var(--green);color:#fff}
+.check-content{flex:1}
+.check-title{font-size:13px;font-weight:700;margin-bottom:3px}
+.check-desc{font-size:11px;color:var(--muted);line-height:1.7}
+.check-item.checked .check-title{color:var(--green)}
+
+/* Tip Cards */
+.tip-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.tip-card{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  padding:18px;transition:all .2s;
+}
+.tip-card:hover{border-color:var(--border2);transform:translateY(-2px)}
+.tip-card .tip-icon{font-size:24px;margin-bottom:10px}
+.tip-card h4{font-size:13px;font-weight:700;margin-bottom:6px}
+.tip-card p{font-size:11px;color:var(--muted);line-height:1.7}
+
+/* Warning box */
+.warn-box{
+  background:var(--red-bg);border:1px solid rgba(239,68,68,.15);
+  border-radius:var(--radius);padding:16px 18px;margin-top:16px;
+}
+.warn-box h4{font-size:12px;font-weight:700;color:var(--red);margin-bottom:6px}
+.warn-box p,.warn-box li{font-size:11px;color:#fca5a5;line-height:1.7}
+.warn-box ul{padding-left:16px;margin-top:4px}
+
+/* Success box */
+.success-box{
+  background:var(--green-bg);border:1px solid var(--green-border);
+  border-radius:var(--radius);padding:16px 18px;margin-top:16px;
+}
+.success-box h4{font-size:12px;font-weight:700;color:var(--green);margin-bottom:6px}
+.success-box p,.success-box li{font-size:11px;color:#6ee7b7;line-height:1.7}
+.success-box ul{padding-left:16px;margin-top:4px}
+
+/* Info box */
+.info-box{
+  background:var(--accent-bg);border:1px solid var(--accent-border);
+  border-radius:var(--radius);padding:16px 18px;margin-top:16px;
+}
+.info-box h4{font-size:12px;font-weight:700;color:var(--accent);margin-bottom:6px}
+.info-box p{font-size:11px;color:#a5b4fc;line-height:1.7}
+
+/* Timeline */
+.timeline{display:flex;flex-direction:column;gap:0;margin-top:16px}
+.timeline-step{display:flex;gap:16px;position:relative}
+.timeline-step::before{
+  content:'';position:absolute;left:15px;top:32px;bottom:-10px;
+  width:2px;background:var(--border);
+}
+.timeline-step:last-child::before{display:none}
+.timeline-dot{
+  width:32px;height:32px;border-radius:50%;flex-shrink:0;
+  background:var(--accent-bg);border:2px solid var(--accent-border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:800;color:var(--accent);z-index:1;
+}
+.timeline-body{flex:1;padding-bottom:24px}
+.timeline-body h4{font-size:13px;font-weight:700;margin-bottom:4px}
+.timeline-body p{font-size:11px;color:var(--muted);line-height:1.7}
+
+/* Interview Q&A */
+.qa-list{display:flex;flex-direction:column;gap:14px}
+.qa-item{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  overflow:hidden;
+}
+.qa-q{
+  padding:14px 18px;font-size:12px;font-weight:700;
+  cursor:pointer;display:flex;align-items:center;gap:10px;
+  transition:background .15s;
+}
+.qa-q:hover{background:rgba(255,255,255,.015)}
+.qa-q .arrow{font-size:10px;color:var(--dim);transition:transform .25s;flex-shrink:0}
+.qa-item.open .qa-q .arrow{transform:rotate(90deg)}
+.qa-a{
+  max-height:0;overflow:hidden;transition:max-height .35s ease;
+}
+.qa-item.open .qa-a{max-height:2000px}
+.qa-a-inner{
+  padding:0 18px 16px;font-size:11.5px;color:var(--muted);line-height:1.8;
+  border-top:1px solid var(--border);margin-top:0;padding-top:14px;
+}
+.qa-a-inner strong{color:var(--text)}
+.qa-a-inner .sample{
+  background:rgba(0,0,0,.2);border:1px solid var(--border);border-radius:8px;
+  padding:12px 14px;margin-top:10px;font-size:11px;white-space:pre-wrap;
+  color:var(--text);font-family:'Cascadia Code','Fira Code',monospace;
+}
+.qa-copy{
+  display:inline-flex;align-items:center;gap:4px;
+  padding:4px 10px;border-radius:6px;font-size:9px;font-weight:600;
+  background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.15);
+  color:#a5b4fc;cursor:pointer;margin-top:8px;transition:all .15s;
+}
+.qa-copy:hover{background:rgba(99,102,241,.15)}
+
+/* Stat cards */
+.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
+.stat-card{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  padding:16px;text-align:center;
+}
+.stat-val{font-size:28px;font-weight:800;color:var(--accent)}
+.stat-label{font-size:9px;color:var(--dim);text-transform:uppercase;letter-spacing:1px;margin-top:4px}
+
+/* ── Mobile ── */
+@media(max-width:768px){
+  .sidebar{display:none}
+  .layout{flex-direction:column}
+  .topbar{padding:0 14px}
+  .section{padding:20px 16px 40px}
+  .tip-grid{grid-template-columns:1fr}
+  .stat-row{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-left">
+    <h1>Fiverr Pro Approval Guide</h1>
+    <span class="badge">Strategy & Checklist</span>
+  </div>
+  <div class="topbar-right">
+    <a href="fiverr-answers.html" class="link">📝 Answers</a>
+    <a href="fiverr-uploads.html" class="link">📄 Upload Kit</a>
+    <a href="index.html" class="link">← Dashboard</a>
+  </div>
+</div>
+
+<div class="layout">
+  <div class="sidebar">
+    <div class="sidebar-list" id="sidebarList">
+      <div class="nav-sep">Application</div>
+      <div class="nav-item active" data-section="overview" onclick="showSection('overview')">
+        <span class="icon">📊</span><span class="name">Approval Overview</span>
+      </div>
+      <div class="nav-item" data-section="checklist" onclick="showSection('checklist')">
+        <span class="icon">✅</span><span class="name">Pre-Application Checklist</span>
+        <span class="status pending" id="checkStatus">0</span>
+      </div>
+      <div class="nav-item" data-section="timeline" onclick="showSection('timeline')">
+        <span class="icon">📅</span><span class="name">Application Timeline</span>
+      </div>
+
+      <div class="nav-sep">Form Fields</div>
+      <div class="nav-item" data-section="field-projects" onclick="showSection('field-projects')">
+        <span class="icon">💼</span><span class="name">Notable Projects</span>
+      </div>
+      <div class="nav-item" data-section="field-clients" onclick="showSection('field-clients')">
+        <span class="icon">🏢</span><span class="name">Brand / Client Names</span>
+      </div>
+      <div class="nav-item" data-section="field-roles" onclick="showSection('field-roles')">
+        <span class="icon">🎯</span><span class="name">Your Specific Role</span>
+      </div>
+      <div class="nav-item" data-section="field-pricing" onclick="showSection('field-pricing')">
+        <span class="icon">💰</span><span class="name">Typical Charge</span>
+      </div>
+      <div class="nav-item" data-section="field-extra" onclick="showSection('field-extra')">
+        <span class="icon">⭐</span><span class="name">Anything Else</span>
+      </div>
+      <div class="nav-item" data-section="field-uploads" onclick="showSection('field-uploads')">
+        <span class="icon">📎</span><span class="name">Upload References</span>
+      </div>
+
+      <div class="nav-sep">Preparation</div>
+      <div class="nav-item" data-section="profile" onclick="showSection('profile')">
+        <span class="icon">👤</span><span class="name">Profile Optimization</span>
+      </div>
+      <div class="nav-item" data-section="gig" onclick="showSection('gig')">
+        <span class="icon">🎪</span><span class="name">Gig Optimization</span>
+      </div>
+      <div class="nav-item" data-section="interview" onclick="showSection('interview')">
+        <span class="icon">🎤</span><span class="name">Interview Prep</span>
+      </div>
+      <div class="nav-item" data-section="mistakes" onclick="showSection('mistakes')">
+        <span class="icon">⚠️</span><span class="name">Common Mistakes</span>
+      </div>
+      <div class="nav-item" data-section="rejected" onclick="showSection('rejected')">
+        <span class="icon">🔄</span><span class="name">If Rejected</span>
+      </div>
+    </div>
+    <div class="sidebar-score">
+      <div class="score-ring">
+        <svg viewBox="0 0 80 80">
+          <circle class="track" cx="40" cy="40" r="34"/>
+          <circle class="fill" id="scoreFill" cx="40" cy="40" r="34" stroke-dasharray="213.6" stroke-dashoffset="213.6"/>
+        </svg>
+        <span class="score-val" id="scoreVal">0%</span>
+      </div>
+      <div class="score-label">Readiness Score</div>
+    </div>
+  </div>
+
+  <div class="panel" id="panel">
+    <!-- ═══ OVERVIEW ═══ -->
+    <div class="section" id="sec-overview">
+      <div class="section-icon">📊</div>
+      <h2>Fiverr Pro Approval — What Reviewers Actually Evaluate</h2>
+      <p class="subtitle">Only ~1% of applicants get approved. Understanding exactly what reviewers look for gives you a massive edge. Here's the complete breakdown based on research from approved Fiverr Pro sellers.</p>
+
+      <div class="stat-row">
+        <div class="stat-card"><div class="stat-val">1%</div><div class="stat-label">Acceptance Rate</div></div>
+        <div class="stat-card"><div class="stat-val">2-8</div><div class="stat-label">Weeks Review</div></div>
+        <div class="stat-card"><div class="stat-val">5</div><div class="stat-label">Form Fields</div></div>
+        <div class="stat-card"><div class="stat-val">2+</div><div class="stat-label">Uploads Required</div></div>
+      </div>
+
+      <h3 style="font-size:14px;margin-bottom:14px;color:var(--accent)">What Reviewers Score You On</h3>
+      <div class="tip-grid">
+        <div class="tip-card">
+          <div class="tip-icon">🎯</div>
+          <h4>Professional Experience</h4>
+          <p>Years of proven work in your specific category. Corporate/agency background is a huge plus. They want evidence you've done this at scale, not just hobby projects.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">📊</div>
+          <h4>Portfolio Quality</h4>
+          <p>Real projects with measurable outcomes. Metrics like "reduced load time by 40%" or "served 2M+ users" are gold. Vague descriptions get rejected.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">🏢</div>
+          <h4>Client Caliber</h4>
+          <p>Brand-name clients and enterprise engagements signal trust. Fortune 500, funded startups, and government contracts all boost your credibility significantly.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">💬</div>
+          <h4>Communication Skills</h4>
+          <p>Your application writing IS the communication test. Clear, structured, professional writing with proper grammar shows you can handle Pro-level client interactions.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">🌐</div>
+          <h4>Online Presence</h4>
+          <p>LinkedIn, GitHub, personal website, portfolio — they verify you're a real professional. Social proof across platforms validates your claims.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">⭐</div>
+          <h4>Existing Fiverr Performance</h4>
+          <p>Your current gig quality, response rate, delivery record, and client reviews on Fiverr are reviewed. Level 2 status before applying is strongly recommended.</p>
+        </div>
+      </div>
+
+      <div class="success-box">
+        <h4>✅ Key Insight: Your Application IS the Interview</h4>
+        <p>Reviewers assess your communication skills BY how you write your application. Every field is an opportunity to demonstrate professionalism, clarity, and expertise. Treat each answer like a client proposal — polished, specific, and results-focused.</p>
+      </div>
+    </div>
+
+    <!-- ═══ CHECKLIST ═══ -->
+    <div class="section" id="sec-checklist" style="display:none">
+      <div class="section-icon">✅</div>
+      <h2>Pre-Application Checklist</h2>
+      <p class="subtitle">Complete ALL of these before submitting your application. Each item directly impacts your approval odds. Click items to mark them as done.</p>
+
+      <div class="checklist" id="checklistContainer">
+        <div class="check-item" onclick="toggleCheck(this)" data-id="c1">
+          <div class="check-box">✓</div>
+          <div class="check-content">
+            <div class="check-title">Reach Fiverr Level 2</div>
+            <div class="check-desc">Complete enough orders with 5-star reviews to reach Level 2. This establishes credibility and shows Fiverr you're already a proven seller.</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)" data-id="c2">
+          <div class="check-box">✓</div>
+          <div class="check-content">
+            <div class="check-title">Professional Profile Photo</div>
+            <div class="check-desc">High-quality headshot, well-lit, professional attire. Not a selfie, not a logo. Fiverr Pro is about personal expertise — they want to see YOU.</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)" data-id="c3">
+          <div class="check-box">✓</div>
+          <div class="check-content">
+            <div class="check-title">Complete LinkedIn Profile</div>
+            <div class="check-desc">Updated with your current role, past positions, endorsements, recommendations, and project descriptions. Reviewers WILL check this.</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)" data-id="c4">
+          <div class="check-box">✓</div>
+          <div class="check-content">
+            <div class="check-title">GitHub with Active Contributions</div>
+            <div class="check-desc">Pinned repositories showing real projects. Green contribution graph. Clean code with documentation. This is your technical proof.</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)" data-id="c5">
+          <div class="check-box">✓</div>
+          <div class="check-content">
+            <div class="check-title">Live Portfolio Website</div>
+            <div class="check-desc">Professional portfolio showcasing your best work with case studies, metrics, and client testimonials. Our Dashboard generates these automatically.</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)" data-id="c6">
+          <div class="check-box">✓</div>
+          <div class="check-content">
+            <div class="check-title">3+ Client Testimonials Collected</div>
+            <div class="check-desc">Written recommendations from real clients you can reference. Email confirmations, LinkedIn recommendations, or formal reference letters all work.</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)" data-id="c7">
+          <div class="check-box">✓</div>
+          <div class="check-content">
+            <div class="check-title">Optimized Fiverr Gigs (at least 2)</div>
+            <div class="check-desc">Clear titles, detailed descriptions, competitive pricing, good thumbnails, and relevant tags. Your active gigs are part of the review.</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)" data-id="c8">
+          <div class="check-box">✓</div>
+          <div class="check-content">
+            <div class="check-title">Reference Documents Ready (Upload Kit)</div>
+            <div class="check-desc">At least 2 client reference letters and 2 project case studies ready as PDFs. Use our Upload Kit to generate these.</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)" data-id="c9">
+          <div class="check-box">✓</div>
+          <div class="check-content">
+            <div class="check-title">All 5 Form Answers Written & Reviewed</div>
+            <div class="check-desc">Draft your answers for all 5 fields, proofread for grammar, verify metrics accuracy, and ensure each field directly addresses the question asked.</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)" data-id="c10">
+          <div class="check-box">✓</div>
+          <div class="check-content">
+            <div class="check-title">Verified Metrics & Claims</div>
+            <div class="check-desc">Every number in your application should be defensible. If you say "$500K+ revenue generated" — be ready to explain how you measured that.</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)" data-id="c11">
+          <div class="check-box">✓</div>
+          <div class="check-content">
+            <div class="check-title">100% Response Rate on Fiverr</div>
+            <div class="check-desc">Answer every message within 24 hours. Your response rate and time are visible to reviewers and directly impact approval decisions.</div>
+          </div>
+        </div>
+        <div class="check-item" onclick="toggleCheck(this)" data-id="c12">
+          <div class="check-box">✓</div>
+          <div class="check-content">
+            <div class="check-title">No Active Warnings or ToS Violations</div>
+            <div class="check-desc">Any warnings, late deliveries, or policy violations on your Fiverr account are automatic red flags. Clean up your account before applying.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ TIMELINE ═══ -->
+    <div class="section" id="sec-timeline" style="display:none">
+      <div class="section-icon">📅</div>
+      <h2>Application Timeline & Strategy</h2>
+      <p class="subtitle">The Fiverr Pro application is a multi-week process. Here's the optimal timeline for maximum approval chances.</p>
+
+      <div class="timeline">
+        <div class="timeline-step">
+          <div class="timeline-dot">1</div>
+          <div class="timeline-body">
+            <h4>Week 1-4: Foundation Building</h4>
+            <p>Complete regular Fiverr gigs, collect 5-star reviews, reach Level 2. Update LinkedIn, GitHub, and portfolio. This is your proof of competence phase.</p>
+          </div>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-dot">2</div>
+          <div class="timeline-body">
+            <h4>Week 5: Prepare Application Materials</h4>
+            <p>Use our Answers page to draft all 5 form field responses. Use the Upload Kit to generate reference letters and case studies as PDFs. Review everything for accuracy.</p>
+          </div>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-dot">3</div>
+          <div class="timeline-body">
+            <h4>Week 6: Optimize Profile & Gigs</h4>
+            <p>Polish your Fiverr profile photo, bio, and active gigs. Ensure your gig descriptions match your Pro application claims. Add portfolio samples to gigs.</p>
+          </div>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-dot">4</div>
+          <div class="timeline-body">
+            <h4>Week 7: Final Review & Submit</h4>
+            <p>Run through the pre-application checklist. Have a colleague review your answers. Double-check all links work. Submit the application.</p>
+          </div>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-dot">5</div>
+          <div class="timeline-body">
+            <h4>Week 8-14: Review Period</h4>
+            <p>Fiverr manually reviews applications. Keep delivering excellent work on regular gigs. Maintain 100% response rate. Don't apply to other categories simultaneously.</p>
+          </div>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-dot">6</div>
+          <div class="timeline-body">
+            <h4>Decision: Approved or Feedback</h4>
+            <p>If approved — congratulations! Set up your Pro gigs immediately. If rejected — wait the required period, review feedback, improve weak areas, and reapply.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <h4>💡 Pro Tip: Apply to ONE Category First</h4>
+        <p>Don't shotgun applications across multiple categories. Focus on your strongest category, get approved, then expand later. Reviewers can see if you're mass-applying — it signals desperation, not expertise.</p>
+      </div>
+    </div>
+
+    <!-- ═══ FIELD: PROJECTS ═══ -->
+    <div class="section" id="sec-field-projects" style="display:none">
+      <div class="section-icon">💼</div>
+      <h2>Field 1: Notable Projects</h2>
+      <p class="subtitle">"List below several of your notable projects." — This is the most critical field. Reviewers spend the most time here.</p>
+
+      <div class="success-box">
+        <h4>✅ What Reviewers Want to See</h4>
+        <ul>
+          <li><strong>Real projects with specific names</strong> — not generic "built a website"</li>
+          <li><strong>Measurable outcomes</strong> — revenue generated, users served, performance improvements</li>
+          <li><strong>Technical depth</strong> — specific tech stacks, architecture decisions, challenges solved</li>
+          <li><strong>Variety</strong> — different types of projects showing range within your category</li>
+          <li><strong>Recency</strong> — at least 1-2 projects from the last 12 months</li>
+        </ul>
+      </div>
+
+      <div class="warn-box">
+        <h4>🚫 Common Mistakes That Get Rejected</h4>
+        <ul>
+          <li>Listing personal/hobby projects without real clients</li>
+          <li>Vague descriptions like "built an app" with no details</li>
+          <li>No metrics or business impact mentioned</li>
+          <li>Copy-pasting the same structure for every project</li>
+          <li>Claiming unrealistic numbers (be honest — reviewers fact-check)</li>
+        </ul>
+      </div>
+
+      <div class="info-box">
+        <h4>💡 Template: How to Structure Each Project</h4>
+        <p>Project Name → Tech Stack → Client/Scale → What You Built → Specific Results with Numbers → Client Satisfaction. Our Answers page auto-generates this structure for all 26 categories.</p>
+      </div>
+    </div>
+
+    <!-- ═══ FIELD: CLIENTS ═══ -->
+    <div class="section" id="sec-field-clients" style="display:none">
+      <div class="section-icon">🏢</div>
+      <h2>Field 2: Brand / Client Names</h2>
+      <p class="subtitle">"List the brand or client names from the projects listed above." — This field validates your credibility.</p>
+
+      <div class="success-box">
+        <h4>✅ What Works Best</h4>
+        <ul>
+          <li><strong>Named companies</strong> — recognizable brands carry the most weight</li>
+          <li><strong>Previous employers</strong> — your corporate background counts as client experience</li>
+          <li><strong>NDA acknowledgment</strong> — "3 Fortune 500 clients under NDA" is acceptable and shows enterprise-level work</li>
+          <li><strong>Mix of sizes</strong> — enterprise clients + startups shows versatility</li>
+        </ul>
+      </div>
+
+      <div class="warn-box">
+        <h4>🚫 Don't Do This</h4>
+        <ul>
+          <li>Don't list only anonymous/unnamed clients — it looks suspicious</li>
+          <li>Don't list clients that can't be verified in any way</li>
+          <li>Don't exaggerate — "worked with Google" when you used Google APIs is misleading</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ═══ FIELD: ROLES ═══ -->
+    <div class="section" id="sec-field-roles" style="display:none">
+      <div class="section-icon">🎯</div>
+      <h2>Field 3: Your Specific Role</h2>
+      <p class="subtitle">"Describe your specific role in each project." — Reviewers want to know YOU did the work, not a team.</p>
+
+      <div class="success-box">
+        <h4>✅ Key Principles</h4>
+        <ul>
+          <li><strong>Use "I" not "we"</strong> — Fiverr Pro is about individual expertise, not team credits</li>
+          <li><strong>Be specific</strong> — "I designed the database schema" not "I was involved in backend"</li>
+          <li><strong>Show ownership</strong> — "I personally wrote 80% of the codebase" demonstrates accountability</li>
+          <li><strong>Link to results</strong> — connect your specific actions to the outcomes achieved</li>
+          <li><strong>Cover the full lifecycle</strong> — architecture → implementation → testing → deployment → support</li>
+        </ul>
+      </div>
+
+      <div class="info-box">
+        <h4>💡 Structure: 4-Part Role Breakdown</h4>
+        <p>1) Architecture & Design decisions, 2) Core Development & what you personally built, 3) Delivery & measurable results, 4) Client Communication & stakeholder management. This structure shows you're a complete professional, not just a coder.</p>
+      </div>
+    </div>
+
+    <!-- ═══ FIELD: PRICING ═══ -->
+    <div class="section" id="sec-field-pricing" style="display:none">
+      <div class="section-icon">💰</div>
+      <h2>Field 4: Typical Charge</h2>
+      <p class="subtitle">"How much do you typically charge for these types of projects?" — Price yourself like a Pro, not a beginner.</p>
+
+      <div class="success-box">
+        <h4>✅ Pricing Strategy That Gets Approved</h4>
+        <ul>
+          <li><strong>Show tiered pricing</strong> — hourly + project-based + retainer options demonstrate professionalism</li>
+          <li><strong>Be realistic</strong> — too low = you're not Pro material. Too high = unverifiable claims</li>
+          <li><strong>Justify your rates</strong> — "Former Google engineer" or "generated $500K+ for clients" backs up premium pricing</li>
+          <li><strong>Include what's included</strong> — testing, documentation, post-launch support shows value</li>
+        </ul>
+      </div>
+
+      <div class="warn-box">
+        <h4>🚫 Pricing Red Flags</h4>
+        <ul>
+          <li>Charging $5-15/hr for "Pro" work — reviewers will reject immediately</li>
+          <li>No justification for rates — just numbers without context</li>
+          <li>Inconsistent with your profile — Pro pricing but beginner gig history</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ═══ FIELD: EXTRA ═══ -->
+    <div class="section" id="sec-field-extra" style="display:none">
+      <div class="section-icon">⭐</div>
+      <h2>Field 5: Anything Else (Optional — But NOT Optional)</h2>
+      <p class="subtitle">"Is there anything else you would like to mention?" — This "optional" field is your closing argument. NEVER skip it.</p>
+
+      <div class="success-box">
+        <h4>✅ Use This Field to Close the Deal</h4>
+        <ul>
+          <li><strong>Professional background</strong> — corporate experience, years in industry</li>
+          <li><strong>Certifications</strong> — AWS, Google Cloud, relevant industry certifications</li>
+          <li><strong>Full tech stack</strong> — comprehensive list shows depth of expertise</li>
+          <li><strong>Why clients choose you</strong> — 3-5 compelling reasons with evidence</li>
+          <li><strong>Links</strong> — portfolio, LinkedIn, GitHub — make it easy for reviewers to verify you</li>
+        </ul>
+      </div>
+
+      <div class="warn-box">
+        <h4>🚫 Don't Leave It Blank!</h4>
+        <ul>
+          <li>Leaving this field empty wastes a huge opportunity to differentiate yourself</li>
+          <li>Reviewers interpret blank optional fields as lack of effort or confidence</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ═══ FIELD: UPLOADS ═══ -->
+    <div class="section" id="sec-field-uploads" style="display:none">
+      <div class="section-icon">📎</div>
+      <h2>Upload: References & Work Samples</h2>
+      <p class="subtitle">"Upload at least 2 relevant references and work samples." — This is your evidence package.</p>
+
+      <div class="success-box">
+        <h4>✅ What to Upload (2+ Required)</h4>
+        <ul>
+          <li><strong>Client Reference Letters</strong> — from real clients/employers recommending your work</li>
+          <li><strong>Project Case Studies</strong> — detailed breakdowns with metrics, architecture, and results</li>
+          <li><strong>Portfolio Summary</strong> — comprehensive overview of your professional background</li>
+          <li><strong>Screenshots/Mockups</strong> — visual evidence of your actual work output</li>
+        </ul>
+      </div>
+
+      <div class="info-box">
+        <h4>💡 Our Upload Kit Generates All of These</h4>
+        <p>The Upload Kit page auto-generates 2 reference letters, 2 case studies, and 1 portfolio summary per category — all formatted for professional PDF printing. Use "Save as PDF" to create the files, then upload them to your Fiverr Pro application.</p>
+      </div>
+
+      <div class="warn-box">
+        <h4>🚫 Upload Mistakes</h4>
+        <ul>
+          <li>Uploading only screenshots without context or explanation</li>
+          <li>Reference letters that look generic/templated (personalize them!)</li>
+          <li>Low-quality images or poorly formatted PDFs</li>
+          <li>Files with inconsistent names/formatting (look professional)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ═══ PROFILE OPTIMIZATION ═══ -->
+    <div class="section" id="sec-profile" style="display:none">
+      <div class="section-icon">👤</div>
+      <h2>Fiverr Profile Optimization</h2>
+      <p class="subtitle">Your profile is reviewed alongside your application. Make it bulletproof.</p>
+
+      <div class="tip-grid">
+        <div class="tip-card">
+          <div class="tip-icon">📸</div>
+          <h4>Profile Photo</h4>
+          <p>Professional headshot with good lighting. Friendly smile, clean background. NOT: logos, cartoons, group photos, or low-res selfies.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">📝</div>
+          <h4>Bio / Description</h4>
+          <p>Lead with your strongest credential. Include years of experience, notable clients, and specialization. End with a call-to-action inviting clients to message you.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">🔗</div>
+          <h4>Linked Accounts</h4>
+          <p>Connect LinkedIn, GitHub, and your portfolio website. Reviewers use these to verify your identity and claims. More connected accounts = more trust.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">📊</div>
+          <h4>Account Metrics</h4>
+          <p>100% response rate, <1hr response time, 0 late deliveries, 0 cancellations. These are checked before your application is even opened.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ GIG OPTIMIZATION ═══ -->
+    <div class="section" id="sec-gig" style="display:none">
+      <div class="section-icon">🎪</div>
+      <h2>Gig Optimization for Pro Review</h2>
+      <p class="subtitle">Your active gigs are evaluated as part of the Pro review. They need to match your Pro-level claims.</p>
+
+      <div class="tip-grid">
+        <div class="tip-card">
+          <div class="tip-icon">🏷️</div>
+          <h4>Gig Titles</h4>
+          <p>Clear, specific, keyword-rich. "I will build a full-stack web application with React and Node.js" beats "I will make a website for you."</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">📋</div>
+          <h4>Gig Descriptions</h4>
+          <p>Structured with headers, bullet points, and clear deliverables. Mention your experience, process, and what sets you apart. Include FAQ section.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">💵</div>
+          <h4>Pricing Tiers</h4>
+          <p>3 clear tiers (Basic/Standard/Premium) with specific deliverables for each. Pricing should be consistent with what you claim in your Pro application.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">🖼️</div>
+          <h4>Gig Images</h4>
+          <p>Professional thumbnails showing your work. Use your portfolio screenshots, architecture diagrams, or branded designs. No stock photos.</p>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <h4>💡 Consistency is Key</h4>
+        <p>If your Pro application says you charge $100-300/hr but your gigs are priced at $50 for a full website, reviewers see a disconnect. Align your gig pricing with your Pro application pricing tier.</p>
+      </div>
+    </div>
+
+    <!-- ═══ INTERVIEW PREP ═══ -->
+    <div class="section" id="sec-interview" style="display:none">
+      <div class="section-icon">🎤</div>
+      <h2>Interview Preparation</h2>
+      <p class="subtitle">Some categories require a video interview. Even if yours doesn't, prepare as if it might — Fiverr sometimes adds interviews for borderline applications.</p>
+
+      <div class="qa-list" id="qaList">
+        <div class="qa-item" onclick="toggleQA(this)">
+          <div class="qa-q"><span class="arrow">▶</span> Tell us about your professional background and experience.</div>
+          <div class="qa-a"><div class="qa-a-inner">
+            <strong>Strategy:</strong> Lead with your corporate background, then transition to freelancing. Mention specific metrics and notable clients.<br><br>
+            <div class="sample">I'm a [role] with [X] years of experience, previously at [company]. I've delivered [X]+ successful projects across [category], generating [$X]+ in client value. My specialization is [specific niche] where I bring enterprise-grade quality to every engagement.</div>
+            <button class="qa-copy" onclick="event.stopPropagation();copyText(this)">📋 Copy Template</button>
+          </div></div>
+        </div>
+        <div class="qa-item" onclick="toggleQA(this)">
+          <div class="qa-q"><span class="arrow">▶</span> How do you ensure project deadlines are met?</div>
+          <div class="qa-a"><div class="qa-a-inner">
+            <strong>Strategy:</strong> Show your process, not just promises. Mention specific tools and methodologies.<br><br>
+            <div class="sample">I use milestone-based delivery with weekly demos. Each project starts with a detailed scope document and timeline. I break work into 1-2 week sprints with clear deliverables. Clients get daily async updates via Slack and weekly video demos. I've maintained a 100% on-time delivery rate across 50+ projects.</div>
+            <button class="qa-copy" onclick="event.stopPropagation();copyText(this)">📋 Copy Template</button>
+          </div></div>
+        </div>
+        <div class="qa-item" onclick="toggleQA(this)">
+          <div class="qa-q"><span class="arrow">▶</span> How do you handle difficult clients or scope creep?</div>
+          <div class="qa-a"><div class="qa-a-inner">
+            <strong>Strategy:</strong> Show maturity and professional communication skills.<br><br>
+            <div class="sample">I prevent scope creep by establishing clear requirements upfront with a signed scope document. For changes, I use a formal change request process — I estimate the additional time/cost, present options, and let the client decide. For difficult situations, I focus on active listening, finding the root concern, and proposing solutions rather than defending positions.</div>
+            <button class="qa-copy" onclick="event.stopPropagation();copyText(this)">📋 Copy Template</button>
+          </div></div>
+        </div>
+        <div class="qa-item" onclick="toggleQA(this)">
+          <div class="qa-q"><span class="arrow">▶</span> What makes you different from other freelancers?</div>
+          <div class="qa-a"><div class="qa-a-inner">
+            <strong>Strategy:</strong> Focus on 2-3 differentiators with evidence, not generic claims.<br><br>
+            <div class="sample">Three things differentiate me: 1) Enterprise background — I bring [Company] engineering standards to freelance work, meaning clients get Big Tech quality without Big Tech contracts. 2) Full lifecycle ownership — I handle architecture, development, testing, deployment, and 30-day post-launch support. 3) Measurable results — every project in my portfolio has specific metrics showing business impact.</div>
+            <button class="qa-copy" onclick="event.stopPropagation();copyText(this)">📋 Copy Template</button>
+          </div></div>
+        </div>
+        <div class="qa-item" onclick="toggleQA(this)">
+          <div class="qa-q"><span class="arrow">▶</span> Can you walk us through a challenging project you completed?</div>
+          <div class="qa-a"><div class="qa-a-inner">
+            <strong>Strategy:</strong> Use the STAR method: Situation, Task, Action, Result. Pick your most impressive project.<br><br>
+            <div class="sample">For [Client], I built [Project Name]. The challenge was [specific technical/business problem]. I designed [solution approach], implementing it with [tech stack]. Key decisions included [architecture choice] for scalability and [specific technique] for performance. The result was [metric] — [specific improvement]. The client rated the work 5/5 and we've since started two additional projects together.</div>
+            <button class="qa-copy" onclick="event.stopPropagation();copyText(this)">📋 Copy Template</button>
+          </div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ COMMON MISTAKES ═══ -->
+    <div class="section" id="sec-mistakes" style="display:none">
+      <div class="section-icon">⚠️</div>
+      <h2>Common Mistakes That Get Rejected</h2>
+      <p class="subtitle">Avoid these application-killers. Each one has caused real rejections.</p>
+
+      <div class="checklist">
+        <div class="check-item" style="border-color:rgba(239,68,68,.15);cursor:default">
+          <div class="check-box" style="background:var(--red);border-color:var(--red);color:#fff">✕</div>
+          <div class="check-content">
+            <div class="check-title" style="color:var(--red)">Generic, Template-Sounding Answers</div>
+            <div class="check-desc">Reviewers read hundreds of applications. If yours sounds like everyone else's, you're done. Personalize every answer with YOUR specific experience, projects, and metrics.</div>
+          </div>
+        </div>
+        <div class="check-item" style="border-color:rgba(239,68,68,.15);cursor:default">
+          <div class="check-box" style="background:var(--red);border-color:var(--red);color:#fff">✕</div>
+          <div class="check-content">
+            <div class="check-title" style="color:var(--red)">Unverifiable Claims</div>
+            <div class="check-desc">Claiming "10+ years experience" when your LinkedIn shows 2 years. Saying "worked with Fortune 500" with no evidence. Reviewers cross-reference your profiles.</div>
+          </div>
+        </div>
+        <div class="check-item" style="border-color:rgba(239,68,68,.15);cursor:default">
+          <div class="check-box" style="background:var(--red);border-color:var(--red);color:#fff">✕</div>
+          <div class="check-content">
+            <div class="check-title" style="color:var(--red)">Poor Grammar & Formatting</div>
+            <div class="check-desc">Typos, broken sentences, wall-of-text formatting. If you can't write a professional application, reviewers won't trust you to communicate with Pro clients.</div>
+          </div>
+        </div>
+        <div class="check-item" style="border-color:rgba(239,68,68,.15);cursor:default">
+          <div class="check-box" style="background:var(--red);border-color:var(--red);color:#fff">✕</div>
+          <div class="check-content">
+            <div class="check-title" style="color:var(--red)">Applying Without Fiverr Track Record</div>
+            <div class="check-desc">Applying as a brand-new seller with zero orders and reviews. Reach Level 2 first to show you understand the platform and can deliver.</div>
+          </div>
+        </div>
+        <div class="check-item" style="border-color:rgba(239,68,68,.15);cursor:default">
+          <div class="check-box" style="background:var(--red);border-color:var(--red);color:#fff">✕</div>
+          <div class="check-content">
+            <div class="check-title" style="color:var(--red)">Leaving "Optional" Fields Blank</div>
+            <div class="check-desc">The "Anything Else" field is technically optional. But every approved Pro seller filled it out. Blank = missed opportunity to make your case.</div>
+          </div>
+        </div>
+        <div class="check-item" style="border-color:rgba(239,68,68,.15);cursor:default">
+          <div class="check-box" style="background:var(--red);border-color:var(--red);color:#fff">✕</div>
+          <div class="check-content">
+            <div class="check-title" style="color:var(--red)">Applying to Multiple Categories at Once</div>
+            <div class="check-desc">Submitting applications to 5+ categories simultaneously looks like spam. Focus on 1-2 categories where you're strongest. Quality over quantity.</div>
+          </div>
+        </div>
+        <div class="check-item" style="border-color:rgba(239,68,68,.15);cursor:default">
+          <div class="check-box" style="background:var(--red);border-color:var(--red);color:#fff">✕</div>
+          <div class="check-content">
+            <div class="check-title" style="color:var(--red)">Weak or Missing Upload Documents</div>
+            <div class="check-desc">Uploading a single blurry screenshot instead of proper reference letters and case studies. Use our Upload Kit to generate professional documents.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ IF REJECTED ═══ -->
+    <div class="section" id="sec-rejected" style="display:none">
+      <div class="section-icon">🔄</div>
+      <h2>If Your Application Gets Rejected</h2>
+      <p class="subtitle">Rejection is not the end. Many successful Fiverr Pro sellers were rejected on their first attempt.</p>
+
+      <div class="tip-grid">
+        <div class="tip-card">
+          <div class="tip-icon">📧</div>
+          <h4>Review the Feedback</h4>
+          <p>Fiverr sometimes provides specific feedback on why you were rejected. Read it carefully and address every point in your next application.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">⏰</div>
+          <h4>Wait the Required Period</h4>
+          <p>You typically need to wait a few months before reapplying. Use this time productively to strengthen your profile and collect more client reviews.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">📈</div>
+          <h4>Build More Social Proof</h4>
+          <p>Complete more Fiverr orders, get more reviews, reach a higher seller level. Each order with a 5-star review makes your next application stronger.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">✍️</div>
+          <h4>Rewrite, Don't Recopy</h4>
+          <p>Don't resubmit the same application. Rewrite from scratch with stronger examples, better metrics, and more specific details. Show growth.</p>
+        </div>
+      </div>
+
+      <div class="success-box">
+        <h4>✅ The Reapplication Advantage</h4>
+        <p>When you reapply, you have MORE data: more completed projects, more reviews, more time on the platform. A second application with a stronger track record often succeeds where the first one didn't. The key is genuine improvement, not just rewording the same content.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ═══ Navigation ═══ */
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
+  const sec = document.getElementById('sec-' + id);
+  if (sec) sec.style.display = 'block';
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  const nav = document.querySelector(`.nav-item[data-section="${id}"]`);
+  if (nav) nav.classList.add('active');
+  document.getElementById('panel').scrollTop = 0;
+}
+
+/* ═══ Checklist ═══ */
+const checkedItems = new Set(JSON.parse(localStorage.getItem('fiverrProChecklist') || '[]'));
+
+function toggleCheck(el) {
+  const id = el.dataset.id;
+  el.classList.toggle('checked');
+  if (checkedItems.has(id)) checkedItems.delete(id); else checkedItems.add(id);
+  localStorage.setItem('fiverrProChecklist', JSON.stringify([...checkedItems]));
+  updateScore();
+}
+
+function restoreChecklist() {
+  checkedItems.forEach(id => {
+    const el = document.querySelector(`.check-item[data-id="${id}"]`);
+    if (el) el.classList.add('checked');
+  });
+  updateScore();
+}
+
+function updateScore() {
+  const total = document.querySelectorAll('.check-item[data-id]').length;
+  const done = checkedItems.size;
+  const pct = Math.round((done / total) * 100);
+  // Update ring
+  const circ = 213.6;
+  document.getElementById('scoreFill').style.strokeDashoffset = circ - (circ * pct / 100);
+  document.getElementById('scoreVal').textContent = pct + '%';
+  // Update sidebar status
+  document.getElementById('checkStatus').textContent = done;
+  document.getElementById('checkStatus').className = 'status ' + (done === total ? 'done' : done > 0 ? 'warn' : 'pending');
+}
+
+/* ═══ Interview Q&A ═══ */
+function toggleQA(el) { el.classList.toggle('open'); }
+
+/* ═══ Copy ═══ */
+function copyText(btn) {
+  const sample = btn.previousElementSibling;
+  if (!sample) return;
+  navigator.clipboard.writeText(sample.textContent.trim()).then(() => {
+    btn.textContent = '✓ Copied!';
+    setTimeout(() => { btn.textContent = '📋 Copy Template'; }, 1500);
+  });
+}
+
+/* ═══ Init ═══ */
+restoreChecklist();
+</script>
+</body>
+</html>
