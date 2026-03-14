@@ -63,10 +63,17 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .action-btn{padding:12px;border-radius:8px;font-size:13px;font-weight:600;text-align:center;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:8px}
 .btn-create{background:var(--accent);color:#fff}
 .btn-create:hover{background:var(--accent-hover)}
+/* Generate Website — big gradient, unmissable */
+.btn-website{background:linear-gradient(135deg,#a855f7,#ec4899);color:#fff;border:none;font-size:14px;font-weight:800;padding:14px;letter-spacing:.3px;position:relative;overflow:hidden;box-shadow:0 4px 20px rgba(168,85,247,.35)}
+.btn-website:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(168,85,247,.5)}
+.btn-website::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);transform:translateX(-100%);transition:transform .6s}
+.btn-website:hover::after{transform:translateX(100%)}
+/* Deploy ZIP — green outlined */
 .btn-deploy{background:rgba(34,197,94,.12);color:#22c55e;border:1px solid rgba(34,197,94,.2)}
 .btn-deploy:hover{background:rgba(34,197,94,.2)}
-.btn-ai{background:rgba(168,85,247,.1);color:#a855f7;border:1px solid rgba(168,85,247,.2)}
-.btn-ai:hover{background:rgba(168,85,247,.18)}
+/* AI Banner — subtle dark */
+.btn-ai{background:rgba(255,255,255,.04);color:#94a3b8;border:1px solid var(--border)}
+.btn-ai:hover{background:rgba(255,255,255,.08);color:#e2e8f0}
 
 /* ═══════════════════════════════
    MAIN CONTENT
@@ -200,12 +207,14 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   <!-- Actions -->
   <div class="action-btns">
     <button class="action-btn btn-create" id="btn-create" onclick="createPortfolio()">⚡ Create Portfolio & CV</button>
-    <button class="action-btn" id="btn-website" onclick="generateWebsitePreview()" style="background:rgba(168,85,247,.12);color:#c084fc;border:1px solid rgba(168,85,247,.2)">🌐 Generate Website</button>
+    <button class="action-btn btn-website" id="btn-website" onclick="generateWebsitePreview()">🌐 Generate Website</button>
     <button class="action-btn btn-deploy" id="btn-deploy" onclick="deployToVercel()" style="display:none">🚀 Download ZIP & Deploy</button>
     <button class="action-btn btn-ai" id="btn-ai" onclick="generateAIBanner()">🎨 Generate AI Banner</button>
-    <a href="fiverr-answers.html" class="action-btn" style="display:flex;align-items:center;justify-content:center;gap:6px;background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#6ee7b7;text-decoration:none;font-size:12px;font-weight:600;padding:10px 16px;border-radius:8px;border:1px solid;cursor:pointer;text-align:center;transition:all .2s">📝 Fiverr Pro Answers</a>
-    <a href="fiverr-uploads.html" class="action-btn" style="display:flex;align-items:center;justify-content:center;gap:6px;background:rgba(245,158,11,.08);border-color:rgba(245,158,11,.2);color:#fbbf24;text-decoration:none;font-size:12px;font-weight:600;padding:10px 16px;border-radius:8px;border:1px solid;cursor:pointer;text-align:center;transition:all .2s">📄 Upload Kit</a>
-    <a href="fiverr-guide.html" class="action-btn" style="display:flex;align-items:center;justify-content:center;gap:6px;background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#6ee7b7;text-decoration:none;font-size:12px;font-weight:600;padding:10px 16px;border-radius:8px;border:1px solid;cursor:pointer;text-align:center;transition:all .2s">🎯 Approval Guide</a>
+    <div style="display:flex;gap:6px;margin-top:4px">
+      <a href="fiverr-answers.html" style="flex:1;display:flex;align-items:center;justify-content:center;gap:4px;background:rgba(255,255,255,.03);color:#64748b;text-decoration:none;font-size:10px;font-weight:600;padding:8px 6px;border-radius:6px;border:1px solid var(--border);transition:all .2s">📝 Answers</a>
+      <a href="fiverr-uploads.html" style="flex:1;display:flex;align-items:center;justify-content:center;gap:4px;background:rgba(255,255,255,.03);color:#64748b;text-decoration:none;font-size:10px;font-weight:600;padding:8px 6px;border-radius:6px;border:1px solid var(--border);transition:all .2s">📄 Uploads</a>
+      <a href="fiverr-guide.html" style="flex:1;display:flex;align-items:center;justify-content:center;gap:4px;background:rgba(255,255,255,.03);color:#64748b;text-decoration:none;font-size:10px;font-weight:600;padding:8px 6px;border-radius:6px;border:1px solid var(--border);transition:all .2s">🎯 Guide</a>
+    </div>
   </div>
 </aside>
 
